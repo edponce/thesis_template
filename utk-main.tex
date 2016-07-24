@@ -20,8 +20,9 @@ Juan del Campo%
 
 \begin{document}
 
-\makeApprovalPage % paper submission
-\makeApprovalPageE % electronic submission
+% Committee approval forms (paper and electronic submissions)
+\makeApprovalPage
+\makeApprovalPageE
 
 % Front-matter
 \pagenumbering{roman}
@@ -31,20 +32,25 @@ Juan del Campo%
 \input{front-matter/acknowledgements} % optional
 \input{front-matter/abstract}
 \input{front-matter/preface} % optional
-\tableofcontents
 
+% Table of contents
+\tableofcontents
 \listoftables
 \listoffigures
 %\makeListOfAbbreviations
 %\makeListOfSymbols
-\newpage
 
 % Chapters
+\newpage
 \pagenumbering{arabic}
 \input{chapters/chapter-1}
+\input{chapters/chapter-2}
+\input{chapters/chapter-3}
+\input{chapters/chapter-4}
 
+% Bibliography
 \newpage\null\newpage
-\bibliography{references/references}
+\bibliography{utk-refs}
 
 % Back-matter
 \newpage\null\newpage

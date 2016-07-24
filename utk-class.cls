@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% UTK Dissertation Template 
+% UTK Thesis/Dissertation Template 
 % by Eduardo Ponce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -7,7 +7,7 @@
 % Initialize class
 \NeedsTeXFormat{LaTeX2e}
 \newcommand{\@utkClass}{utk-class}
-\ProvidesClass{\@utkClass}[2016/07/20 custom template]
+\ProvidesClass{\@utkClass}[2016/07/24 thesis template]
 
 
 %----------------------------------------------------------------------------------------
@@ -15,18 +15,23 @@
 %----------------------------------------------------------------------------------------
 
 % Document type
+% Values: [thesis, dissertation]
 \providecommand{\@defaultDoctype}{dissertation}
 
 % Font size
+% Values: [10pt, 11pt, 12pt]
 \providecommand{\@defaultFontSize}{12pt}
 
 % Font family
+% Values: [sans, roman, typewriter]
 \providecommand{\@defaultFontFamily}{roman}
 
 % Text spacing
+% Values: [singlespace, onehalfspace, doublespace]
 \providecommand{\@defaultTextSpace}{onehalfspace}
 
 % Text horizontal alignment
+% Values: [lefttext, centertext, righttext]
 \providecommand{\@defaultTextAlign}{lefttext}
 
 %----------------------------------------------------------------------------------------
