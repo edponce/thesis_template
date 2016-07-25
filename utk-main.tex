@@ -1,4 +1,4 @@
-\documentclass{utk-class}
+\documentclass[10pt]{utk-class}
 
 
 \title{Enhancing OpenCL for CPU-FPGA Systems}
@@ -10,11 +10,11 @@
 \graduationYear{2017}
 \graduationMonth{May}
 \majorProfessor{Gregory D. Peterson}
-\dean{Carolyn R. Hodges}
+\dean{Dixie L. Thompson}
 \committeeMembers{%
-Eduardo Ponce,%
-Valerie Garcia-Negron,%
-Juan del Campo%
+Garret Rose,%
+Jack Dongarra,%
+Someone Else%
 }
 
 
@@ -37,11 +37,11 @@ Juan del Campo%
 \tableofcontents
 \listoftables
 \listoffigures
-%\makeListOfAbbreviations
-%\makeListOfSymbols
+%\makeListOfAbbreviations % optional
+%\makeListOfSymbols % optional
+\clearpage
 
 % Chapters
-\newpage
 \pagenumbering{arabic}
 \input{chapters/chapter-1}
 \input{chapters/chapter-2}
@@ -49,11 +49,11 @@ Juan del Campo%
 \input{chapters/chapter-4}
 
 % Bibliography
-\newpage\null\newpage
+\makeLabelOnlyPage{List of References}
 \bibliography{utk-refs}
 
 % Back-matter
-\newpage\null\newpage
+\makeLabelOnlyPage{Appendix} % optional
 \input{back-matter/appendix-a} % optional
 %\input{back-matter/nomenclature} % optional
 \input{back-matter/vita}

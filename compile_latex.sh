@@ -16,7 +16,7 @@ fi
 # Validate TeX file
 TEXFILE="$1"
 if [ -z "$1" ]; then
-    TEXFILE=`ls | grep .tex`
+    TEXFILE=`ls | grep ".*\.tex$"`
     NUMFILES=`echo "$TEXFILE" | wc -l`
     if [ "$NUMFILES" -eq "1" ]; then
         echo "Warning: automatic TeX file found, '$TEXFILE'."

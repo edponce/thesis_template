@@ -98,7 +98,7 @@
 \RequirePackage[]{amssymb} % AMS fonts
 
 % Not used yet, supplemental packages
-%\RequirePackage[]{fancyhdr} % headers/footers 
+\RequirePackage[]{fancyhdr} % headers/footers 
 %\RequirePackage[]{booktabs} % professional tables
 \RequirePackage[]{caption} % figure captions
 \RequirePackage[]{nomencl} % create a nomenclature 
@@ -135,7 +135,7 @@
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
 \newcommand{\committeeMembers}[1]{\renewcommand{\@committeeMembers}{#1}}
 
-% Store font size of body text
+% Get and store font size of body text, used for spacing computations
 \newlength{\@myFontSize}
 \setlength{\@myFontSize}{\f@size pt}
 
@@ -169,18 +169,19 @@
 \ifthenelse{\equal{\@defaultTextAlign}{righttext}}{\RaggedLeft}{}}}
 
 % Paragraph indentation
-\setlength{\parindent}{0.5in}
+%\setlength{\parindent}{0.5in}
+\setlength{\parindent}{0pt}
 
 % Fancy headers/footers
-%\pagestyle{fancy}
-%\renewcommand{\headrulewidth}{0pt} % remove default rule in header
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt} % remove default rule in header
 
 % Hyperlinks setup
 \hypersetup{
     hypertexnames=false, % use unique values for page anchors, \hyperpage is affected and might not work properly. Used to suppress warning due to multi-font page numbering. 
     plainpages=false, % name page anchors by arabic form of page number
     colorlinks=true, % enable link colors
-    linkcolor=blue, filecolor=magenta, citecolor=magenta, urlcolor=cyan,
+    linkcolor=blue, filecolor=blue, citecolor=blue, urlcolor=blue,
     breaklinks=false, % allow multi-line links
     pdftitle={\@title}, pdfauthor={\@author}, % PDF options
     pdfsubject={\@defaultDoctype on \@title}
@@ -201,17 +202,53 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}{Lemma}[theorem]
 
-% Customize section titles
+% Customize chapter group 
 \titleformat{\chapter}[display] % shape
     {\Large \bfseries \filcenter} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
-    {0pt} % vertical space between label and title
-    {\uppercase} % pre-commands
-    {} % post-commands
+    {0pt} % vertical space (display) between label and title
+    {\uppercase} % pre-title -commands
+    {} % post-title commands
 \titlespacing{\chapter} % shape
     {0pt} % left space 
     {-2.0\@myFontSize} % before space
-    {1.0\@myFontSize} % after space
+    {2.25\@myFontSize} % after space
+
+% Customize section group 
+\titleformat{\section}[hang] % shape
+    {\large \bfseries \filcenter} % format for label and title
+    {\thesection\ } % label
+    {0pt} % horizontal space between label and title
+    {} % pre-title -commands
+    {} % post-title commands
+\titlespacing{\section} % shape
+    {0pt} % left space 
+    {2.0\@myFontSize} % before space
+    {1.25\@myFontSize} % after space
+
+% Customize subsection group 
+\titleformat{\subsection}[hang] % shape
+    {\normalsize \it \bfseries \filright} % format for label and title
+    {\thesubsection\ } % label
+    {0pt} % horizontal space between label and title
+    {} % pre-title -commands
+    {} % post-title commands
+\titlespacing{\subsection} % shape
+    {0pt} % left space 
+    {2.0\@myFontSize} % before space
+    {0.25\@myFontSize} % after space
+
+% Customize subsubsection group 
+\titleformat{\subsubsection}[hang] % shape
+    {\normalsize \bfseries \filright} % format for label and title
+    {} % label
+    {0pt} % horizontal space between label and title
+    {} % pre-title -commands
+    {} % post-title commands
+\titlespacing{\subsubsection} % shape
+    {0pt} % left space 
+    {2.0\@myFontSize} % before space
+    {0.25\@myFontSize} % after space
 
 %----------------------------------------------------------------------------------------
 
@@ -254,11 +291,12 @@
             Accepted for the Council:\\[2.0\@myFontSize]
             \underline{\hspace*{\@myTmpLen}}\\
             \@dean\\
+            Vice Provost and
             Dean of the Graduate School
             \vspace*{\fill}
         \end{multicols}
     \endgroup
-    \newpage
+    \clearpage
 }
 
 %----------------------------------------------------------------------------------------
@@ -304,17 +342,18 @@
             \@dean\\[-1.2\@myFontSize]
             \settowidth{\@myTmpLen}{\@dean}
             \underline{\hspace*{\@myTmpLen}}\\
+            Vice Provost and
             Dean of the Graduate School
         \end{multicols}
 
-        \centering
-        \vspace*{-\@myFontSize} % remove blank line when 'multicols' ends
+        \Centering
+        \vspace*{-1.0\@myFontSize} % remove blank line when 'multicols' ends
         \vspace*{\fill}
         (Original signatures are on file with official student records.)
         \vspace*{\fill}
-        \par % stop switches (e.g., centering)
+        \par % stop switches (e.g., Centering)
     \endgroup
-    \newpage
+    \clearpage
 }
 
 %----------------------------------------------------------------------------------------
@@ -327,7 +366,7 @@
 % Make title page
 \newcommand{\makeTitlePage}{%
     \thispagestyle{empty}
-    \begingroup \centering \Large
+    \begingroup \Centering \Large
 
         \MakeUppercase{\textbf{\@title}}
 
@@ -336,9 +375,9 @@
         \vspace*{\fill}
 
         \@author\\ \@graduationMonth\ \@graduationYear
-        \par % stop switches (e.g., centering)
+        \par % stop switches (e.g., Centering)
     \endgroup
-    \newpage
+    \clearpage
 }
 
 %----------------------------------------------------------------------------------------
@@ -350,14 +389,37 @@
 
 % Make copyright page
 \newcommand{\makeCopyrightPage}{%
-    \begingroup \centering
+    \begingroup \Centering
         \vspace*{\fill}
         Copyright \copyright\ \@graduationYear\ by \@author\\
         All rights reserved.
         \vspace*{\fill}
-        \par % stop switches (e.g., centering)
+        \par % stop switches (e.g., Centering)
     \endgroup
-    \newpage
+    \clearpage
+}
+
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%  LABEL-ONLY PAGE
+%----------------------------------------------------------------------------------------
+
+% Make label-only page
+\newcommand{\makeLabelOnlyPage}[1]{%
+    \clearpage
+    \phantomsection
+    \addtocounter{chapter}{1}
+    \addcontentsline{toc}{chapter}{#1}
+    \thispagestyle{plain}
+    \begingroup \Centering
+        \vspace*{\fill}
+        \MakeUppercase{\Large \bfseries #1}
+        \vspace*{\fill}
+        \par % stop switches (e.g., Centering)
+    \endgroup
+    \clearpage
 }
 
 %----------------------------------------------------------------------------------------

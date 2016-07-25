@@ -1,12 +1,7 @@
-\chapter{Introduction} \label{ch:introduction}
+\chapter{Introduction} \label{ch:chapter1}
 
-This is a very short guide to an unofficial thesis/dissertation template for the University of Tennessee. It is based on the 2010 thesis specifications but can be easily altered as the guidelines are changed. This template requires a basic knowledge of \LaTeX\ and should cover the basic requirements in terms of required packages and functionality.
+This is a very short guide to an unofficial thesis/dissertation template for the University of Tennessee. It is based on the 2010 thesis specifications but can be easily altered as the guidelines are changed. This template requires a basic knowledge of \LaTeX\ and should cover the basic requirements in terms of required packages and functionality. This is a very short guide to an unofficial thesis/dissertation template for the University of Tennessee. It is based on the 2010 thesis specifications but can be easily altered as the guidelines are changed. This template requires a basic knowledge of \LaTeX\ and should cover the basic requirements in terms of required packages and functionality.
 
-\section{Disclaimer}
-\textcolor{red}{\bf
-This template is distributed with ABSOLUTELY NO WARRANTY. It serves as a guideline and constitutes a basic structure for a thesis/dissertation. The user assumes full responsibility for formatting and typesetting their document and for verifying that all the thesis requirements set by the University of Tennessee are met. Please refer to the most recent UT thesis guide \href{http://web.utk.edu/~thesis/thesisresources.shtml}{http://web.utk.edu/~thesis/thesisresources.shtml} or contact the thesis consultant (\href{http://web.utk.edu/~thesis/}{http://web.utk.edu/~thesis/}). Please report any bugs to the thesis consultant.}
-
-\section{Getting started}
 \begin{figure}[b!]
   \centering
   \includegraphics[width=6.5in]{fig01-folder-structure}\\
@@ -14,9 +9,6 @@ This template is distributed with ABSOLUTELY NO WARRANTY. It serves as a guideli
 \end{figure}
 The general structure of this template is based on the tree shown in Figure \ref{fig:intro-folder-structure}. The titles of the folders are self descriptive and should guide you to proper file placement. Note that this is only a suggested model that could be modified to fit your own organizational structure.
 
-There are two important files in this template: ``ut-thesis-template.tex'' and ``utthesis.cls''. The ``utthesis.cls'' is the class file that contains the settings, definitions, packages, and macros for this template to work properly and is located in the root directory. This file constitutes the document class for the template. It is based on the report class and provides some customized functionality. For example, it can automatically generate the signature pages for committees of up to five members. It will also generate a title page for you. In certain cases, one of the packages included in this template may conflict with a package that you are adding. You will have to resolve this conflict by either removing the package that is not being used or by modifying some settings with either packages. The packages that are preloaded in this class file are: amsmath, amsthm, amssymb, setspace, geometry, hyperref, and color.
-
-The ``my-dissertation.tex'' file is the main file for your thesis/dissertation. This is where you should start editing and planning for your thesis/dissertation. You may want to change the name of the file to something like ``my-name-dissertation.tex''. Next, invoke the proper options for the ``utthesis'' document class. This class will take all the options for the report class in addition to two options: thesis/dissertation and monochrome. If you are writing a thesis, you must use "thesis" otherwise, use "dissertation" or omit that option because dissertation is the default setting. The monochrome option converts all your document to monochrome - except figures. This is very useful when printing your document. Because this dissertation has colored hyperlinks, these will look washed out when printed on a monochrome printer. Therefore, it is handy to have a monochrome copy of you3r thesis for print. Below are some examples of typical settings.
 \begin{verbatim}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Thesis, color, one side
@@ -34,17 +26,6 @@ Dissertation, monochrome, two side
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{verbatim}
 
-Note, that if you have less than five committee members, you will only need to fill in the names of your committee. The template will take care of the rest given that you provide the correct number of committee members. For example, if you have three members on your committee, you only need to fill in
-\begin{verbatim}
-\numberOfCommitteeMembers{3}
-\committeeMemberA {Committee Member 1}
-\committeeMemberB {Committee Member 2}
-\committeeMemberC {Committee Member 3}
-\end{verbatim}
-
-\section{References}
-The bibliography style used in this template is "apalike". It is an author-year style based on the APA specification. Here are a few examples. Fermi1956 wrote a book on thermodynamics. The book by \cite{utk:idr2016optimization} on gas dynamics is a classic textbook used in most courses on compressible flows. You can also use the citations at the end of a line Saad2010RSPA,Lamb1895. For more information, visit \href{http://merkel.zoneo.net/Latex/natbib.php}{http://merkel.zoneo.net/Latex/natbib.php}.
-
 \section{Theorem environments}
 This template contains predefined theorem, lemma, and corollary environments. For example
 \begin{theorem}[First theorem]\label{thm:theorem-a}
@@ -60,36 +41,14 @@ This template contains predefined theorem, lemma, and corollary environments. Fo
     This is the first corollary.
 \end{corollary}
 
-\newpage
-\section{Figures}
 \subsection{Single figures}
 For more information, check: \href{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}{http://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions}
-\begin{verbatim}
-    \begin{figure}[t for top, b for bottom, h for here, ! to force placement]
-        % Requires \usepackage{graphicx}
-        \centering % center the figure
-        \includegraphics[width=5in or 127mm etc...]{figure-name}\\
-        \caption{figure caption}\label{figure label}
-    \end{figure}
-\end{verbatim}
-\begin{figure}[h!]
-  % Requires \usepackage{graphicx}
-  \centering
-  \includegraphics[width=3in]{fig02a-circle}\\
-  \caption{Sample caption.}\label{label}
-\end{figure}
-\newpage
+
+\subsubsection{Testing}
+In this part we tested some stuff.
+
 \subsection{Multipart figures}
 For multipart figures, you need to use the package "subfig". here's an example
-\begin{verbatim}
-\begin{figure}
-    \centering
-    \subfloat[figure a]{\label{fig:figure-a} \includegraphics[width=w]{fig02a}}
-    \subfloat[figure b]{\label{fig:figure-b} \includegraphics[width=w]{fig02b}}
-    \subfloat[figure c]{\label{fig:figure-c} \includegraphics[width=w]{fig02c}}
-    \caption{Sample of a multipart figure} \label{fig:multipart-figure}
-\end{figure}
-\end{verbatim}
 \begin{figure}[h!]
         \centering
         \subfloat[Circle]{\label{fig:figure-a}\includegraphics[width=1.1in]{fig02a-circle}}
