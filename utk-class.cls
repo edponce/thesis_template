@@ -104,6 +104,7 @@
 \RequirePackage[]{nomencl} % create a nomenclature 
 \RequirePackage[]{subfloat} % sub figure floats
 \RequirePackage[]{subfig} % sub figures 
+%\RequirePackage[]{parskip}
 
 % Debug packages
 \RequirePackage{layout} % show page measurements 
@@ -134,10 +135,6 @@
 \newcommand{\department}[1]{\renewcommand{\@department}{#1}}
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
 \newcommand{\committeeMembers}[1]{\renewcommand{\@committeeMembers}{#1}}
-
-% Get and store font size of body text, used for spacing computations
-\newlength{\@myFontSize}
-\setlength{\@myFontSize}{\f@size pt}
 
 % Temporary length variable 
 \newlength{\@myTmpLen}
@@ -171,6 +168,20 @@
 % Paragraph indentation
 %\setlength{\parindent}{0.5in}
 \setlength{\parindent}{0pt}
+
+% Paragraph vertical space 
+%\setlength{\parskip}{\baselineskip}
+
+% Customize hyphenation
+%\tolerance=1
+%\pretolerance=1
+%\hbadness=10000
+%\hfuzz0pt
+%\emergencystretch=\maxdimen
+%\hyphenpenalty=10000
+%\clubpenalty=10000
+%\widowpenalty=10000
+%brokenpenalty=10000
 
 % Fancy headers/footers
 \pagestyle{fancy}
@@ -211,8 +222,8 @@
     {} % post-title commands
 \titlespacing{\chapter} % shape
     {0pt} % left space 
-    {-2.0\@myFontSize} % before space
-    {2.25\@myFontSize} % after space
+    {-1.5\baselineskip} % before space
+    {2.0\baselineskip} % after space
 
 % Customize section group 
 \titleformat{\section}[hang] % shape
@@ -223,8 +234,8 @@
     {} % post-title commands
 \titlespacing{\section} % shape
     {0pt} % left space 
-    {2.0\@myFontSize} % before space
-    {1.25\@myFontSize} % after space
+    {1.5\baselineskip} % before space
+    {1.0\baselineskip} % after space
 
 % Customize subsection group 
 \titleformat{\subsection}[hang] % shape
@@ -235,8 +246,8 @@
     {} % post-title commands
 \titlespacing{\subsection} % shape
     {0pt} % left space 
-    {2.0\@myFontSize} % before space
-    {0.25\@myFontSize} % after space
+    {1.5\baselineskip} % before space
+    {0.25\baselineskip} % after space
 
 % Customize subsubsection group 
 \titleformat{\subsubsection}[hang] % shape
@@ -247,8 +258,8 @@
     {} % post-title commands
 \titlespacing{\subsubsection} % shape
     {0pt} % left space 
-    {2.0\@myFontSize} % before space
-    {0.25\@myFontSize} % after space
+    {1.5\baselineskip} % before space
+    {0.25\baselineskip} % after space
 
 %----------------------------------------------------------------------------------------
 
@@ -262,7 +273,7 @@
     \setlength{\@myTmpLen}{1.75in}
     \thispagestyle{empty}
     \begingroup \parindent\z@
-        To the Graduate Council:\\[\@myFontSize]
+        To the Graduate Council:\\[\baselineskip]
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\ 
         for form and content and recommend that it be accepted in partial fulfillment
@@ -274,11 +285,11 @@
             and recommend its acceptance:
 
             \@for\@committeeMember:=\@committeeMembers\do{%
-                \vspace*{2.0\@myFontSize}
+                \vspace*{1.5\baselineskip}
                 \underline{\hspace*{\@myTmpLen}}\\
                 \@committeeMember \par
             }%
-            \vspace*{4.0\@myFontSize}
+            \vspace*{2.5\baselineskip}
             \vspace*{\fill}
             \columnbreak % move to second column
 
@@ -286,9 +297,9 @@
             \underline{\hspace*{\@myTmpLen}}\\
             \@majorProfessor\\
             Major Professor
-            \par \vspace*{16.0\@myFontSize}
+            \par \vspace*{10.5\baselineskip}
 
-            Accepted for the Council:\\[2.0\@myFontSize]
+            Accepted for the Council:\\[1.5\baselineskip]
             \underline{\hspace*{\@myTmpLen}}\\
             \@dean\\
             Vice Provost and
@@ -310,7 +321,7 @@
 \newcommand{\makeApprovalPageE}{%
     \thispagestyle{empty}
     \begingroup \parindent\z@
-        To the Graduate Council:\\[\@myFontSize]
+        To the Graduate Council:\\[\baselineskip]
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
         for form and content and recommend that it be accepted in partial fulfillment
@@ -320,26 +331,26 @@
             \vspace*{\fill}
             We have read this \@defaultDoctype\\
             and recommend its acceptance:
-            \par \vspace*{\@myFontSize}
+            \par \vspace*{\baselineskip}
 
             \@for\@committeeMember:=\@committeeMembers\do{%
-                \@committeeMember\\[-1.2\@myFontSize]
+                \@committeeMember\\[-0.8\baselineskip]
                 \settowidth{\@myTmpLen}{\@committeeMember}
                 \underline{\hspace*{\@myTmpLen}}
-                \vspace*{2.0\@myFontSize} \par
+                \vspace*{1.5\baselineskip} \par
             }%
-            \vspace*{4.0\@myFontSize}
+            \vspace*{2.5\baselineskip}
             \vspace*{\fill}
             \columnbreak % move to second column
 
-            \@majorProfessor\\[-1.2\@myFontSize]
+            \@majorProfessor\\[-0.8\baselineskip]
             \settowidth{\@myTmpLen}{\@majorProfessor}
             \underline{\hspace*{\@myTmpLen}}\\
             Major Professor
-            \par \vspace*{12.0\@myFontSize}
+            \par \vspace*{8.0\baselineskip}
 
-            Accepted for the Council:\\[\@myFontSize]
-            \@dean\\[-1.2\@myFontSize]
+            Accepted for the Council:\\[\baselineskip]
+            \@dean\\[-0.8\baselineskip]
             \settowidth{\@myTmpLen}{\@dean}
             \underline{\hspace*{\@myTmpLen}}\\
             Vice Provost and
@@ -347,7 +358,7 @@
         \end{multicols}
 
         \Centering
-        \vspace*{-1.0\@myFontSize} % remove blank line when 'multicols' ends
+        \vspace*{-\baselineskip} % remove blank line when 'multicols' ends
         \vspace*{\fill}
         (Original signatures are on file with official student records.)
         \vspace*{\fill}
