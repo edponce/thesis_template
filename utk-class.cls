@@ -13,7 +13,6 @@
 %----------------------------------------------------------------------------------------
 %  DEFAULT CLASS OPTIONS
 %----------------------------------------------------------------------------------------
-
 % Document type
 % Values: [thesis, dissertation]
 \providecommand{\@defaultDoctype}{dissertation}
@@ -33,16 +32,14 @@
 % Text horizontal alignment
 % Values: [lefttext, centertext, righttext]
 \providecommand{\@defaultTextAlign}{lefttext}
-
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  CLASS OPTIONS CONFIGURATION
 %----------------------------------------------------------------------------------------
-
-\DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}}
-\DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}}
+\DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}\renewcommand{\@defaultFCDoctype}{Thesis}}
+\DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}\renewcommand{\@defaultFCDoctype}{Dissertation}}
 
 \DeclareOption{10pt}{\renewcommand{\@defaultFontSize}{10pt}}
 \DeclareOption{11pt}{\renewcommand{\@defaultFontSize}{11pt}}
@@ -71,50 +68,47 @@
 
 % Load base class
 \LoadClass[letterpaper, \@defaultFontSize]{report}
-
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  LOAD PACKAGES 
 %----------------------------------------------------------------------------------------
-
 % Mandatory packages
-\RequirePackage[T1]{fontenc} % accented characters for output
-\RequirePackage[utf8]{inputenc} % accented characters for input 
-\RequirePackage[USenglish]{babel} % USA hyphenation patterns
-\RequirePackage[showframe]{geometry} % page margins/layout
-\RequirePackage[]{setspace} % text spacing
-\RequirePackage[]{multicol} % multiple columns 
-\RequirePackage[pdftex]{hyperref} % hyperlinks 
-\RequirePackage[]{color} % colors
-\RequirePackage[]{ifthen} % conditional macros
-\RequirePackage[]{ragged2e} % text alignment 
-\RequirePackage[]{graphicx} % graphics 
-\RequirePackage[]{natbib} % link references
-\RequirePackage[]{titlesec} % customize section displays 
-\RequirePackage[]{amsmath} % AMS math
-\RequirePackage[]{amsthm} % AMS theorem
-\RequirePackage[]{amssymb} % AMS fonts
+\RequirePackage[T1]{fontenc}        % accented characters for output
+\RequirePackage[utf8]{inputenc}     % accented characters for input 
+\RequirePackage[USenglish]{babel}   % USA hyphenation patterns
+\RequirePackage[]{geometry}         % page margins/layout
+\RequirePackage[]{setspace}         % text spacing
+\RequirePackage[]{multicol}         % multiple columns 
+\RequirePackage[pdftex]{hyperref}   % hyperlinks 
+\RequirePackage[]{color}            % colors
+\RequirePackage[]{ifthen}           % conditional macros
+\RequirePackage[]{ragged2e}         % text alignment 
+\RequirePackage[]{graphicx}         % graphics 
+\RequirePackage[]{natbib}           % link references
+\RequirePackage[]{titlesec}         % customize section displays 
+\RequirePackage[]{amsmath}          % AMS math
+\RequirePackage[]{amsthm}           % AMS theorem
+\RequirePackage[]{amssymb}          % AMS fonts
 
-% Not used yet, supplemental packages
-\RequirePackage[]{fancyhdr} % headers/footers 
-%\RequirePackage[]{booktabs} % professional tables
-\RequirePackage[]{caption} % figure captions
-\RequirePackage[]{nomencl} % create a nomenclature 
-\RequirePackage[]{subfloat} % sub figure floats
-\RequirePackage[]{subfig} % sub figures 
+% Supplemental packages
+\RequirePackage[]{fancyhdr}         % headers/footers 
+%\RequirePackage[]{booktabs}         % professional tables
+\RequirePackage[]{caption}          % figure captions
+\RequirePackage[]{nomencl}          % create a nomenclature 
+\RequirePackage[]{subfloat}         % sub figure floats
+\RequirePackage[]{subfig}           % sub figures 
 %\RequirePackage[]{parskip}
 
 % Debug packages
-\RequirePackage{layout} % show page measurements 
+%\RequirePackage{layout}             % show page measurements 
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  INTERNAL MACROS 
 %----------------------------------------------------------------------------------------
-
 % User-related macros 
 \providecommand{\@graduationYear}{}
 \providecommand{\@graduationMonth}{}
@@ -139,14 +133,12 @@
 % Temporary length variable 
 \newlength{\@myTmpLen}
 \setlength{\@myTmpLen}{0pt}
-
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  INITIALIZE GLOBAL SETTINGS
 %----------------------------------------------------------------------------------------
-
 % Page margins/layout 
 % Match MS Word template:
 % (top=1.0in, bottom=1.3in, left=1.25in, right=1.25in, header=0.5in, footer=1.0in)
@@ -172,33 +164,37 @@
 % Paragraph vertical space 
 %\setlength{\parskip}{\baselineskip}
 
-% Customize hyphenation
-%\tolerance=1
-%\pretolerance=1
-%\hbadness=10000
-%\hfuzz0pt
-%\emergencystretch=\maxdimen
-%\hyphenpenalty=10000
-%\clubpenalty=10000
-%\widowpenalty=10000
-%brokenpenalty=10000
+% Override LaTeX hyphenation
+\tolerance=1000
+\pretolerance=1000
+\hbadness=10000
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000    % reduce hyphenation
+\clubpenalty=10000      % reduce orphan hyphens
+\widowpenalty=10000     % reduce widow hyphens
+\brokenpenalty=10000    % reduce hyphens across pages
 
 % Fancy headers/footers
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt} % remove default rule in header
 
+% Cool footnotes
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
 % Hyperlinks setup
 \hypersetup{
-    hypertexnames=false, % use unique values for page anchors, \hyperpage is affected and might not work properly. Used to suppress warning due to multi-font page numbering. 
-    plainpages=false, % name page anchors by arabic form of page number
-    colorlinks=true, % enable link colors
-    linkcolor=blue, filecolor=blue, citecolor=blue, urlcolor=blue,
-    breaklinks=false, % allow multi-line links
-    pdftitle={\@title}, pdfauthor={\@author}, % PDF options
-    pdfsubject={\@defaultDoctype on \@title}
+    pdftitle={\@title},     % PDF title option
+    pdfauthor={\@author},   % PDF author option
+    pdfsubject={\@defaultDoctype on \@title},
+    %pdfborder=0 0 0,        % so that PDF looks good when printed
+    bookmarksnumbered=true, bookmarksopen=false, % PDF bookmarking options
+    hypertexnames=false,    % use unique values for page anchors, \hyperpage is affected and might not work properly. Used to suppress warning due to multi-font page numbering. 
+    plainpages=false,       % name page anchors by arabic form of page number
+    colorlinks=true,        % enable link colors
+    linkcolor=blue, filecolor=magenta, citecolor=magenta, urlcolor=cyan,
+    breaklinks=false        % allow multi-line links
 }
 \urlstyle{same} % use same style as class for URL links
-
 
 % Paths where figures are located
 \graphicspath{{figures/}{figures/eps/}{figures/pdf/}}
@@ -212,6 +208,8 @@
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{definition}{Definition}[theorem]
 
 % Customize chapter group 
 \titleformat{\chapter}[display] % shape
@@ -260,14 +258,12 @@
     {0pt} % left space 
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
-
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
-%  APPROVAL PAGE (PAPER SUBMISSION) 
+%  APPROVAL PAGE (PAPER VERSION) 
 %----------------------------------------------------------------------------------------
-
 % Make committee approval page
 \newcommand{\makeApprovalPage}{%
     \setlength{\@myTmpLen}{1.75in}
@@ -302,23 +298,21 @@
             Accepted for the Council:\\[1.5\baselineskip]
             \underline{\hspace*{\@myTmpLen}}\\
             \@dean\\
-            Vice Provost and
             Dean of the Graduate School
             \vspace*{\fill}
         \end{multicols}
     \endgroup
     \clearpage
 }
-
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
-%  APPROVAL PAGE (ELECTRONIC SUBMISSION) 
+%  APPROVAL PAGE (ELECTRONIC VERSION) 
 %----------------------------------------------------------------------------------------
-
 % Make committee approval page
 \newcommand{\makeApprovalPageE}{%
+    \setlength{\@myTmpLen}{1.75in}
     \thispagestyle{empty}
     \begingroup \parindent\z@
         To the Graduate Council:\\[\baselineskip]
@@ -335,7 +329,6 @@
 
             \@for\@committeeMember:=\@committeeMembers\do{%
                 \@committeeMember\\[-0.8\baselineskip]
-                \settowidth{\@myTmpLen}{\@committeeMember}
                 \underline{\hspace*{\@myTmpLen}}
                 \vspace*{1.5\baselineskip} \par
             }%
@@ -344,14 +337,12 @@
             \columnbreak % move to second column
 
             \@majorProfessor\\[-0.8\baselineskip]
-            \settowidth{\@myTmpLen}{\@majorProfessor}
             \underline{\hspace*{\@myTmpLen}}\\
             Major Professor
             \par \vspace*{8.0\baselineskip}
 
             Accepted for the Council:\\[\baselineskip]
             \@dean\\[-0.8\baselineskip]
-            \settowidth{\@myTmpLen}{\@dean}
             \underline{\hspace*{\@myTmpLen}}\\
             Vice Provost and
             Dean of the Graduate School
@@ -366,15 +357,12 @@
     \endgroup
     \clearpage
 }
-
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  TITLE PAGE  
 %----------------------------------------------------------------------------------------
-
-% Make title page
 \newcommand{\makeTitlePage}{%
     \thispagestyle{empty}
     \begingroup \Centering \Large
@@ -382,7 +370,7 @@
         \MakeUppercase{\textbf{\@title}}
 
         \vspace*{\fill}
-        A Dissertation Presented for\\ the \@degree\\ Degree\\ \@university
+        A \@defaultFCDoctype\ Presented for the\\ \@degree\\ Degree\\ \@university
         \vspace*{\fill}
 
         \@author\\ \@graduationMonth\ \@graduationYear
@@ -390,15 +378,20 @@
     \endgroup
     \clearpage
 }
+%----------------------------------------------------------------------------------------
 
+
+%----------------------------------------------------------------------------------------
+%  TABLE OF CONTENTS PAGE  
+%----------------------------------------------------------------------------------------
+% Change heading of Table of Contents
+\renewcommand*\contentsname{Table of Contents}
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  COPYRIGHT PAGE  
 %----------------------------------------------------------------------------------------
-
-% Make copyright page
 \newcommand{\makeCopyrightPage}{%
     \begingroup \Centering
         \vspace*{\fill}
@@ -409,15 +402,12 @@
     \endgroup
     \clearpage
 }
-
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  LABEL-ONLY PAGE
 %----------------------------------------------------------------------------------------
-
-% Make label-only page
 \newcommand{\makeLabelOnlyPage}[1]{%
     \clearpage
     \phantomsection
@@ -432,18 +422,8 @@
     \endgroup
     \clearpage
 }
-
 %----------------------------------------------------------------------------------------
 
-%http://www.emerson.emory.edu/services/latex/latex_toc.html#SEC145
-%http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e.html#Font-sizes
-%https://www.sharelatex.com/learn/Environments
-%https://www.sharelatex.com/learn/Page_size_and_margins
-%http://tex.stackexchange.com/questions/79046/baselinestretch-vs-setspace
-%http://tex.stackexchange.com/questions/31776/latex-at-symbol
-%http://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex
-%http://tex.stackexchange.com/questions/239305/latex-variables-varname
-%http://tex.stackexchange.com/questions/58628/optional-argument-for-newcommand
 
-\endinput % finalize class
+\endinput % finalize UTK class
 
