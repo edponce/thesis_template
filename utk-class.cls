@@ -38,8 +38,8 @@
 %----------------------------------------------------------------------------------------
 %  CLASS OPTIONS CONFIGURATION
 %----------------------------------------------------------------------------------------
-\DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}\renewcommand{\@defaultFCDoctype}{Thesis}}
-\DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}\renewcommand{\@defaultFCDoctype}{Dissertation}}
+\DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}\newcommand{\@defaultFCDoctype}{Thesis}}
+\DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}\newcommand{\@defaultFCDoctype}{Dissertation}}
 
 \DeclareOption{10pt}{\renewcommand{\@defaultFontSize}{10pt}}
 \DeclareOption{11pt}{\renewcommand{\@defaultFontSize}{11pt}}
@@ -381,11 +381,17 @@
 %----------------------------------------------------------------------------------------
 
 
+
 %----------------------------------------------------------------------------------------
-%  TABLE OF CONTENTS PAGE  
+%  TABLE OF CONTENTS, LIST OF TABLES, LIST OF FIGURES
 %----------------------------------------------------------------------------------------
-% Change heading of Table of Contents
-\renewcommand*\contentsname{Table of Contents}
+% Change titles to all capital letters 
+% This commands are tied closely to the 'babel' package
+\addto\captionsUSenglish{%
+\renewcommand{\contentsname}{\MakeUppercase{\Large \bfseries Table of Contents}}
+\renewcommand{\listtablename}{\MakeUppercase{\Large \bfseries List of Tables}}
+\renewcommand{\listfigurename}{\MakeUppercase{\Large \bfseries List of Figures}}
+}
 %----------------------------------------------------------------------------------------
 
 
