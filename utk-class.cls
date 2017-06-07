@@ -396,6 +396,32 @@
 
 
 %----------------------------------------------------------------------------------------
+%  addToTOC: macro that adds an entry to the table of contents 
+%----------------------------------------------------------------------------------------
+\newcommand{\addToTOC}[1]{%
+    \phantomsection
+    \addcontentsline{toc}{chapter}{#1}
+}
+\newcommand{\addToTOCc}[1]{%
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}
+}
+\newcommand{\addToTOCs}[1]{%
+    \phantomsection
+    \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}
+}
+\newcommand{\addToTOCss}[1]{%
+    \phantomsection
+    \addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}
+}
+\newcommand{\addToTOCsss}[1]{%
+    \phantomsection
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}
+}
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
 %  COPYRIGHT PAGE  
 %----------------------------------------------------------------------------------------
 \newcommand{\makeCopyrightPage}{%
