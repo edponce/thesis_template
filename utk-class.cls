@@ -72,7 +72,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  LOAD PACKAGES 
+%  LOAD PACKAGES
 %----------------------------------------------------------------------------------------
 % Mandatory packages
 \RequirePackage[T1]{fontenc}        % accented characters for output
@@ -81,6 +81,7 @@
 \RequirePackage[]{geometry}         % page margins/layout
 \RequirePackage[]{setspace}         % text spacing
 \RequirePackage[]{multicol}         % multiple columns 
+\RequirePackage[]{multirow}         % multiple rows 
 \RequirePackage[pdftex]{hyperref}   % hyperlinks 
 \RequirePackage[]{color}            % colors
 \RequirePackage[]{ifthen}           % conditional macros
@@ -88,20 +89,22 @@
 \RequirePackage[]{graphicx}         % graphics 
 \RequirePackage[]{natbib}           % link references
 \RequirePackage[]{titlesec}         % customize section displays 
+\RequirePackage[titles]{tocloft}    % customize LOF, LOT 
 \RequirePackage[]{amsmath}          % AMS math
 \RequirePackage[]{amsthm}           % AMS theorem
 \RequirePackage[]{amssymb}          % AMS fonts
 
 % Supplemental packages
 \RequirePackage[]{fancyhdr}         % headers/footers 
-%\RequirePackage[]{booktabs}         % professional tables
+\RequirePackage[]{booktabs}         % professional tables
 \RequirePackage[]{caption}          % figure captions
 \RequirePackage[]{nomencl}          % create a nomenclature 
 \RequirePackage[]{subfloat}         % sub figure floats
 \RequirePackage[]{subfig}           % sub figures 
-%\RequirePackage[]{parskip}
+\RequirePackage[]{parskip}
 
 % Debug packages
+%\RequirePackage[frame]{geometry}    % page margins/layout
 %\RequirePackage{layout}             % show page measurements 
 %----------------------------------------------------------------------------------------
 
@@ -137,7 +140,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  INITIALIZE GLOBAL SETTINGS
+%  CONFIGURE GLOBAL SETTINGS
 %----------------------------------------------------------------------------------------
 % Page margins/layout 
 % Match MS Word template:
@@ -146,6 +149,19 @@
     top=1.0in, bottom=1.53125in, left=1.25in, right=1.25in,
     headheight=16pt, headsep=0.28in, footskip=0.3125in
 }
+
+% Paths where figures are located
+\graphicspath{{figures/}{figures/eps/}}
+
+% Paragraph indentation
+%\setlength{\parindent}{0.5in}
+\setlength{\parindent}{0pt}
+
+% Paragraph vertical space 
+%\setlength{\parskip}{\baselineskip}
+
+% Bibliography style
+\bibliographystyle{apalike}
 
 % Text line spacing
 \ifthenelse{\equal{\@defaultTextSpace}{singlespace}}{\singlespacing}{%
@@ -156,13 +172,6 @@
 \ifthenelse{\equal{\@defaultTextAlign}{lefttext}}{\RaggedRight}{%
 \ifthenelse{\equal{\@defaultTextAlign}{centertext}}{\Centering}{%
 \ifthenelse{\equal{\@defaultTextAlign}{righttext}}{\RaggedLeft}{}}}
-
-% Paragraph indentation
-%\setlength{\parindent}{0.5in}
-\setlength{\parindent}{0pt}
-
-% Paragraph vertical space 
-%\setlength{\parskip}{\baselineskip}
 
 % Override LaTeX hyphenation
 \tolerance=1000
@@ -175,7 +184,7 @@
 \brokenpenalty=10000    % reduce hyphens across pages
 
 % Fancy headers/footers
-\pagestyle{fancy}
+%\pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt} % remove default rule in header
 
 % Cool footnotes
@@ -195,14 +204,12 @@
     breaklinks=false        % allow multi-line links
 }
 \urlstyle{same} % use same style as class for URL links
+%----------------------------------------------------------------------------------------
 
-% Paths where figures are located
-\graphicspath{{figures/}{figures/eps/}{figures/pdf/}}
 
-% Bibliography style
-\bibliographystyle{apalike}
-
+%----------------------------------------------------------------------------------------
 % Define lemma, corollary, and theorem environments
+%----------------------------------------------------------------------------------------
 \theoremstyle{plain}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -210,8 +217,14 @@
 \newtheorem{lemma}{Lemma}[theorem]
 \newtheorem{proposition}{Proposition}[theorem]
 \newtheorem{definition}{Definition}[theorem]
+%----------------------------------------------------------------------------------------
 
-% Customize chapter group 
+
+%----------------------------------------------------------------------------------------
+% Customize chapter and sections groups
+%----------------------------------------------------------------------------------------
+% chapter group - "Chapter #
+%                   Title" (centered)
 \titleformat{\chapter}[display] % shape
     {\Large \bfseries \filcenter} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
@@ -223,11 +236,12 @@
     {-1.5\baselineskip} % before space
     {2.0\baselineskip} % after space
 
-% Customize section group 
+% section group - "Title" (centered)
 \titleformat{\section}[hang] % shape
     {\large \bfseries \filcenter} % format for label and title
-    {\thesection\ } % label
+    {} % label
     {0pt} % horizontal space between label and title
+    %{\thesection\ } % pre-title -commands
     {} % pre-title -commands
     {} % post-title commands
 \titlespacing{\section} % shape
@@ -235,11 +249,12 @@
     {1.5\baselineskip} % before space
     {1.0\baselineskip} % after space
 
-% Customize subsection group 
+% subsection group - "Title" (left-align, italic)
 \titleformat{\subsection}[hang] % shape
     {\normalsize \it \bfseries \filright} % format for label and title
-    {\thesubsection\ } % label
+    {} % label
     {0pt} % horizontal space between label and title
+    %{\thesubsection\ } % pre-title -commands
     {} % pre-title -commands
     {} % post-title commands
 \titlespacing{\subsection} % shape
@@ -247,17 +262,40 @@
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
 
-% Customize subsubsection group 
+% subsubsection group - "Title" (left-align)
 \titleformat{\subsubsection}[hang] % shape
     {\normalsize \bfseries \filright} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
+    %{\thesubsubsection\ } % pre-title -commands
     {} % pre-title -commands
     {} % post-title commands
 \titlespacing{\subsubsection} % shape
     {0pt} % left space 
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+% Customize List of Figures entry format 
+%----------------------------------------------------------------------------------------
+% Figure 1.1:  This is the caption of figure........10
+\renewcommand{\cftfigpresnum}{\figurename\ }
+\renewcommand{\cftfigaftersnum}{:}
+\settowidth{\@myTmpLen}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\@myTmpLen}
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+% Customize List of Tables entry format 
+%----------------------------------------------------------------------------------------
+% Table 1.1:  This is the caption of table........10
+\renewcommand{\cfttabpresnum}{\tablename\ }
+\renewcommand{\cfttabaftersnum}{:}
+\settowidth{\@myTmpLen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\@myTmpLen}
 %----------------------------------------------------------------------------------------
 
 
@@ -396,26 +434,36 @@
 
 
 %----------------------------------------------------------------------------------------
-%  addToTOC: macro that adds an entry to the table of contents 
+%  Macros to add manual entries to the table of contents 
 %----------------------------------------------------------------------------------------
+% chapter without numbering
 \newcommand{\addToTOC}[1]{%
     \phantomsection
+    \addtocounter{chapter}{1}
     \addcontentsline{toc}{chapter}{#1}
 }
+% chapter with numbering
 \newcommand{\addToTOCc}[1]{%
     \phantomsection
+    \addtocounter{chapter}{1}
     \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}
 }
+% section with numbering
 \newcommand{\addToTOCs}[1]{%
     \phantomsection
+    \addtocounter{section}{1}
     \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}
 }
+% subsection with numbering
 \newcommand{\addToTOCss}[1]{%
     \phantomsection
+    \addtocounter{subsection}{1}
     \addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}
 }
+% subsubsection with numbering
 \newcommand{\addToTOCsss}[1]{%
     \phantomsection
+    \addtocounter{subsubsection}{1}
     \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}
 }
 %----------------------------------------------------------------------------------------
