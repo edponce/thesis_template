@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% UTK Thesis/Dissertation Template 
+% UTK Thesis/Dissertation Template
 % by Eduardo Ponce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -7,7 +7,7 @@
 % Initialize class
 \NeedsTeXFormat{LaTeX2e}
 \newcommand{\@utkClass}{utk-class}
-\ProvidesClass{\@utkClass}[2016/07/24 thesis template]
+\ProvidesClass{\@utkClass}[11/14/2017 UTK thesis template]
 
 
 %----------------------------------------------------------------------------------------
@@ -16,46 +16,53 @@
 % Document type
 % Values: [thesis, dissertation]
 \providecommand{\@defaultDoctype}{dissertation}
+\providecommand{\@defaultFCDoctype}{Dissertation}
 
 % Font size
-% Values: [10pt, 11pt, 12pt]
+% Values: [11pt, 12pt]
 \providecommand{\@defaultFontSize}{12pt}
 
 % Font family
 % Values: [sans, roman, typewriter]
 \providecommand{\@defaultFontFamily}{roman}
 
-% Text spacing
+% Text line spacing
 % Values: [singlespace, onehalfspace, doublespace]
 \providecommand{\@defaultTextSpace}{onehalfspace}
 
 % Text horizontal alignment
-% Values: [lefttext, centertext, righttext]
+% Values: [lefttext, justifytext]
 \providecommand{\@defaultTextAlign}{lefttext}
+
+% Chapter and section title horizontal alignment
+% (Sub)Subsection are always left-aligned
+% Values: [leftsection, centersection]
+\providecommand{\@defaultSectionAlign}{centersection}
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %  CLASS OPTIONS CONFIGURATION
 %----------------------------------------------------------------------------------------
-\DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}\newcommand{\@defaultFCDoctype}{Thesis}}
-\DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}\newcommand{\@defaultFCDoctype}{Dissertation}}
+\DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}}
+\DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}}
 
-\DeclareOption{10pt}{\renewcommand{\@defaultFontSize}{10pt}}
 \DeclareOption{11pt}{\renewcommand{\@defaultFontSize}{11pt}}
 \DeclareOption{12pt}{\renewcommand{\@defaultFontSize}{12pt}}
 
-\DeclareOption{sans}{\renewcommand{\familydefault}{\sfdefault}}
-\DeclareOption{roman}{\renewcommand{\familydefault}{\rmdefault}}
-\DeclareOption{typewriter}{\renewcommand{\familydefault}{\ttdefault}}
+\DeclareOption{sans}{\renewcommand{\@defaultFontFamily}{sans}}
+\DeclareOption{roman}{\renewcommand{\@defaultFontFamily}{roman}}
+\DeclareOption{typewriter}{\renewcommand{\@defaultFontFamily}{typewriter}}
 
 \DeclareOption{singlespace}{\renewcommand{\@defaultTextSpace}{singlespace}}
 \DeclareOption{onehalfspace}{\renewcommand{\@defaultTextSpace}{onehalfspace}}
 \DeclareOption{doublespace}{\renewcommand{\@defaultTextSpace}{doublespace}}
 
 \DeclareOption{lefttext}{\renewcommand{\@defaultTextAlign}{lefttext}}
-\DeclareOption{centertext}{\renewcommand{\@defaultTextAlign}{centertext}}
-\DeclareOption{righttext}{\renewcommand{\@defaultTextAlign}{righttext}}
+\DeclareOption{justifytext}{\renewcommand{\@defaultTextAlign}{justifytext}}
+
+\DeclareOption{leftsection}{\renewcommand{\@defaultSectionAlign}{leftsection}}
+\DeclareOption{centersection}{\renewcommand{\@defaultSectionAlign}{centersection}}
 
 % Pass non-implemented options to base class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
@@ -76,43 +83,43 @@
 %----------------------------------------------------------------------------------------
 % Mandatory packages
 \RequirePackage[T1]{fontenc}        % accented characters for output
-\RequirePackage[utf8]{inputenc}     % accented characters for input 
+\RequirePackage[utf8]{inputenc}     % accented characters for input
 \RequirePackage[USenglish]{babel}   % USA hyphenation patterns
 \RequirePackage[]{geometry}         % page margins/layout
 \RequirePackage[]{setspace}         % text spacing
-\RequirePackage[]{multicol}         % multiple columns 
-\RequirePackage[]{multirow}         % multiple rows 
-\RequirePackage[pdftex]{hyperref}   % hyperlinks 
+\RequirePackage[]{multicol}         % multiple columns
+\RequirePackage[]{multirow}         % multiple rows
+\RequirePackage[]{hyperref}         % hyperlinks
 \RequirePackage[]{color}            % colors
 \RequirePackage[]{ifthen}           % conditional macros
-\RequirePackage[]{ragged2e}         % text alignment 
-\RequirePackage[]{graphicx}         % graphics 
+\RequirePackage[]{ragged2e}         % text alignment
+\RequirePackage[]{graphicx}         % graphics
 \RequirePackage[]{natbib}           % link references
-\RequirePackage[]{titlesec}         % customize section displays 
-\RequirePackage[titles]{tocloft}    % customize LOF, LOT 
+\RequirePackage[]{titlesec}         % customize section displays
+\RequirePackage[titles]{tocloft}    % customize LOF, LOT
 \RequirePackage[]{amsmath}          % AMS math
 \RequirePackage[]{amsthm}           % AMS theorem
 \RequirePackage[]{amssymb}          % AMS fonts
 
 % Supplemental packages
-\RequirePackage[]{fancyhdr}         % headers/footers 
+\RequirePackage[]{fancyhdr}         % headers/footers
 \RequirePackage[]{booktabs}         % professional tables
 \RequirePackage[]{caption}          % figure captions
-\RequirePackage[]{nomencl}          % create a nomenclature 
+\RequirePackage[]{nomencl}          % create a nomenclature
 \RequirePackage[]{subfloat}         % sub figure floats
-\RequirePackage[]{subfig}           % sub figures 
+\RequirePackage[]{subfig}           % sub figures
 \RequirePackage[]{parskip}
 
 % Debug packages
 %\RequirePackage[frame]{geometry}    % page margins/layout
-%\RequirePackage{layout}             % show page measurements 
+%\RequirePackage{layout}             % show page measurements
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
-%  INTERNAL MACROS 
+%  INTERNAL MACROS
 %----------------------------------------------------------------------------------------
-% User-related macros 
+% User-related macros
 \providecommand{\@graduationYear}{}
 \providecommand{\@graduationMonth}{}
 \providecommand{\@majorProfessor}{}
@@ -133,7 +140,7 @@
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
 \newcommand{\committeeMembers}[1]{\renewcommand{\@committeeMembers}{#1}}
 
-% Temporary length variable 
+% Temporary length variable
 \newlength{\@myTmpLen}
 \setlength{\@myTmpLen}{0pt}
 %----------------------------------------------------------------------------------------
@@ -142,7 +149,7 @@
 %----------------------------------------------------------------------------------------
 %  CONFIGURE GLOBAL SETTINGS
 %----------------------------------------------------------------------------------------
-% Page margins/layout 
+% Page margins/layout
 % Match MS Word template:
 % (top=1.0in, bottom=1.3in, left=1.25in, right=1.25in, header=0.5in, footer=1.0in)
 \geometry{
@@ -151,27 +158,40 @@
 }
 
 % Paths where figures are located
-\graphicspath{{figures/}{figures/eps/}}
+\graphicspath{{figures/}}
+%\DeclareGraphicsExtensions{.png, .pdf, .jpg}
 
 % Paragraph indentation
 %\setlength{\parindent}{0.5in}
 \setlength{\parindent}{0pt}
 
-% Paragraph vertical space 
+% Paragraph vertical space
 %\setlength{\parskip}{\baselineskip}
 
 % Bibliography style
 \bibliographystyle{apalike}
+
+% Document type
+\ifthenelse{\equal{\@defaultDoctype}{thesis}}{\renewcommand{\@defaultFCDoctype}{Thesis}}{%
+\ifthenelse{\equal{\@defaultDoctype}{dissertation}}{\renewcommand{\@defaultFCDoctype}{Dissertation}}{}}
+
+% Font family
+\ifthenelse{\equal{\@defaultFontFamily}{sans}}{\renewcommand{\familydefault}{\sfdefault}}{%
+\ifthenelse{\equal{\@defaultFontFamily}{roman}}{\renewcommand{\familydefault}{\rmdefault}}{%
+\ifthenelse{\equal{\@defaultFontFamily}{typewriter}}{\renewcommand{\familydefault}{\ttdefault}}{}}}
 
 % Text line spacing
 \ifthenelse{\equal{\@defaultTextSpace}{singlespace}}{\singlespacing}{%
 \ifthenelse{\equal{\@defaultTextSpace}{onehalfspace}}{\onehalfspacing}{%
 \ifthenelse{\equal{\@defaultTextSpace}{doublespace}}{\doublespacing}{}}}
 
-% Text horizontal alignment 
+% Text horizontal alignment
 \ifthenelse{\equal{\@defaultTextAlign}{lefttext}}{\RaggedRight}{%
-\ifthenelse{\equal{\@defaultTextAlign}{centertext}}{\Centering}{%
-\ifthenelse{\equal{\@defaultTextAlign}{righttext}}{\RaggedLeft}{}}}
+\ifthenelse{\equal{\@defaultTextAlign}{justifytext}}{}{}}
+
+% Chapter and section title horizontal alignment
+\ifthenelse{\equal{\@defaultSectionAlign}{leftsection}}{\renewcommand{\@defaultSectionAlign}{\filright}}{%
+\ifthenelse{\equal{\@defaultSectionAlign}{centersection}}{\renewcommand{\@defaultSectionAlign}{\filcenter}}{}}
 
 % Override LaTeX hyphenation
 \tolerance=1000
@@ -197,10 +217,10 @@
     pdfsubject={\@defaultDoctype on \@title},
     %pdfborder=0 0 0,        % so that PDF looks good when printed
     bookmarksnumbered=true, bookmarksopen=false, % PDF bookmarking options
-    hypertexnames=false,    % use unique values for page anchors, \hyperpage is affected and might not work properly. Used to suppress warning due to multi-font page numbering. 
+    hypertexnames=false,    % use unique values for page anchors, \hyperpage is affected and might not work properly. Used to suppress warning due to multi-font page numbering.
     plainpages=false,       % name page anchors by arabic form of page number
     colorlinks=true,        % enable link colors
-    linkcolor=blue, filecolor=magenta, citecolor=magenta, urlcolor=cyan,
+    allcolors=blue, citecolor=magenta,
     breaklinks=false        % allow multi-line links
 }
 \urlstyle{same} % use same style as class for URL links
@@ -223,29 +243,33 @@
 %----------------------------------------------------------------------------------------
 % Customize chapter and sections groups
 %----------------------------------------------------------------------------------------
+% Set to upper-case reference macros that by default are in lower-case (see hyperref.sty)
+%\addto\HyLang@english{%
+%\renewcommand*{\chapterautorefname}{Chapter}
+%}
+
 % chapter group - "Chapter #
 %                   Title" (centered)
 \titleformat{\chapter}[display] % shape
-    {\Large \bfseries \filcenter} % format for label and title
+    {\Large \bfseries \@defaultSectionAlign} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
     {0pt} % vertical space (display) between label and title
     {\uppercase} % pre-title -commands
     {} % post-title commands
 \titlespacing{\chapter} % shape
-    {0pt} % left space 
+    {0pt} % left space
     {-1.5\baselineskip} % before space
     {2.0\baselineskip} % after space
 
 % section group - "Title" (centered)
 \titleformat{\section}[hang] % shape
-    {\large \bfseries \filcenter} % format for label and title
+    {\large \bfseries \@defaultSectionAlign} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
-    %{\thesection\ } % pre-title -commands
-    {} % pre-title -commands
+    {\thesection\ } % pre-title -commands
     {} % post-title commands
 \titlespacing{\section} % shape
-    {0pt} % left space 
+    {0pt} % left space
     {1.5\baselineskip} % before space
     {1.0\baselineskip} % after space
 
@@ -254,11 +278,10 @@
     {\normalsize \it \bfseries \filright} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
-    %{\thesubsection\ } % pre-title -commands
-    {} % pre-title -commands
+    {\thesubsection\ } % pre-title -commands
     {} % post-title commands
 \titlespacing{\subsection} % shape
-    {0pt} % left space 
+    {0pt} % left space
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
 
@@ -267,18 +290,17 @@
     {\normalsize \bfseries \filright} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
-    %{\thesubsubsection\ } % pre-title -commands
-    {} % pre-title -commands
+    {\thesubsubsection\ } % pre-title -commands
     {} % post-title commands
 \titlespacing{\subsubsection} % shape
-    {0pt} % left space 
+    {0pt} % left space
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
-% Customize List of Figures entry format 
+% Customize List of Figures entry format
 %----------------------------------------------------------------------------------------
 % Figure 1.1:  This is the caption of figure........10
 \renewcommand{\cftfigpresnum}{\figurename\ }
@@ -289,7 +311,7 @@
 
 
 %----------------------------------------------------------------------------------------
-% Customize List of Tables entry format 
+% Customize List of Tables entry format
 %----------------------------------------------------------------------------------------
 % Table 1.1:  This is the caption of table........10
 \renewcommand{\cfttabpresnum}{\tablename\ }
@@ -300,7 +322,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  APPROVAL PAGE (PAPER VERSION) 
+%  APPROVAL PAGE (PAPER VERSION)
 %----------------------------------------------------------------------------------------
 % Make committee approval page
 \newcommand{\makeApprovalPage}{%
@@ -309,7 +331,7 @@
     \begingroup \parindent\z@
         To the Graduate Council:\\[\baselineskip]
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
-        ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\ 
+        ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
         for form and content and recommend that it be accepted in partial fulfillment
         of the requirements for the degree of \@degree, with a major in \@major.
 
@@ -346,7 +368,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  APPROVAL PAGE (ELECTRONIC VERSION) 
+%  APPROVAL PAGE (ELECTRONIC VERSION)
 %----------------------------------------------------------------------------------------
 % Make committee approval page
 \newcommand{\makeApprovalPageE}{%
@@ -399,7 +421,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  TITLE PAGE  
+%  TITLE PAGE
 %----------------------------------------------------------------------------------------
 \newcommand{\makeTitlePage}{%
     \thispagestyle{empty}
@@ -423,8 +445,8 @@
 %----------------------------------------------------------------------------------------
 %  TABLE OF CONTENTS, LIST OF TABLES, LIST OF FIGURES
 %----------------------------------------------------------------------------------------
-% Change titles to all capital letters 
-% This commands are tied closely to the 'babel' package
+% Change titles to all capital letters
+% This commands are found in the 'babel' package
 \addto\captionsUSenglish{%
 \renewcommand{\contentsname}{\MakeUppercase{\Large \bfseries Table of Contents}}
 \renewcommand{\listtablename}{\MakeUppercase{\Large \bfseries List of Tables}}
@@ -434,7 +456,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  Macros to add manual entries to the table of contents 
+%  Macros to add manual entries to the table of contents
 %----------------------------------------------------------------------------------------
 % chapter without numbering
 \newcommand{\addToTOC}[1]{%
@@ -470,7 +492,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  COPYRIGHT PAGE  
+%  COPYRIGHT PAGE
 %----------------------------------------------------------------------------------------
 \newcommand{\makeCopyrightPage}{%
     \begingroup \Centering

@@ -1,11 +1,12 @@
-\documentclass[thesis, 12pt]{utk-class}
-%\documentclass[dissertation, 12pt]{utk-class}
+%\documentclass[thesis]{utk-class}
+%\documentclass[dissertation]{utk-class}
+\documentclass{utk-class}
 
 
 \title{Analysis on some data using some technique}
 \author{Joan Doe}
-\degree{Master of Science}
-%\degree{Doctor of Philosophy}
+%\degree{Master of Science}
+\degree{Doctor of Philosophy}
 \major{Computer Science}
 \department{Electrical Engineering and Computer Science}
 \university{The University of Tennessee, Knoxville}
@@ -33,7 +34,7 @@ Carl M. Dagger%
 \input{front-matter/dedication} % optional
 \input{front-matter/acknowledgements} % optional
 \input{front-matter/abstract}
-%\input{front-matter/preface} % optional
+\input{front-matter/preface} % optional
 
 % Table of contents
 \tableofcontents
@@ -53,12 +54,15 @@ Carl M. Dagger%
 % Bibliography
 \makeLabelOnlyPage{List of References}
 \renewcommand{\bibname}{\vspace{-3em}} % remove bibliography title and shift text up
+%\singlespacing
 \bibliography{utk-refs}
+%\onehalfspacing
 
 % Back-matter
-%\makeLabelOnlyPage{Appendix} % optional
-%\input{back-matter/appendix-a} % optional
-%\input{back-matter/nomenclature} % optional
+\makeLabelOnlyPage{Appendix} % optional
+\input{back-matter/appendix-a} % optional
+\input{back-matter/appendix-b} % optional
+\input{back-matter/nomenclature} % optional
 \input{back-matter/vita}
 
 \end{document}
