@@ -82,33 +82,36 @@
 %  LOAD PACKAGES
 %----------------------------------------------------------------------------------------
 % Mandatory packages
-\RequirePackage[T1]{fontenc}        % accented characters for output
-\RequirePackage[utf8]{inputenc}     % accented characters for input
-\RequirePackage[USenglish]{babel}   % USA hyphenation patterns
-\RequirePackage[]{geometry}         % page margins/layout
-\RequirePackage[]{setspace}         % text spacing
-\RequirePackage[]{multicol}         % multiple columns
-\RequirePackage[]{multirow}         % multiple rows
-\RequirePackage[]{hyperref}         % hyperlinks
-\RequirePackage[]{color}            % colors
-\RequirePackage[]{ifthen}           % conditional macros
-\RequirePackage[]{ragged2e}         % text alignment
-\RequirePackage[]{graphicx}         % graphics
-\RequirePackage[]{natbib}           % link references
-\RequirePackage[]{titlesec}         % customize section displays
-\RequirePackage[titles]{tocloft}    % customize LOF, LOT
-\RequirePackage[]{amsmath}          % AMS math
-\RequirePackage[]{amsthm}           % AMS theorem
-\RequirePackage[]{amssymb}          % AMS fonts
+\RequirePackage[T1]{fontenc}      % accented characters for output
+\RequirePackage[utf8]{inputenc}   % accented characters for input
+\RequirePackage[USenglish]{babel} % USA hyphenation patterns
+\RequirePackage{geometry}         % page margins/layout
+\RequirePackage{setspace}         % text spacing
+\RequirePackage{array}            % row and column types
+\RequirePackage{multicol}         % multiple columns
+\RequirePackage{multirow}         % multiple rows
+\RequirePackage{hyperref}         % hyperlinks
+\RequirePackage[usenames, dvipsnames, table]{xcolor} % colors
+\RequirePackage{ifthen}           % conditional macros
+\RequirePackage{ragged2e}         % text alignment
+\RequirePackage{graphicx}         % graphics
+\RequirePackage{natbib}           % link references
+\RequirePackage{titlesec}         % customize section displays
+\RequirePackage[titles]{tocloft}  % customize LOF, LOT
+\RequirePackage{amsmath}          % AMS math
+\RequirePackage{amsthm}           % AMS theorem
+\RequirePackage{amssymb}          % AMS fonts
 
 % Supplemental packages
-\RequirePackage[]{fancyhdr}         % headers/footers
-\RequirePackage[]{booktabs}         % professional tables
-\RequirePackage[]{caption}          % figure captions
-\RequirePackage[]{nomencl}          % create a nomenclature
-\RequirePackage[]{subfloat}         % sub figure floats
-\RequirePackage[]{subfig}           % sub figures
-\RequirePackage[]{parskip}
+\RequirePackage{fancyhdr}         % headers/footers
+\RequirePackage{booktabs}         % professional tables
+\RequirePackage{caption}          % figure captions
+\RequirePackage[flushleft]{threeparttable} % table formatting (caption, table, tablenotes)
+\RequirePackage{listings}         % code listings
+\RequirePackage{nomencl}          % create a nomenclature
+\RequirePackage{subfloat}         % sub figure floats
+\RequirePackage{subfig}           % sub figures
+\RequirePackage{parskip}
 
 % Debug packages
 %\RequirePackage[frame]{geometry}    % page margins/layout
@@ -159,17 +162,15 @@
 
 % Paths where figures are located
 \graphicspath{{figures/}}
-%\DeclareGraphicsExtensions{.png, .pdf, .jpg}
+\DeclareGraphicsExtensions{.png, .pdf, .jpg}
 
 % Paragraph indentation
-%\setlength{\parindent}{0.5in}
 \setlength{\parindent}{0pt}
+\newcommand{\tab}[1][0.25in]{\hspace*{#1}}
+%\newcommand{\tab}[1][0.5in]{\hspace*{#1}}
 
 % Paragraph vertical space
-%\setlength{\parskip}{\baselineskip}
-
-% Bibliography style
-\bibliographystyle{apalike}
+%\setlength{\parskip}{\the\baselineskip}
 
 % Document type
 \ifthenelse{\equal{\@defaultDoctype}{thesis}}{\renewcommand{\@defaultFCDoctype}{Thesis}}{%
@@ -224,6 +225,11 @@
     breaklinks=false        % allow multi-line links
 }
 \urlstyle{same} % use same style as class for URL links
+
+% Custom column types, 'array' package
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash\hspace{0pt}}m{#1}}
 %----------------------------------------------------------------------------------------
 
 
@@ -244,9 +250,10 @@
 % Customize chapter and sections groups
 %----------------------------------------------------------------------------------------
 % Set to upper-case reference macros that by default are in lower-case (see hyperref.sty)
-%\addto\HyLang@english{%
-%\renewcommand*{\chapterautorefname}{Chapter}
-%}
+\addto\HyLang@english{%
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\sectionautorefname}{Section}
+}
 
 % chapter group - "Chapter #
 %                   Title" (centered)
@@ -523,6 +530,20 @@
         \par % stop switches (e.g., Centering)
     \endgroup
     \clearpage
+}
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%  BIBLIOGRAPHY PAGE
+%----------------------------------------------------------------------------------------
+\newcommand{\makeBibliography}[2][apalike]{%
+    \renewcommand{\bibname}{\vspace{-3em}} % remove bibliography title and shift text up
+    \setlength{\@myTmpLen}{\the\baselineskip} % save line spacing
+    \singlespace
+    \bibliographystyle{#1} % bibliography style
+    \bibliography{#2}
+    \setlength{\baselineskip}{\@myTmpLen} % restore line spacing
 }
 %----------------------------------------------------------------------------------------
 

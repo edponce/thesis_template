@@ -1,6 +1,5 @@
 %\documentclass[thesis]{utk-class}
-%\documentclass[dissertation]{utk-class}
-\documentclass{utk-class}
+\documentclass[dissertation]{utk-class}
 
 
 \title{Analysis on some data using some technique}
@@ -24,8 +23,8 @@ Carl M. Dagger%
 \begin{document}
 
 % Committee approval forms (paper and electronic submissions)
-%\makeApprovalPage
-%\makeApprovalPageE
+\makeApprovalPage
+\makeApprovalPageE
 
 % Front-matter
 \pagenumbering{roman}
@@ -53,10 +52,8 @@ Carl M. Dagger%
 
 % Bibliography
 \makeLabelOnlyPage{List of References}
-\renewcommand{\bibname}{\vspace{-3em}} % remove bibliography title and shift text up
-%\singlespacing
-\bibliography{utk-refs}
-%\onehalfspacing
+\makeBibliography[apalike]{utk-refs}
+%\makeBibliography[ieeetr]{utk-refs}
 
 % Back-matter
 \makeLabelOnlyPage{Appendix} % optional
