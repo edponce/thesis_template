@@ -1,13 +1,52 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% UTK Thesis/Dissertation Template
-% by Eduardo Ponce
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% Initialize class
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                	%
+%  UT.UT.UT.UT.UT            UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT""	%
+%  UT.UT.UT.UT.UT          ""UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT  	%
+%  UT.UT.UT.UT.UT      ""UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT.;;    	%
+%  UT.UT.UT.UT.UT      UT.UT.UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT;;      	%
+%  UT.UT.UT.UT.UT    "UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT        	%
+%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.""          	%
+%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.            	%
+%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.              	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.U    UT.UT.UT.UT.                      	%
+%    UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.      UT.UT.UT.UT.                      	%
+%      UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT        UT.UT.UT.UT.                      	%
+%        UT.UT.UT.UT.UT.UT.UT.UT.UT.U          UT.UT.UT.UT.                      	%
+%            UT.UT.UT.UT.UT.UT.UT.U            UT.UT.UT.UT.                      	%
+%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------%
+%	      T H E S I S	  &   	D I S S E R T A T I O N    T E M P L A T E			%
+%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------%
+% This template is distributed with ABSOLUTELY NO WARRANTY.
+% It serves as a guideline and constitutes a basic structure for a
+% thesis/dissertation. The user assumes full responsibility for formatting
+% and typesetting their document and for verifying that all the thesis
+% requirements set by the University of Tennessee are met. Please refer to the most
+% recent UT thesis guide (http://web.utk.edu/~thesis/thesisresources.shtml)
+% or contact the thesis consultant (http://web.utk.edu/~thesis/).
+% Please report any bugs to the thesis consultant.
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\@utkClass}{utk-class}
-\ProvidesClass{\@utkClass}[11/14/2017 UTK thesis template]
+\ProvidesClass{utk-class}
+\def\filename{utk-class.cls}
+\def\fileversion{version 3.0}
+\def\filedate{December 4, 2017}
+\def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
+
+\typeout{UTK Thesis and Dissertation Template}
+\typeout{\filename}
+\typeout{\fileversion}
+\typeout{\filedate}
+\typeout{This LaTeX class is based on the template provided by David L. Page and updated by \contributors.}
 
 
 %----------------------------------------------------------------------------------------
@@ -90,9 +129,10 @@
 \RequirePackage{array}            % row and column types
 \RequirePackage{multicol}         % multiple columns
 \RequirePackage{multirow}         % multiple rows
-\RequirePackage{hyperref}         % hyperlinks
+\RequirePackage[pdftex]{hyperref} % hyperlinks
 \RequirePackage[usenames, dvipsnames, table]{xcolor} % colors
 \RequirePackage{ifthen}           % conditional macros
+\RequirePackage{forloop}          % loop macros
 \RequirePackage{ragged2e}         % text alignment
 \RequirePackage{graphicx}         % graphics
 \RequirePackage{natbib}           % link references
@@ -101,6 +141,8 @@
 \RequirePackage{amsmath}          % AMS math
 \RequirePackage{amsthm}           % AMS theorem
 \RequirePackage{amssymb}          % AMS fonts
+\RequirePackage{algorithmicx}     % second algorithm environment
+\RequirePackage{algpseudocode}    % layout for algorithm environment
 
 % Supplemental packages
 \RequirePackage{fancyhdr}         % headers/footers
@@ -109,9 +151,11 @@
 \RequirePackage[flushleft]{threeparttable} % table formatting (caption, table, tablenotes)
 \RequirePackage{listings}         % code listings
 \RequirePackage{nomencl}          % create a nomenclature
-\RequirePackage{subfloat}         % sub figure floats
+\RequirePackage[countmax]{subfloat} % sub figure floats
 \RequirePackage{subfig}           % sub figures
-\RequirePackage{parskip}
+\RequirePackage{parskip}          % paragraph formatting
+\RequirePackage{tikz}             % vector drawings
+\RequirePackage{pgfplots}         % generate plots
 
 % Debug packages
 %\RequirePackage[frame]{geometry}    % page margins/layout
@@ -120,37 +164,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%  INTERNAL MACROS
-%----------------------------------------------------------------------------------------
-% User-related macros
-\providecommand{\@graduationYear}{}
-\providecommand{\@graduationMonth}{}
-\providecommand{\@majorProfessor}{}
-\providecommand{\@dean}{}
-\providecommand{\@major}{}
-\providecommand{\@degree}{}
-\providecommand{\@department}{}
-\providecommand{\@university}{}
-\providecommand{\@committeeMembers}{}
-\newcommand{\graduationYear}[1]{\renewcommand{\@graduationYear}{#1}}
-\newcommand{\graduationMonth}[1]{\renewcommand{\@graduationMonth}{#1}}
-\newcommand{\majorProfessor}[1]{\renewcommand{\@majorProfessor}{#1}}
-\newcommand{\dean}[1]{\renewcommand{\@dean}{#1}}
-\newcommand{\major}[1]{\renewcommand{\@major}{#1}}
-\newcommand{\degree}[1]{\renewcommand{\@degree}{#1}}
-\newcommand{\college}[1]{\renewcommand{\@college}{#1}}
-\newcommand{\department}[1]{\renewcommand{\@department}{#1}}
-\newcommand{\university}[1]{\renewcommand{\@university}{#1}}
-\newcommand{\committeeMembers}[1]{\renewcommand{\@committeeMembers}{#1}}
-
-% Temporary length variable
-\newlength{\@myTmpLen}
-\setlength{\@myTmpLen}{0pt}
-%----------------------------------------------------------------------------------------
-
-
-%----------------------------------------------------------------------------------------
-%  CONFIGURE GLOBAL SETTINGS
+%  CONFIGURE GLOBAL AND PACKAGE SETTINGS
 %----------------------------------------------------------------------------------------
 % Page margins/layout
 % Match MS Word template:
@@ -166,8 +180,7 @@
 
 % Paragraph indentation
 \setlength{\parindent}{0pt}
-\newcommand{\tab}[1][0.25in]{\hspace*{#1}}
-%\newcommand{\tab}[1][0.5in]{\hspace*{#1}}
+\newcommand{\tab}[1][0.5in]{\hspace*{#1}}
 
 % Paragraph vertical space
 %\setlength{\parskip}{\the\baselineskip}
@@ -213,23 +226,59 @@
 
 % Hyperlinks setup
 \hypersetup{
-    pdftitle={\@title},     % PDF title option
-    pdfauthor={\@author},   % PDF author option
-    pdfsubject={\@defaultDoctype on \@title},
-    %pdfborder=0 0 0,        % so that PDF looks good when printed
-    bookmarksnumbered=true, bookmarksopen=false, % PDF bookmarking options
-    hypertexnames=false,    % use unique values for page anchors, \hyperpage is affected and might not work properly. Used to suppress warning due to multi-font page numbering.
-    plainpages=false,       % name page anchors by arabic form of page number
-    colorlinks=true,        % enable link colors
-    allcolors=blue, citecolor=magenta,
-    breaklinks=false        % allow multi-line links
+    pdftitle={\@title},       % PDF title option
+    pdfauthor={\@author},     % PDF author option
+    pdfsubject={\@defaultDoctype on \@title}, % PDF subject option
+    pdfborder=0 0 0,          % PDF border options
+    pdfnewwindow=true,        % open PDF links in new window
+    pdfpagelayout=SinglePage, % open PDF in single page mode
+    bookmarksnumbered=true, bookmarksopen=true, % PDF bookmarking options
+    hypertexnames=false,      % extend link names parts and subparts
+    plainpages=false,         % name page anchors by correct form of page number
+    colorlinks=true,          % enable link colors
+    allcolors=black, urlcolor=cyan, % set link colors
+    breaklinks=false          % allow multi-line links
 }
-\urlstyle{same} % use same style as class for URL links
+\urlstyle{same} % use same style as the text
 
 % Custom column types, 'array' package
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash\hspace{0pt}}m{#1}}
+
+% Plotting and drawing settings, 'tikz' and 'pgfplots' packages
+\usetikzlibrary{arrows,backgrounds,calc,decorations,er,folding,intersections,matrix,mindmap,patterns,positioning,shadows,shapes,trees}
+\pgfplotsset{compat=1.5}
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%  INTERNAL MACROS
+%----------------------------------------------------------------------------------------
+% User-related macros
+\providecommand{\@graduationYear}{}
+\providecommand{\@graduationMonth}{}
+\providecommand{\@majorProfessor}{}
+\providecommand{\@dean}{}
+\providecommand{\@major}{}
+\providecommand{\@degree}{}
+\providecommand{\@department}{}
+\providecommand{\@university}{}
+\providecommand{\@committeeMembers}{}
+\newcommand{\graduationYear}[1]{\renewcommand{\@graduationYear}{#1}}
+\newcommand{\graduationMonth}[1]{\renewcommand{\@graduationMonth}{#1}}
+\newcommand{\majorProfessor}[1]{\renewcommand{\@majorProfessor}{#1}}
+\newcommand{\dean}[1]{\renewcommand{\@dean}{#1}}
+\newcommand{\major}[1]{\renewcommand{\@major}{#1}}
+\newcommand{\degree}[1]{\renewcommand{\@degree}{#1}}
+\newcommand{\college}[1]{\renewcommand{\@college}{#1}}
+\newcommand{\department}[1]{\renewcommand{\@department}{#1}}
+\newcommand{\university}[1]{\renewcommand{\@university}{#1}}
+\newcommand{\committeeMembers}[1]{\renewcommand{\@committeeMembers}{#1}}
+
+% Temporary length variable
+\newlength{\@myTmpLen}
+\setlength{\@myTmpLen}{0pt}
 %----------------------------------------------------------------------------------------
 
 
@@ -252,7 +301,7 @@
 % Set to upper-case reference macros that by default are in lower-case (see hyperref.sty)
 \addto\HyLang@english{%
 \renewcommand*{\chapterautorefname}{Chapter}
-\renewcommand*{\sectionautorefname}{Section}
+\renewcommand*{\sectionautorefname}{section}
 }
 
 % chapter group - "Chapter #
