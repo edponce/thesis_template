@@ -236,7 +236,7 @@
     hypertexnames=false,      % extend link names parts and subparts
     plainpages=false,         % name page anchors by correct form of page number
     colorlinks=true,          % enable link colors
-    allcolors=black, urlcolor=cyan, % set link colors
+    allcolors=blue,           % set link colors
     breaklinks=false          % allow multi-line links
 }
 \urlstyle{same} % use same style as the text
