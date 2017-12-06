@@ -1,9 +1,64 @@
-%\documentclass[thesis]{utk-class}
-\documentclass[dissertation]{utk-class}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                	%
+%  UT.UT.UT.UT.UT            UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT""	%
+%  UT.UT.UT.UT.UT          ""UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT  	%
+%  UT.UT.UT.UT.UT      ""UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT.;;    	%
+%  UT.UT.UT.UT.UT      UT.UT.UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT;;      	%
+%  UT.UT.UT.UT.UT    "UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT        	%
+%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.""          	%
+%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.            	%
+%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.              	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
+%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.U    UT.UT.UT.UT.                      	%
+%    UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.      UT.UT.UT.UT.                      	%
+%      UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT        UT.UT.UT.UT.                      	%
+%        UT.UT.UT.UT.UT.UT.UT.UT.UT.U          UT.UT.UT.UT.                      	%
+%            UT.UT.UT.UT.UT.UT.UT.U            UT.UT.UT.UT.                      	%
+%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------%
+%	      T H E S I S	  &   	D I S S E R T A T I O N    T E M P L A T E			%
+%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------%
+% This template is distributed with ABSOLUTELY NO WARRANTY.
+% It serves as a guideline and constitutes a basic structure for a
+% thesis/dissertation. The user assumes full responsibility for formatting
+% and typesetting their document and for verifying that all the thesis
+% requirements set by the University of Tennessee are met. Please refer to the most
+% recent UT thesis guide (http://web.utk.edu/~thesis/thesisresources.shtml)
+% or contact the thesis consultant (http://web.utk.edu/~thesis/).
+% Please report any bugs to the thesis consultant.
 
 
+%-----------------------------------------------------------------------------------%
+%  DOCUMENT CLASS OPTIONS
+%-----------------------------------------------------------------------------------%
+% The following is a list of the available document class options.
+% The first option listed is the default, for more details see utk-class.cls.
+%   dissertation, thesis
+%   12pt, 11pt
+%   roman, sans, typewriter
+%   onehalfspace, singlespace, doublespace
+%   lefttext, justifytext
+%   centertitle, lefttitle
+
+%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, centertitle]{utk-class}
+\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, centertitle]{utk-class}
+%-----------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------%
+%  GENERAL INFORMATION
+%-----------------------------------------------------------------------------------%
 \title{Analysis on some data using some technique}
-\author{Eduardo Ponce}
+\author{Student A. Name}
 %\degree{Master of Science}
 \degree{Doctor of Philosophy}
 \major{Computer Science}
@@ -18,15 +73,31 @@ Member A. Davis,%
 Member B. Miller,%
 Member C. Smith%
 }
+%-----------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------%
+%  EXTRA CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
+% Correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+%-----------------------------------------------------------------------------------%
 
 
 \begin{document}
 
-% Committee approval forms (paper and electronic submissions)
-\makeApprovalPage
-\makeApprovalPageE
 
-% Front-matter
+%-----------------------------------------------------------------------------------%
+%  COMMITTEE APPROVAL FORMS
+%-----------------------------------------------------------------------------------%
+%\makeApprovalPage % optional, print form
+%\makeApprovalPageE % optional, electronic form
+%-----------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------%
+%  FRONT-MATTER
+%-----------------------------------------------------------------------------------%
 \pagenumbering{roman}
 \makeTitlePage
 \makeCopyrightPage % optional
@@ -34,32 +105,51 @@ Member C. Smith%
 \input{front-matter/acknowledgements} % optional
 \input{front-matter/abstract}
 \input{front-matter/preface} % optional
+%-----------------------------------------------------------------------------------%
 
-% Table of contents
+
+%-----------------------------------------------------------------------------------%
+%  TABLE OF CONTENTS
+%-----------------------------------------------------------------------------------%
 \tableofcontents
 \listoftables
 \listoffigures
 %\makeListOfAbbreviations % optional
 %\makeListOfSymbols % optional
 \clearpage
+%-----------------------------------------------------------------------------------%
 
-% Chapters
+
+%-----------------------------------------------------------------------------------%
+%  CHAPTERS
+%-----------------------------------------------------------------------------------%
 \pagenumbering{arabic}
 \input{chapters/chapter-1}
 \input{chapters/chapter-2}
 \input{chapters/chapter-3}
 \input{chapters/chapter-4}
+%-----------------------------------------------------------------------------------%
 
-% Bibliography
+
+%-----------------------------------------------------------------------------------%
+%  BIBLIOGRAPHY
+%-----------------------------------------------------------------------------------%
 \makeLabelOnlyPage{List of References}
-\makeBibliography[apalike]{utk-refs}
-%\makeBibliography[ieeetr]{utk-refs}
+%\makeBibliography[apalike]{utk-refs}
+\makeBibliography[ieeetr]{utk-refs}
+%-----------------------------------------------------------------------------------%
 
-% Back-matter
+
+%-----------------------------------------------------------------------------------%
+%  BACK-MATTER
+%-----------------------------------------------------------------------------------%
 \makeLabelOnlyPage{Appendix} % optional
 \input{back-matter/appendix-a} % optional
 \input{back-matter/appendix-b} % optional
 \input{back-matter/nomenclature} % optional
 \input{back-matter/vita}
+%-----------------------------------------------------------------------------------%
+
 
 \end{document}
+

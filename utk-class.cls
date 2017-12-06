@@ -47,15 +47,15 @@
 \typeout{\fileversion}
 \typeout{\filedate}
 \typeout{This LaTeX class is based on the template provided by David L. Page and updated by \contributors.}
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-%  DEFAULT CLASS OPTIONS
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  DEFAULT DOCUMENT CLASS OPTIONS
+%-----------------------------------------------------------------------------------%
 % Document type
 % Values: [thesis, dissertation]
 \providecommand{\@defaultDoctype}{dissertation}
-\providecommand{\@defaultFCDoctype}{Dissertation}
 
 % Font size
 % Values: [11pt, 12pt]
@@ -74,15 +74,15 @@
 \providecommand{\@defaultTextAlign}{lefttext}
 
 % Chapter and section title horizontal alignment
-% (Sub)Subsection are always left-aligned
-% Values: [leftsection, centersection]
-\providecommand{\@defaultSectionAlign}{centersection}
-%----------------------------------------------------------------------------------------
+% (Sub)Subsections are always left-aligned
+% Values: [lefttitle, centertitle]
+\providecommand{\@defaultTitleAlign}{centertitle}
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-%  CLASS OPTIONS CONFIGURATION
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  DOCUMENT CLASS CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
 \DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}}
 \DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}}
 
@@ -100,8 +100,8 @@
 \DeclareOption{lefttext}{\renewcommand{\@defaultTextAlign}{lefttext}}
 \DeclareOption{justifytext}{\renewcommand{\@defaultTextAlign}{justifytext}}
 
-\DeclareOption{leftsection}{\renewcommand{\@defaultSectionAlign}{leftsection}}
-\DeclareOption{centersection}{\renewcommand{\@defaultSectionAlign}{centersection}}
+\DeclareOption{lefttitle}{\renewcommand{\@defaultTitleAlign}{lefttitle}}
+\DeclareOption{centertitle}{\renewcommand{\@defaultTitleAlign}{centertitle}}
 
 % Pass non-implemented options to base class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
@@ -114,12 +114,12 @@
 
 % Load base class
 \LoadClass[letterpaper, \@defaultFontSize]{report}
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-%  LOAD PACKAGES
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  PACKAGES
+%-----------------------------------------------------------------------------------%
 % Mandatory packages
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
@@ -130,6 +130,7 @@
 \RequirePackage{multicol}         % multiple columns
 \RequirePackage{multirow}         % multiple rows
 \RequirePackage[pdftex]{hyperref} % hyperlinks
+%\RequirePackage[hyphens]{url}     % url links
 \RequirePackage[usenames, dvipsnames, table]{xcolor} % colors
 \RequirePackage{ifthen}           % conditional macros
 \RequirePackage{forloop}          % loop macros
@@ -160,12 +161,12 @@
 % Debug packages
 %\RequirePackage[frame]{geometry}    % page margins/layout
 %\RequirePackage{layout}             % show page measurements
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-%  CONFIGURE GLOBAL AND PACKAGE SETTINGS
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  GLOBAL AND PACKAGES CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
 % Page margins/layout
 % Match MS Word template:
 % (top=1.0in, bottom=1.3in, left=1.25in, right=1.25in, header=0.5in, footer=1.0in)
@@ -186,8 +187,8 @@
 %\setlength{\parskip}{\the\baselineskip}
 
 % Document type
-\ifthenelse{\equal{\@defaultDoctype}{thesis}}{\renewcommand{\@defaultFCDoctype}{Thesis}}{%
-\ifthenelse{\equal{\@defaultDoctype}{dissertation}}{\renewcommand{\@defaultFCDoctype}{Dissertation}}{}}
+\ifthenelse{\equal{\@defaultDoctype}{thesis}}{\newcommand{\@defaultFCDoctype}{Thesis}}{%
+\ifthenelse{\equal{\@defaultDoctype}{dissertation}}{\newcommand{\@defaultFCDoctype}{Dissertation}}{}}
 
 % Font family
 \ifthenelse{\equal{\@defaultFontFamily}{sans}}{\renewcommand{\familydefault}{\sfdefault}}{%
@@ -204,8 +205,8 @@
 \ifthenelse{\equal{\@defaultTextAlign}{justifytext}}{}{}}
 
 % Chapter and section title horizontal alignment
-\ifthenelse{\equal{\@defaultSectionAlign}{leftsection}}{\renewcommand{\@defaultSectionAlign}{\filright}}{%
-\ifthenelse{\equal{\@defaultSectionAlign}{centersection}}{\renewcommand{\@defaultSectionAlign}{\filcenter}}{}}
+\ifthenelse{\equal{\@defaultTitleAlign}{lefttitle}}{\renewcommand{\@defaultTitleAlign}{\filright}}{%
+\ifthenelse{\equal{\@defaultTitleAlign}{centertitle}}{\renewcommand{\@defaultTitleAlign}{\filcenter}}{}}
 
 % Override LaTeX hyphenation
 \tolerance=1000
@@ -249,12 +250,12 @@
 % Plotting and drawing settings, 'tikz' and 'pgfplots' packages
 \usetikzlibrary{arrows,backgrounds,calc,decorations,er,folding,intersections,matrix,mindmap,patterns,positioning,shadows,shapes,trees}
 \pgfplotsset{compat=1.5}
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 %  INTERNAL MACROS
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 % User-related macros
 \providecommand{\@graduationYear}{}
 \providecommand{\@graduationMonth}{}
@@ -279,12 +280,12 @@
 % Temporary length variable
 \newlength{\@myTmpLen}
 \setlength{\@myTmpLen}{0pt}
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-% Define lemma, corollary, and theorem environments
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  LEMMA, COROLLARY, THEOREM, AND DEFINITION CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
 \theoremstyle{plain}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -292,12 +293,12 @@
 \newtheorem{lemma}{Lemma}[theorem]
 \newtheorem{proposition}{Proposition}[theorem]
 \newtheorem{definition}{Definition}[theorem]
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-% Customize chapter and sections groups
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  CHAPTER AND SECTION CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
 % Set to upper-case reference macros that by default are in lower-case (see hyperref.sty)
 \addto\HyLang@english{%
 \renewcommand*{\chapterautorefname}{Chapter}
@@ -307,7 +308,7 @@
 % chapter group - "Chapter #
 %                   Title" (centered)
 \titleformat{\chapter}[display] % shape
-    {\Large \bfseries \@defaultSectionAlign} % format for label and title
+    {\Large \bfseries \@defaultTitleAlign} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
     {0pt} % vertical space (display) between label and title
     {\uppercase} % pre-title -commands
@@ -319,7 +320,7 @@
 
 % section group - "Title" (centered)
 \titleformat{\section}[hang] % shape
-    {\large \bfseries \@defaultSectionAlign} % format for label and title
+    {\large \bfseries \@defaultTitleAlign} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
     {\thesection\ } % pre-title -commands
@@ -352,35 +353,34 @@
     {0pt} % left space
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-% Customize List of Figures entry format
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  LIST OF FIGURES CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
 % Figure 1.1:  This is the caption of figure........10
 \renewcommand{\cftfigpresnum}{\figurename\ }
 \renewcommand{\cftfigaftersnum}{:}
 \settowidth{\@myTmpLen}{\cftfigpresnum\cftfigaftersnum}
 \addtolength{\cftfignumwidth}{\@myTmpLen}
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-% Customize List of Tables entry format
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  LIST OF TABLES CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
 % Table 1.1:  This is the caption of table........10
 \renewcommand{\cfttabpresnum}{\tablename\ }
 \renewcommand{\cfttabaftersnum}{:}
 \settowidth{\@myTmpLen}{\cfttabpresnum\cfttabaftersnum}
 \addtolength{\cfttabnumwidth}{\@myTmpLen}
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-%  APPROVAL PAGE (PAPER VERSION)
-%----------------------------------------------------------------------------------------
-% Make committee approval page
+%-----------------------------------------------------------------------------------%
+%  COMMITTEE APPROVAL PAGE (PRINT FORM)
+%-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPage}{%
     \setlength{\@myTmpLen}{1.75in}
     \thispagestyle{empty}
@@ -420,13 +420,12 @@
     \endgroup
     \clearpage
 }
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
-%  APPROVAL PAGE (ELECTRONIC VERSION)
-%----------------------------------------------------------------------------------------
-% Make committee approval page
+%-----------------------------------------------------------------------------------%
+%  COMMITTEE APPROVAL PAGE (ELECTRONIC FORM)
+%-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPageE}{%
     \setlength{\@myTmpLen}{1.75in}
     \thispagestyle{empty}
@@ -473,12 +472,12 @@
     \endgroup
     \clearpage
 }
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 %  TITLE PAGE
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
     \thispagestyle{empty}
     \begingroup \Centering \Large
@@ -494,15 +493,14 @@
     \endgroup
     \clearpage
 }
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 %  TABLE OF CONTENTS, LIST OF TABLES, LIST OF FIGURES
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 % Change titles to all capital letters
-% This commands are found in the 'babel' package
+% These commands are found in the 'babel' package
 \addto\captionsUSenglish{%
 \renewcommand{\contentsname}{\MakeUppercase{\Large \bfseries Table of Contents}}
 \renewcommand{\listtablename}{\MakeUppercase{\Large \bfseries List of Tables}}
@@ -511,9 +509,9 @@
 %----------------------------------------------------------------------------------------
 
 
-%----------------------------------------------------------------------------------------
-%  Macros to add manual entries to the table of contents
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
+%  MACROS TO SUPPORT ADDING MANUAL ENTRIES TO TABLE OF CONTENTS
+%-----------------------------------------------------------------------------------%
 % chapter without numbering
 \newcommand{\addToTOC}[1]{%
     \phantomsection
@@ -544,12 +542,12 @@
     \addtocounter{subsubsection}{1}
     \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}
 }
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 %  COPYRIGHT PAGE
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
     \begingroup \Centering
         \vspace*{\fill}
@@ -560,12 +558,12 @@
     \endgroup
     \clearpage
 }
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 %  LABEL-ONLY PAGE
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 \newcommand{\makeLabelOnlyPage}[1]{%
     \clearpage
     \phantomsection
@@ -580,12 +578,12 @@
     \endgroup
     \clearpage
 }
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 %  BIBLIOGRAPHY PAGE
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 \newcommand{\makeBibliography}[2][apalike]{%
     \renewcommand{\bibname}{\vspace{-3em}} % remove bibliography title and shift text up
     \setlength{\@myTmpLen}{\the\baselineskip} % save line spacing
@@ -594,7 +592,7 @@
     \bibliography{#2}
     \setlength{\baselineskip}{\@myTmpLen} % restore line spacing
 }
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------%
 
 
 \endinput % finalize UTK class
