@@ -41,16 +41,31 @@
 %  DOCUMENT CLASS OPTIONS
 %-----------------------------------------------------------------------------------%
 % The following is a list of the available document class options.
-% The first option listed is the default, for more details see utk-class.cls.
+% The first option listed is the default, for more details see
+% the DOCUMENT CLASS OPTIONS section in utk-class.cls
 %   dissertation, thesis
 %   12pt, 11pt
 %   roman, sans, typewriter
 %   onehalfspace, singlespace, doublespace
 %   lefttext, justifytext
-%   centertitle, lefttitle
+%   lefttitle, centertitle
+%   centerpagenum, leftpagenum, rightpagenum
 
-%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, centertitle]{utk-class}
-\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, centertitle]{utk-class}
+%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum]{utk-class}
+\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum]{utk-class}
+%-----------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------%
+%  EXTRA CONFIGURATIONS
+%-----------------------------------------------------------------------------------%
+% Paths where figures are located and allowed file image extensions
+\graphicspath{{figures/}{figures/pdf/}{figures/eps/}}
+\DeclareGraphicsExtensions{.png, .pdf, .jpg}
+%\DeclareGraphicsExtensions{.eps}
+
+% Manually correct bad hyphenations
+%\hyphenation{op-tical net-works semi-conduc-tor}
 %-----------------------------------------------------------------------------------%
 
 
@@ -73,14 +88,6 @@ Member A. Davis,%
 Member B. Miller,%
 Member C. Smith%
 }
-%-----------------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------------%
-%  EXTRA CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
-% Correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
 %-----------------------------------------------------------------------------------%
 
 
@@ -114,8 +121,8 @@ Member C. Smith%
 \tableofcontents
 \listoftables
 \listoffigures
-%\makeListOfAbbreviations % optional
-%\makeListOfSymbols % optional
+\input{front-matter/abbreviations} % optional
+\input{front-matter/symbols} % optional
 \clearpage
 %-----------------------------------------------------------------------------------%
 
@@ -134,9 +141,10 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------------%
+% Set the [bibliography style] to use and the {bibTeX file}
 \makeLabelOnlyPage{List of References}
-%\makeBibliography[apalike]{utk-refs}
-\makeBibliography[ieeetr]{utk-refs}
+\makeBibliography[apalike]{utk-refs}  % APA bibliography style
+%\makeBibliography[ieeetr]{utk-refs}  % IEEE Transactions bibliography style
 %-----------------------------------------------------------------------------------%
 
 

@@ -54,16 +54,17 @@ For multipart figures, you need to use the package ``subfig''. here's an example
 
 \begin{table}[!htb]
     \centering
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{|L{3cm}|C{1cm}|C{1cm}|}
         \hline
-        col1 & col2 & col3 \\
+        \textbf{col1} & \textbf{col2} & \textbf{col3} \\
         \hline
-        \multirow{3}{4em}{Multiple row} & cell2 & cell3 \\
-        & cell5 & cell6 \\
-        & cell8 & cell9 \\
+        \multirow{3}{3cm}{Multiple rows}
+            & cell2 & cell3 \\
+            & cell5 & cell6 \\
+            & cell8 & cell9 \\
         \hline
     \end{tabular}
-    \caption{An table example.}
+    \caption{A table example.}
     \label{multirow-table}
 \end{table}
 

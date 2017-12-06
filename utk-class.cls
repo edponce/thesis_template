@@ -39,7 +39,7 @@
 \ProvidesClass{utk-class}
 \def\filename{utk-class.cls}
 \def\fileversion{version 3.0}
-\def\filedate{December 4, 2017}
+\def\filedate{December 6, 2017}
 \def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
 
 \typeout{UTK Thesis and Dissertation Template}
@@ -76,7 +76,12 @@
 % Chapter and section title horizontal alignment
 % (Sub)Subsections are always left-aligned
 % Values: [lefttitle, centertitle]
-\providecommand{\@defaultTitleAlign}{centertitle}
+\providecommand{\@defaultTitleAlign}{lefttitle}
+
+% Page number horizontal alignment
+% Values: [leftpagenum, centerpagenum, rightpagenum]
+\providecommand{\@defaultPageNumAlign}{centerpagenum}
+
 %-----------------------------------------------------------------------------------%
 
 
@@ -103,6 +108,10 @@
 \DeclareOption{lefttitle}{\renewcommand{\@defaultTitleAlign}{lefttitle}}
 \DeclareOption{centertitle}{\renewcommand{\@defaultTitleAlign}{centertitle}}
 
+\DeclareOption{leftpagenum}{\renewcommand{\@defaultPageNumAlign}{leftpagenum}}
+\DeclareOption{centerpagenum}{\renewcommand{\@defaultPageNumAlign}{centerpagenum}}
+\DeclareOption{rightpagenum}{\renewcommand{\@defaultPageNumAlign}{rightpagenum}}
+
 % Pass non-implemented options to base class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
@@ -120,32 +129,31 @@
 %-----------------------------------------------------------------------------------%
 %  PACKAGES
 %-----------------------------------------------------------------------------------%
-% Mandatory packages
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
 \RequirePackage[USenglish]{babel} % USA hyphenation patterns
 \RequirePackage{geometry}         % page margins/layout
+%\RequirePackage[showframe]{geometry} % page margins/layout
 \RequirePackage{setspace}         % text spacing
 \RequirePackage{array}            % row and column types
 \RequirePackage{multicol}         % multiple columns
 \RequirePackage{multirow}         % multiple rows
-\RequirePackage[pdftex]{hyperref} % hyperlinks
-%\RequirePackage[hyphens]{url}     % url links
+\RequirePackage[hyphens]{url}     % url links
+\RequirePackage{hyperref}         % hyperlinks
 \RequirePackage[usenames, dvipsnames, table]{xcolor} % colors
 \RequirePackage{ifthen}           % conditional macros
-\RequirePackage{forloop}          % loop macros
 \RequirePackage{ragged2e}         % text alignment
 \RequirePackage{graphicx}         % graphics
-\RequirePackage{natbib}           % link references
+\RequirePackage{natbib}           % references
+%\RequirePackage[numbers]{natbib}  % references with numbering
 \RequirePackage{titlesec}         % customize section displays
 \RequirePackage[titles]{tocloft}  % customize LOF, LOT
 \RequirePackage{amsmath}          % AMS math
 \RequirePackage{amsthm}           % AMS theorem
-\RequirePackage{amssymb}          % AMS fonts
+\RequirePackage{amssymb}          % AMS symbols
+\RequirePackage{amsfonts}         % AMS fonts
 \RequirePackage{algorithmicx}     % second algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
-
-% Supplemental packages
 \RequirePackage{fancyhdr}         % headers/footers
 \RequirePackage{booktabs}         % professional tables
 \RequirePackage{caption}          % figure captions
@@ -157,10 +165,6 @@
 \RequirePackage{parskip}          % paragraph formatting
 \RequirePackage{tikz}             % vector drawings
 \RequirePackage{pgfplots}         % generate plots
-
-% Debug packages
-%\RequirePackage[frame]{geometry}    % page margins/layout
-%\RequirePackage{layout}             % show page measurements
 %-----------------------------------------------------------------------------------%
 
 
@@ -170,14 +174,21 @@
 % Page margins/layout
 % Match MS Word template:
 % (top=1.0in, bottom=1.3in, left=1.25in, right=1.25in, header=0.5in, footer=1.0in)
+%top=1.0in, bottom=1.53125in, left=1.25in, right=1.25in,
 \geometry{
-    top=1.0in, bottom=1.53125in, left=1.25in, right=1.25in,
+    top=1.0in, bottom=1.25in, left=1.25in, right=1.25in,
     headheight=16pt, headsep=0.28in, footskip=0.3125in
 }
+    %top=1.0in, bottom=1.3in, left=1.25in, right=1.25in,
 
-% Paths where figures are located
-\graphicspath{{figures/}}
-\DeclareGraphicsExtensions{.png, .pdf, .jpg}
+% Fancy headers/footers
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % remove default rule in headers
+
+% Footnotes numbering style
+\renewcommand{\thefootnote}{\arabic{footnote}}
+%\renewcommand{\thefootnote}{\roman{footnote}}
 
 % Paragraph indentation
 \setlength{\parindent}{0pt}
@@ -208,6 +219,11 @@
 \ifthenelse{\equal{\@defaultTitleAlign}{lefttitle}}{\renewcommand{\@defaultTitleAlign}{\filright}}{%
 \ifthenelse{\equal{\@defaultTitleAlign}{centertitle}}{\renewcommand{\@defaultTitleAlign}{\filcenter}}{}}
 
+% Page number horizontal alignment
+\ifthenelse{\equal{\@defaultPageNumAlign}{leftpagenum}}{\fancyfoot[L]{\thepage}}{%
+\ifthenelse{\equal{\@defaultPageNumAlign}{centerpagenum}}{\fancyfoot[C]{\thepage}}{%
+\ifthenelse{\equal{\@defaultPageNumAlign}{rightpagenum}}{\fancyfoot[R]{\thepage}}{}}}
+
 % Override LaTeX hyphenation
 \tolerance=1000
 \pretolerance=1000
@@ -217,13 +233,6 @@
 \clubpenalty=10000      % reduce orphan hyphens
 \widowpenalty=10000     % reduce widow hyphens
 \brokenpenalty=10000    % reduce hyphens across pages
-
-% Fancy headers/footers
-%\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt} % remove default rule in header
-
-% Cool footnotes
-\renewcommand{\thefootnote}{\arabic{footnote}}
 
 % Hyperlinks setup
 \hypersetup{
@@ -249,7 +258,7 @@
 
 % Plotting and drawing settings, 'tikz' and 'pgfplots' packages
 \usetikzlibrary{arrows,backgrounds,calc,decorations,er,folding,intersections,matrix,mindmap,patterns,positioning,shadows,shapes,trees}
-\pgfplotsset{compat=1.5}
+\pgfplotsset{compat=1.13}
 %-----------------------------------------------------------------------------------%
 
 
@@ -302,13 +311,12 @@
 % Set to upper-case reference macros that by default are in lower-case (see hyperref.sty)
 \addto\HyLang@english{%
 \renewcommand*{\chapterautorefname}{Chapter}
-\renewcommand*{\sectionautorefname}{section}
 }
 
 % chapter group - "Chapter #
 %                   Title" (centered)
 \titleformat{\chapter}[display] % shape
-    {\Large \bfseries \@defaultTitleAlign} % format for label and title
+    {\thispagestyle{fancy}\Large\bfseries\@defaultTitleAlign} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
     {0pt} % vertical space (display) between label and title
     {\uppercase} % pre-title -commands
@@ -320,7 +328,7 @@
 
 % section group - "Title" (centered)
 \titleformat{\section}[hang] % shape
-    {\large \bfseries \@defaultTitleAlign} % format for label and title
+    {\large\bfseries\@defaultTitleAlign} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
     {\thesection\ } % pre-title -commands
@@ -332,7 +340,7 @@
 
 % subsection group - "Title" (left-align, italic)
 \titleformat{\subsection}[hang] % shape
-    {\normalsize \it \bfseries \filright} % format for label and title
+    {\normalsize\it\bfseries\filright} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
     {\thesubsection\ } % pre-title -commands
@@ -344,7 +352,7 @@
 
 % subsubsection group - "Title" (left-align)
 \titleformat{\subsubsection}[hang] % shape
-    {\normalsize \bfseries \filright} % format for label and title
+    {\normalsize\bfseries\filright} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
     {\thesubsubsection\ } % pre-title -commands
@@ -384,7 +392,7 @@
 \newcommand{\makeApprovalPage}{%
     \setlength{\@myTmpLen}{1.75in}
     \thispagestyle{empty}
-    \begingroup \parindent\z@
+    \begingroup\parindent\z@
         To the Graduate Council:\\[\baselineskip]
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
@@ -399,7 +407,7 @@
             \@for\@committeeMember:=\@committeeMembers\do{%
                 \vspace*{1.5\baselineskip}
                 \underline{\hspace*{\@myTmpLen}}\\
-                \@committeeMember \par
+                \@committeeMember\par
             }%
             \vspace*{2.5\baselineskip}
             \vspace*{\fill}
@@ -409,7 +417,7 @@
             \underline{\hspace*{\@myTmpLen}}\\
             \@majorProfessor\\
             Major Professor
-            \par \vspace*{10.5\baselineskip}
+            \par\vspace*{10.5\baselineskip}
 
             Accepted for the Council:\\[1.5\baselineskip]
             \underline{\hspace*{\@myTmpLen}}\\
@@ -429,7 +437,7 @@
 \newcommand{\makeApprovalPageE}{%
     \setlength{\@myTmpLen}{1.75in}
     \thispagestyle{empty}
-    \begingroup \parindent\z@
+    \begingroup\parindent\z@
         To the Graduate Council:\\[\baselineskip]
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
@@ -440,12 +448,12 @@
             \vspace*{\fill}
             We have read this \@defaultDoctype\\
             and recommend its acceptance:
-            \par \vspace*{\baselineskip}
+            \par\vspace*{\baselineskip}
 
             \@for\@committeeMember:=\@committeeMembers\do{%
                 \@committeeMember\\[-0.8\baselineskip]
                 \underline{\hspace*{\@myTmpLen}}
-                \vspace*{1.5\baselineskip} \par
+                \vspace*{1.5\baselineskip}\par
             }%
             \vspace*{2.5\baselineskip}
             \vspace*{\fill}
@@ -454,7 +462,7 @@
             \@majorProfessor\\[-0.8\baselineskip]
             \underline{\hspace*{\@myTmpLen}}\\
             Major Professor
-            \par \vspace*{8.0\baselineskip}
+            \par\vspace*{8.0\baselineskip}
 
             Accepted for the Council:\\[\baselineskip]
             \@dean\\[-0.8\baselineskip]
@@ -480,7 +488,7 @@
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
     \thispagestyle{empty}
-    \begingroup \Centering \Large
+    \begingroup\Centering\Large
 
         \MakeUppercase{\textbf{\@title}}
 
@@ -502,9 +510,9 @@
 % Change titles to all capital letters
 % These commands are found in the 'babel' package
 \addto\captionsUSenglish{%
-\renewcommand{\contentsname}{\MakeUppercase{\Large \bfseries Table of Contents}}
-\renewcommand{\listtablename}{\MakeUppercase{\Large \bfseries List of Tables}}
-\renewcommand{\listfigurename}{\MakeUppercase{\Large \bfseries List of Figures}}
+\renewcommand{\contentsname}{\MakeUppercase{\Large\bfseries Table of Contents}}
+\renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}}
+\renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}}
 }
 %----------------------------------------------------------------------------------------
 
@@ -549,8 +557,9 @@
 %  COPYRIGHT PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
-    \begingroup \Centering
+    \begingroup\Centering
         \vspace*{\fill}
+        \vspace{-5\baselineskip}
         Copyright \copyright\ \@graduationYear\ by \@author\\
         All rights reserved.
         \vspace*{\fill}
@@ -569,9 +578,9 @@
     \phantomsection
     \addtocounter{chapter}{1}
     \addcontentsline{toc}{chapter}{#1}
-    \thispagestyle{plain}
-    \begingroup \Centering
+    \begingroup\Centering
         \vspace*{\fill}
+        \vspace{-5\baselineskip}
         \MakeUppercase{\Large \bfseries #1}
         \vspace*{\fill}
         \par % stop switches (e.g., Centering)
