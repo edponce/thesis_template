@@ -140,7 +140,7 @@
 \RequirePackage{multirow}         % multiple rows
 \RequirePackage[hyphens]{url}     % url links
 \RequirePackage{hyperref}         % hyperlinks
-\RequirePackage[usenames, dvipsnames, table]{xcolor} % colors
+\RequirePackage[usenames, dvipsnames, table, svgnames]{xcolor} % colors
 \RequirePackage{ifthen}           % conditional macros
 \RequirePackage{ragged2e}         % text alignment
 \RequirePackage{graphicx}         % graphics
