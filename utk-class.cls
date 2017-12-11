@@ -179,7 +179,6 @@
     top=1.0in, bottom=1.25in, left=1.25in, right=1.25in,
     headheight=16pt, headsep=0.28in, footskip=0.3125in
 }
-    %top=1.0in, bottom=1.3in, left=1.25in, right=1.25in,
 
 % Fancy headers/footers
 \pagestyle{fancy}
@@ -315,49 +314,49 @@
 
 % chapter group - "Chapter #
 %                   Title" (centered)
-\titleformat{\chapter}[display] % shape
+\titleformat{\chapter}[display]
     {\thispagestyle{fancy}\Large\bfseries\@defaultTitleAlign} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
     {0pt} % vertical space (display) between label and title
-    {\uppercase} % pre-title -commands
+    {\uppercase} % pre-title commands
     {} % post-title commands
-\titlespacing{\chapter} % shape
+\titlespacing{\chapter}
     {0pt} % left space
     {-1.5\baselineskip} % before space
     {2.0\baselineskip} % after space
 
 % section group - "Title" (centered)
-\titleformat{\section}[hang] % shape
+\titleformat{\section}[hang]
     {\large\bfseries\@defaultTitleAlign} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
-    {\thesection\ } % pre-title -commands
+    {\thesection\ } % pre-title commands
     {} % post-title commands
-\titlespacing{\section} % shape
+\titlespacing{\section}
     {0pt} % left space
     {1.5\baselineskip} % before space
     {1.0\baselineskip} % after space
 
 % subsection group - "Title" (left-align, italic)
-\titleformat{\subsection}[hang] % shape
+\titleformat{\subsection}[hang]
     {\normalsize\it\bfseries\filright} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
-    {\thesubsection\ } % pre-title -commands
+    {\thesubsection\ } % pre-title commands
     {} % post-title commands
-\titlespacing{\subsection} % shape
+\titlespacing{\subsection}
     {0pt} % left space
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
 
 % subsubsection group - "Title" (left-align)
-\titleformat{\subsubsection}[hang] % shape
+\titleformat{\subsubsection}[hang]
     {\normalsize\bfseries\filright} % format for label and title
     {} % label
     {0pt} % horizontal space between label and title
-    {\thesubsubsection\ } % pre-title -commands
+    {\thesubsubsection\ } % pre-title commands
     {} % post-title commands
-\titlespacing{\subsubsection} % shape
+\titlespacing{\subsubsection}
     {0pt} % left space
     {1.5\baselineskip} % before space
     {0.25\baselineskip} % after space
