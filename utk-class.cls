@@ -39,7 +39,7 @@
 \ProvidesClass{utk-class}
 \def\filename{utk-class.cls}
 \def\fileversion{version 3.0}
-\def\filedate{December 6, 2017}
+\def\filedate{December 15, 2017}
 \def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
 
 \typeout{UTK Thesis and Dissertation Template}
@@ -82,6 +82,9 @@
 % Values: [leftpagenum, centerpagenum, rightpagenum]
 \providecommand{\@defaultPageNumAlign}{centerpagenum}
 
+% Margin notes (on/off)
+% Values: [noteson, notesoff]
+\providecommand{\@defaultNotes}{noteson}
 %-----------------------------------------------------------------------------------%
 
 
@@ -112,6 +115,9 @@
 \DeclareOption{centerpagenum}{\renewcommand{\@defaultPageNumAlign}{centerpagenum}}
 \DeclareOption{rightpagenum}{\renewcommand{\@defaultPageNumAlign}{rightpagenum}}
 
+\DeclareOption{noteson}{\renewcommand{\@defaultNotes}{noteson}}
+\DeclareOption{notesoff}{\renewcommand{\@defaultNotes}{notesoff}}
+
 % Pass non-implemented options to base class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
@@ -133,7 +139,9 @@
 \RequirePackage[utf8]{inputenc}   % accented characters for input
 \RequirePackage[USenglish]{babel} % USA hyphenation patterns
 \RequirePackage{geometry}         % page margins/layout
-%\RequirePackage[showframe]{geometry} % page margins/layout
+%\RequirePackage[showframe]{geometry} % (debug) page margins/layout
+\RequirePackage{fancyhdr}         % headers/footers
+\RequirePackage{marginnote}       % margin notes
 \RequirePackage{setspace}         % text spacing
 \RequirePackage{array}            % row and column types
 \RequirePackage{multicol}         % multiple columns
@@ -148,13 +156,14 @@
 %\RequirePackage[numbers]{natbib}  % references with numbering
 \RequirePackage{titlesec}         % customize section displays
 \RequirePackage[titles]{tocloft}  % customize LOF, LOT
+\RequirePackage{parskip}          % paragraph formatting
 \RequirePackage{amsmath}          % AMS math
 \RequirePackage{amsthm}           % AMS theorem
 \RequirePackage{amssymb}          % AMS symbols
 \RequirePackage{amsfonts}         % AMS fonts
+\RequirePackage{etoolbox}         % e-TeX programming facilities
 \RequirePackage{algorithmicx}     % second algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
-\RequirePackage{fancyhdr}         % headers/footers
 \RequirePackage{booktabs}         % professional tables
 \RequirePackage{caption}          % figure captions
 \RequirePackage[flushleft]{threeparttable} % table formatting (caption, table, tablenotes)
@@ -162,7 +171,6 @@
 \RequirePackage{nomencl}          % create a nomenclature
 \RequirePackage[countmax]{subfloat} % sub figure floats
 \RequirePackage{subfig}           % sub figures
-\RequirePackage{parskip}          % paragraph formatting
 \RequirePackage{tikz}             % vector drawings
 \RequirePackage{pgfplots}         % generate plots
 %-----------------------------------------------------------------------------------%
@@ -172,18 +180,18 @@
 %  GLOBAL AND PACKAGES CONFIGURATIONS
 %-----------------------------------------------------------------------------------%
 % Page margins/layout
-% Match MS Word template:
+% MS Word template:
 % (top=1.0in, bottom=1.3in, left=1.25in, right=1.25in, header=0.5in, footer=1.0in)
-%top=1.0in, bottom=1.53125in, left=1.25in, right=1.25in,
 \geometry{
-    top=1.0in, bottom=1.25in, left=1.25in, right=1.25in,
-    headheight=16pt, headsep=0.28in, footskip=0.3125in
+    top=1in, bottom=1.25in, left=1.25in, right=1.25in,
+    marginparwidth=1.05in, marginparsep=0.1in,
+    heightrounded, headheight=0.25in, headsep=0.25in, footskip=0.75in
 }
 
 % Fancy headers/footers
 \pagestyle{fancy}
 \fancyhf{}
-\renewcommand{\headrulewidth}{0pt} % remove default rule in headers
+\renewcommand{\headrulewidth}{0in} % remove default rule in headers
 
 % Footnotes numbering style
 \renewcommand{\thefootnote}{\arabic{footnote}}
@@ -191,9 +199,9 @@
 
 % Paragraph indentation
 \setlength{\parindent}{0pt}
-\newcommand{\tab}[1][0.5in]{\hspace*{#1}}
+\newcommand{\tab}[1][3em]{\hspace*{#1}}
 
-% Paragraph vertical space
+% Paragraph vertical space (do not use as it conflicts with explicit spacings)
 %\setlength{\parskip}{\the\baselineskip}
 
 % Document type
@@ -212,7 +220,7 @@
 
 % Text horizontal alignment
 \ifthenelse{\equal{\@defaultTextAlign}{lefttext}}{\RaggedRight}{%
-\ifthenelse{\equal{\@defaultTextAlign}{justifytext}}{}{}}
+\ifthenelse{\equal{\@defaultTextAlign}{justifytext}}{\justifying}{}}
 
 % Chapter and section title horizontal alignment
 \ifthenelse{\equal{\@defaultTitleAlign}{lefttitle}}{\renewcommand{\@defaultTitleAlign}{\filright}}{%
@@ -222,6 +230,13 @@
 \ifthenelse{\equal{\@defaultPageNumAlign}{leftpagenum}}{\fancyfoot[L]{\thepage}}{%
 \ifthenelse{\equal{\@defaultPageNumAlign}{centerpagenum}}{\fancyfoot[C]{\thepage}}{%
 \ifthenelse{\equal{\@defaultPageNumAlign}{rightpagenum}}{\fancyfoot[R]{\thepage}}{}}}
+
+% Margin notes font and (on/off)
+\renewcommand{\marginfont}{\singlespacing\scriptsize\color{red}}
+\renewcommand{\raggedleftmarginnote}{}
+\renewcommand{\raggedrightmarginnote}{\RaggedRight}
+\ifthenelse{\equal{\@defaultNotes}{noteson}}{\newcommand{\note}[2][-\baselineskip]{\marginnote{#2}[#1]}}{%
+\ifthenelse{\equal{\@defaultNotes}{notesoff}}{\newcommand{\note}[2][0in]{}}}
 
 % Override LaTeX hyphenation
 \tolerance=1000
@@ -315,51 +330,51 @@
 % chapter group - "Chapter #
 %                   Title" (centered)
 \titleformat{\chapter}[display]
-    {\thispagestyle{fancy}\Large\bfseries\@defaultTitleAlign} % format for label and title
+    {\singlespacing\Large\bfseries\@defaultTitleAlign} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
-    {0pt} % vertical space (display) between label and title
-    {\uppercase} % pre-title commands
+    {0in} % vertical space (display) between label and title
+    {\MakeUppercase} % pre-title commands
     {} % post-title commands
 \titlespacing{\chapter}
-    {0pt} % left space
-    {-1.5\baselineskip} % before space
-    {2.0\baselineskip} % after space
+    {0em} % left space
+    {-0.6in} % before space
+    {0.3in} % after space
 
 % section group - "Title" (centered)
 \titleformat{\section}[hang]
-    {\large\bfseries\@defaultTitleAlign} % format for label and title
+    {\singlespacing\large\bfseries\filright} % format for label and title
     {} % label
-    {0pt} % horizontal space between label and title
+    {0em} % horizontal space between label and title
     {\thesection\ } % pre-title commands
     {} % post-title commands
 \titlespacing{\section}
-    {0pt} % left space
-    {1.5\baselineskip} % before space
-    {1.0\baselineskip} % after space
+    {0em} % left space
+    {0.1in} % before space
+    {0in} % after space
 
 % subsection group - "Title" (left-align, italic)
 \titleformat{\subsection}[hang]
-    {\normalsize\it\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\it\bfseries\filright} % format for label and title
     {} % label
-    {0pt} % horizontal space between label and title
+    {0em} % horizontal space between label and title
     {\thesubsection\ } % pre-title commands
     {} % post-title commands
 \titlespacing{\subsection}
-    {0pt} % left space
-    {1.5\baselineskip} % before space
-    {0.25\baselineskip} % after space
+    {0em} % left space
+    {0.1in} % before space
+    {0in} % after space
 
 % subsubsection group - "Title" (left-align)
 \titleformat{\subsubsection}[hang]
-    {\normalsize\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\bfseries\filright} % format for label and title
     {} % label
-    {0pt} % horizontal space between label and title
+    {0em} % horizontal space between label and title
     {\thesubsubsection\ } % pre-title commands
     {} % post-title commands
 \titlespacing{\subsubsection}
-    {0pt} % left space
-    {1.5\baselineskip} % before space
-    {0.25\baselineskip} % after space
+    {0em} % left space
+    {0.1in} % before space
+    {0in} % after space
 %-----------------------------------------------------------------------------------%
 
 
@@ -389,41 +404,36 @@
 %  COMMITTEE APPROVAL PAGE (PRINT FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPage}{%
-    \setlength{\@myTmpLen}{1.75in}
+    \setlength{\@myTmpLen}{2.25in}
     \thispagestyle{empty}
-    \begingroup\parindent\z@
-        To the Graduate Council:\\[\baselineskip]
+    \begingroup\singlespacing\parindent\z@
+        To the Graduate Council:\par
+        \vspace*{\baselineskip}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
         for form and content and recommend that it be accepted in partial fulfillment
-        of the requirements for the degree of \@degree, with a major in \@major.
-
-        \begin{multicols}{2}
-            \vspace*{\fill}
-            We have read this \@defaultDoctype\\
-            and recommend its acceptance:
-
-            \@for\@committeeMember:=\@committeeMembers\do{%
-                \vspace*{1.5\baselineskip}
-                \underline{\hspace*{\@myTmpLen}}\\
-                \@committeeMember\par
-            }%
-            \vspace*{2.5\baselineskip}
-            \vspace*{\fill}
-            \columnbreak % move to second column
-
-            \vspace*{\fill}
+        of the requirements for the degree of \@degree, with a major in \@major.\par
+        \vspace*{2\baselineskip}
+        \hspace*{2.5in}\parbox{3.5in}{%
             \underline{\hspace*{\@myTmpLen}}\\
-            \@majorProfessor\\
-            Major Professor
-            \par\vspace*{10.5\baselineskip}
-
-            Accepted for the Council:\\[1.5\baselineskip]
+            \@majorProfessor, Major Professor
+        }\par
+        \vspace*{\baselineskip}
+        We have read this \@defaultDoctype\\
+        and recommend its acceptance:\par
+        \@for\@committeeMember:=\@committeeMembers\do{%
+            \vspace*{1.5\baselineskip}
+            \underline{\hspace*{\@myTmpLen}}\\
+            \@committeeMember\par
+        }
+        \vspace*{\baselineskip}
+        \hspace*{2.5in}\parbox{3.5in}{%
+            Accepted for the Council:\par
+            \vspace*{2\baselineskip}
             \underline{\hspace*{\@myTmpLen}}\\
             \@dean\\
-            Dean of the Graduate School
-            \vspace*{\fill}
-        \end{multicols}
+            Vice Provost and Dean of the Graduate School
+        }\par
     \endgroup
     \clearpage
 }
@@ -434,48 +444,45 @@
 %  COMMITTEE APPROVAL PAGE (ELECTRONIC FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPageE}{%
-    \setlength{\@myTmpLen}{1.75in}
+    \setlength{\@myTmpLen}{2.25in}
     \thispagestyle{empty}
-    \begingroup\parindent\z@
-        To the Graduate Council:\\[\baselineskip]
+    \begingroup\singlespacing\parindent\z@
+        To the Graduate Council:\par
+        \vspace*{\baselineskip}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
         for form and content and recommend that it be accepted in partial fulfillment
-        of the requirements for the degree of \@degree, with a major in \@major.
-
-        \begin{multicols}{2}
-            \vspace*{\fill}
-            We have read this \@defaultDoctype\\
-            and recommend its acceptance:
-            \par\vspace*{\baselineskip}
-
-            \@for\@committeeMember:=\@committeeMembers\do{%
-                \@committeeMember\\[-0.8\baselineskip]
-                \underline{\hspace*{\@myTmpLen}}
-                \vspace*{1.5\baselineskip}\par
-            }%
-            \vspace*{2.5\baselineskip}
-            \vspace*{\fill}
-            \columnbreak % move to second column
-
-            \@majorProfessor\\[-0.8\baselineskip]
+        of the requirements for the degree of \@degree, with a major in \@major.\par
+        \vspace*{2\baselineskip}
+        \hspace*{2.5in}\parbox{3.5in}{%
             \underline{\hspace*{\@myTmpLen}}\\
+            \vspace*{-\baselineskip}
+            \@majorProfessor\\
             Major Professor
-            \par\vspace*{8.0\baselineskip}
-
-            Accepted for the Council:\\[\baselineskip]
-            \@dean\\[-0.8\baselineskip]
+        }\par
+        \vspace*{\baselineskip}
+        We have read this \@defaultDoctype\\
+        and recommend its acceptance:\par
+        \@for\@committeeMember:=\@committeeMembers\do{%
+            \vspace*{1.5\baselineskip}
             \underline{\hspace*{\@myTmpLen}}\\
-            Vice Provost and
-            Dean of the Graduate School
-        \end{multicols}
-
+            \vspace*{-\baselineskip}
+            \@committeeMember
+            \vspace*{\baselineskip}\par
+        }
+        \vspace*{\baselineskip}
+        \hspace*{2.5in}\parbox{3.5in}{%
+            Accepted for the Council:\par
+            \vspace*{2\baselineskip}
+            \underline{\hspace*{\@myTmpLen}}\\
+            \vspace*{-\baselineskip}
+            \@dean\\
+            Vice Provost and Dean of the Graduate School
+        }\par
         \Centering
-        \vspace*{-\baselineskip} % remove blank line when 'multicols' ends
         \vspace*{\fill}
-        (Original signatures are on file with official student records.)
+        (Original signatures are on file with official student records.)\par
         \vspace*{\fill}
-        \par % stop switches (e.g., Centering)
     \endgroup
     \clearpage
 }
@@ -487,16 +494,12 @@
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
     \thispagestyle{empty}
-    \begingroup\Centering\Large
-
-        \MakeUppercase{\textbf{\@title}}
-
+    \begingroup\singlespacing\Centering\Large
+        \MakeUppercase{\textbf{\@title}}\par
         \vspace*{\fill}
-        A \@defaultFCDoctype\ Presented for the\\ \@degree\\ Degree\\ \@university
+        A \@defaultFCDoctype\ Presented for the\\ \@degree\\ Degree\\ \@university\par
         \vspace*{\fill}
-
-        \@author\\ \@graduationMonth\ \@graduationYear
-        \par % stop switches (e.g., Centering)
+        \@author\\ \@graduationMonth\ \@graduationYear\par
     \endgroup
     \clearpage
 }
@@ -506,7 +509,7 @@
 %-----------------------------------------------------------------------------------%
 %  TABLE OF CONTENTS, LIST OF TABLES, LIST OF FIGURES
 %-----------------------------------------------------------------------------------%
-% Change titles to all capital letters
+% Change titles to capital letters
 % These commands are found in the 'babel' package
 \addto\captionsUSenglish{%
 \renewcommand{\contentsname}{\MakeUppercase{\Large\bfseries Table of Contents}}
@@ -556,13 +559,12 @@
 %  COPYRIGHT PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
-    \begingroup\Centering
+    \begingroup\singlespacing\Centering
         \vspace*{\fill}
-        \vspace{-5\baselineskip}
+        \vspace*{-0.5in}
         Copyright \copyright\ \@graduationYear\ by \@author\\
-        All rights reserved.
+        All rights reserved.\par
         \vspace*{\fill}
-        \par % stop switches (e.g., Centering)
     \endgroup
     \clearpage
 }
@@ -579,10 +581,9 @@
     \addcontentsline{toc}{chapter}{#1}
     \begingroup\Centering
         \vspace*{\fill}
-        \vspace{-5\baselineskip}
-        \MakeUppercase{\Large \bfseries #1}
+        \vspace*{-0.5in}
+        \MakeUppercase{\Large \bfseries #1}\par
         \vspace*{\fill}
-        \par % stop switches (e.g., Centering)
     \endgroup
     \clearpage
 }
@@ -593,15 +594,14 @@
 %  BIBLIOGRAPHY PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeBibliography}[2][apalike]{%
-    \renewcommand{\bibname}{\vspace{-3em}} % remove bibliography title and shift text up
-    \setlength{\@myTmpLen}{\the\baselineskip} % save line spacing
-    \singlespace
-    \bibliographystyle{#1} % bibliography style
-    \bibliography{#2}
-    \setlength{\baselineskip}{\@myTmpLen} % restore line spacing
+    \renewcommand{\bibname}{\vspace*{-0.6in}} % remove bibliography title and shift text up
+    \begingroup
+        \bibliographystyle{#1} % bibliography style
+        \bibliography{#2}
+    \endgroup
 }
 %-----------------------------------------------------------------------------------%
 
 
-\endinput % finalize UTK class
+\endinput % end UTK class
 

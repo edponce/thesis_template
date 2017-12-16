@@ -2,16 +2,21 @@
 
 \tab This is a very short guide to an unofficial thesis/dissertation template
 for the University of Tennessee.
+\note{Not sure when website specifications incomprehensibilities were updated.}
 It is based on the 2017 thesis specifications but can be easily altered
 as the guidelines are changed.
+\note[1cm]{This is a margin note used during revisions, not the final draft.}
 This template requires a basic knowledge of \LaTeX\ and should cover
-the basic requirements in terms of required packages and functionality.
+the basic requirements in terms of required packages and functionality
 for the University of Tennessee.
 
 \begin{figure}[!b]
-  \centering
-  \includegraphics[width=6in]{fig01-folder-structure}
-  \caption{UT thesis template folder structure.}
+  \Centering
+  \includegraphics[width=\textwidth]{fig01-folder-structure}
+  \caption{UT thesis template folder structure. The main LaTeX file and
+           BibTeX file are in the top directory. All other files are placed
+           in any of the four folders
+           (back-matter, chapters, figures, front-matter).}
   \label{intro-folder-structure}
 \end{figure}
 
@@ -21,12 +26,15 @@ The titles of the folders are self descriptive and should guide you to proper fi
 Note that this is only a suggested model that could be
 modified to fit your own organizational structure.
 
-\section{A Section} \label{asection}
+\section{A Section multiple lines} \label{asection}
 This is a paragraph found in a section part.
 
 \subsection{A subsection}
 This is a paragraph found in a subsection part.
 For more information, check: \url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}
+
+\subsection{Another subsection}
+This is a paragraph found in another subsection part.
 
 \subsubsection{A subsubsection}
 This is a paragraph found in a subsubsection part.
@@ -35,7 +43,7 @@ This is a paragraph found in a subsubsection part.
 This is a paragraph found in another section part.
 For multipart figures, you need to use the package ``subfig''. here's an example
 \begin{figure}[!htb]
-        \centering
+        \Centering
         \subfloat[Circle]{
             \label{figure-a}
             \includegraphics[width=1.1in]{fig02a-circle}
@@ -53,7 +61,7 @@ For multipart figures, you need to use the package ``subfig''. here's an example
 \end{figure}
 
 \begin{table}[!htb]
-    \centering
+    \Centering
     \begin{tabular}{|L{3cm}|C{1cm}|C{1cm}|}
         \hline
         \textbf{col1} & \textbf{col2} & \textbf{col3} \\

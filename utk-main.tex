@@ -50,9 +50,12 @@
 %   lefttext, justifytext
 %   lefttitle, centertitle
 %   centerpagenum, leftpagenum, rightpagenum
+%   noteson, notesoff
 
-%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum]{utk-class}
-\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum]{utk-class}
+%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum, noteson]{utk-class}
+\documentclass[dissertation, 12pt, roman, singlespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
+%\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum, noteson]{utk-class}
+%\documentclass[dissertation, 12pt, roman, doublespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
 %-----------------------------------------------------------------------------------%
 
 
@@ -73,7 +76,7 @@
 %  GENERAL INFORMATION
 %-----------------------------------------------------------------------------------%
 \title{Analysis on some data using some technique}
-\author{Student A. Name}
+\author{Student A. Name} % name as registered in official student records
 %\degree{Master of Science}
 \degree{Doctor of Philosophy}
 \major{Computer Science}
@@ -97,8 +100,8 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  COMMITTEE APPROVAL FORMS
 %-----------------------------------------------------------------------------------%
-%\makeApprovalPage % optional, print form
-%\makeApprovalPageE % optional, electronic form
+\makeApprovalPage % optional, print form
+\makeApprovalPageE % optional, electronic form
 %-----------------------------------------------------------------------------------%
 
 
@@ -108,7 +111,7 @@ Member C. Smith%
 \pagenumbering{roman}
 \makeTitlePage
 \makeCopyrightPage % optional
-\input{front-matter/dedication} % optional
+{\singlespacing \input{front-matter/dedication}} % optional
 \input{front-matter/acknowledgements} % optional
 \input{front-matter/abstract}
 \input{front-matter/preface} % optional
@@ -118,11 +121,11 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  TABLE OF CONTENTS
 %-----------------------------------------------------------------------------------%
-\tableofcontents
-\listoftables
-\listoffigures
-\input{front-matter/abbreviations} % optional
-\input{front-matter/symbols} % optional
+{\onehalfspacing \tableofcontents}
+{\onehalfspacing \listoftables} % if applicable
+{\onehalfspacing \listoffigures} % if applicable
+{\onehalfspacing \input{front-matter/abbreviations}} % if applicable
+{\onehalfspacing \input{front-matter/symbols}} % if applicable
 \clearpage
 %-----------------------------------------------------------------------------------%
 
@@ -141,20 +144,19 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------------%
-% Set the [bibliography style] to use and the {bibTeX file}
+% Set the [bibliography style] and the {bibTeX file} to use
 \makeLabelOnlyPage{List of References}
-\makeBibliography[apalike]{utk-refs}  % APA bibliography style
-%\makeBibliography[ieeetr]{utk-refs}  % IEEE Transactions bibliography style
+{\onehalfspacing \makeBibliography[apalike]{utk-refs}}  % APA bibliography style
+%{\onehalfspacing \makeBibliography[ieeetr]{utk-refs}}  % IEEE Transactions bibliography style
 %-----------------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------------%
 %  BACK-MATTER
 %-----------------------------------------------------------------------------------%
-\makeLabelOnlyPage{Appendix} % optional
-\input{back-matter/appendix-a} % optional
-\input{back-matter/appendix-b} % optional
-\input{back-matter/nomenclature} % optional
+\makeLabelOnlyPage{Appendix} % if applicable
+\input{back-matter/appendix-a} % if applicable
+\input{back-matter/appendix-b} % if applicable
 \input{back-matter/vita}
 %-----------------------------------------------------------------------------------%
 
