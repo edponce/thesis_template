@@ -149,6 +149,7 @@
 \RequirePackage[hyphens]{url}     % url links
 \RequirePackage{hyperref}         % hyperlinks
 \RequirePackage[usenames, dvipsnames, table, svgnames]{xcolor} % colors
+\RequirePackage{soul}             % text highlight
 \RequirePackage{ifthen}           % conditional macros
 \RequirePackage{ragged2e}         % text alignment
 \RequirePackage{graphicx}         % graphics
@@ -232,11 +233,11 @@
 \ifthenelse{\equal{\@defaultPageNumAlign}{rightpagenum}}{\fancyfoot[R]{\thepage}}{}}}
 
 % Margin notes font and (on/off)
-\renewcommand{\marginfont}{\singlespacing\scriptsize\color{red}}
+\renewcommand{\marginfont}{\singlespacing\scriptsize}
 \renewcommand{\raggedleftmarginnote}{}
 \renewcommand{\raggedrightmarginnote}{\RaggedRight}
-\ifthenelse{\equal{\@defaultNotes}{noteson}}{\newcommand{\note}[2][-\baselineskip]{\marginnote{#2}[#1]}}{%
-\ifthenelse{\equal{\@defaultNotes}{notesoff}}{\newcommand{\note}[2][0in]{}}}
+\ifthenelse{\equal{\@defaultNotes}{noteson}}{\newcommand{\note}[2][yellow]{\sethlcolor{#1}\hl{#2}}\newcommand{\mnote}[2][-\baselineskip]{\marginnote{#2}[#1]}}{%
+\ifthenelse{\equal{\@defaultNotes}{notesoff}}{\newcommand{\note}[2][yellow]{}\newcommand{\mnote}[2][0em]{}}}
 
 % Override LaTeX hyphenation
 \tolerance=1000
@@ -261,7 +262,8 @@
     plainpages=false,         % name page anchors by correct form of page number
     colorlinks=true,          % enable link colors
     allcolors=blue,           % set link colors
-    breaklinks=false          % allow multi-line links
+    breaklinks=false,         % allow multi-line links
+    linktoc=all               % link entries of TOC/LOF/LOT
 }
 \urlstyle{same} % use same style as the text
 
@@ -354,7 +356,7 @@
 
 % subsection group - "Title" (left-align, italic)
 \titleformat{\subsection}[hang]
-    {\singlespacing\normalsize\it\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\itshape\bfseries\filright} % format for label and title
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsection\ } % pre-title commands
@@ -366,7 +368,7 @@
 
 % subsubsection group - "Title" (left-align)
 \titleformat{\subsubsection}[hang]
-    {\singlespacing\normalsize\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\itshape\bfseries\filright} % format for label and title
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsubsection\ } % pre-title commands
@@ -375,28 +377,6 @@
     {0em} % left space
     {0.1in} % before space
     {0in} % after space
-%-----------------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------------%
-%  LIST OF FIGURES CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
-% Figure 1.1:  This is the caption of figure........10
-\renewcommand{\cftfigpresnum}{\figurename\ }
-\renewcommand{\cftfigaftersnum}{:}
-\settowidth{\@myTmpLen}{\cftfigpresnum\cftfigaftersnum}
-\addtolength{\cftfignumwidth}{\@myTmpLen}
-%-----------------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------------%
-%  LIST OF TABLES CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
-% Table 1.1:  This is the caption of table........10
-\renewcommand{\cfttabpresnum}{\tablename\ }
-\renewcommand{\cfttabaftersnum}{:}
-\settowidth{\@myTmpLen}{\cfttabpresnum\cfttabaftersnum}
-\addtolength{\cfttabnumwidth}{\@myTmpLen}
 %-----------------------------------------------------------------------------------%
 
 
@@ -513,9 +493,37 @@
 % These commands are found in the 'babel' package
 \addto\captionsUSenglish{%
 \renewcommand{\contentsname}{\MakeUppercase{\Large\bfseries Table of Contents}}
-\renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}}
 \renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}}
+\renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}}
 }
+
+% Add 'Page' above page numbers
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\addtocontents{lof}{~\hfill\textbf{Page}\par}
+\addtocontents{lot}{~\hfill\textbf{Page}\par}
+
+% Change depth of entries
+%\setcounter{tocdepth}{3}
+\setcounter{lofdepth}{1}
+\setcounter{lotdepth}{1}
+
+% Change font of entries
+\renewcommand{\cftchapfont}{\scshape\bfseries}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftfigfont}{}
+\renewcommand{\cfttabfont}{}
+
+% Figure 1.1  This is the caption of figure........10
+\renewcommand{\cftfigpresnum}{\bfseries\figurename\ }
+\renewcommand{\cftfigaftersnum}{}
+\settowidth{\@myTmpLen}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\@myTmpLen}
+
+% Table 1.1  This is the caption of table........10
+\renewcommand{\cfttabpresnum}{\bfseries\tablename\ }
+\renewcommand{\cfttabaftersnum}{}
+\settowidth{\@myTmpLen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\@myTmpLen}
 %----------------------------------------------------------------------------------------
 
 
