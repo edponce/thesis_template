@@ -275,6 +275,26 @@
 % Plotting and drawing settings, 'tikz' and 'pgfplots' packages
 \usetikzlibrary{arrows,backgrounds,calc,decorations,er,folding,intersections,matrix,mindmap,patterns,positioning,shadows,shapes,trees}
 \pgfplotsset{compat=1.13}
+
+% Set custom names for \autoref macros (defaults are in hyperref.sty)
+\addto\HyLang@english{%
+    \renewcommand{\equationautorefname}{equation}
+    \renewcommand{\footnoteautorefname}{footnote}
+    \renewcommand{\itemautorefname}{item}
+    \renewcommand{\figureautorefname}{Figure}
+    \renewcommand{\tableautorefname}{Table}
+    \renewcommand{\partautorefname}{Part}
+    \renewcommand{\appendixautorefname}{Appendix}
+    \renewcommand{\chapterautorefname}{Chapter}
+    \renewcommand{\sectionautorefname}{section}
+    \renewcommand{\subsectionautorefname}{subsection}
+    \renewcommand{\subsubsectionautorefname}{subsubsection}
+    \renewcommand{\paragraphautorefname}{paragraph}
+    \renewcommand{\subparagraphautorefname}{subparagraph}
+    \renewcommand{\FancyVerbLineautorefname}{line}
+    \renewcommand{\theoremautorefname}{Theorem}
+    \renewcommand{\pageautorefname}{page}
+}
 %-----------------------------------------------------------------------------------%
 
 
@@ -320,11 +340,6 @@
 %-----------------------------------------------------------------------------------%
 %  CHAPTER AND SECTION CONFIGURATIONS
 %-----------------------------------------------------------------------------------%
-% Set to upper-case reference macros that by default are in lower-case (see hyperref.sty)
-\addto\HyLang@english{%
-    \renewcommand*{\chapterautorefname}{Chapter}
-}
-
 % chapter group - "Chapter #
 %                   Title" (centered)
 \titleformat{\chapter}[display]
@@ -509,6 +524,11 @@
 
 % Symbol from label to page number in TOC/LOT/LOF
 \renewcommand{\cftdot}{.}
+
+% Remove additional vertical spacing from figures/tables from different chapters
+%\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+%\addtocontents{lot}{\protect\noaddvspace}
+%\addtocontents{lof}{\protect\noaddvspace}
 
 \newlength{\@tmpLabelLen}
 \setlength{\@tmpLabelLen}{0pt}
