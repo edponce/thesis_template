@@ -2,3 +2,44 @@
 
 This is more text, see~\cite{utk:idr2015gpu}.
 
+\begin{table}[!htb]
+    \Centering
+    \caption[Table with multiple rows]{A multirow table example.}
+    \begin{tabular}{|L{3cm}|C{1cm}|C{1cm}|}
+        \hline
+        \textbf{col1} & \textbf{col2} & \textbf{col3} \\
+        \hline
+        \multirow{3}{3cm}{Multiple rows}
+            & cell2 & cell3 \\
+            & cell5 & cell6 \\
+            & cell8 & cell9 \\
+        \hline
+    \end{tabular}
+    \label{tab:multirow2}
+\end{table}
+
+Discussing some analysis results from \autoref{tab:multirow2}.
+
+\begin{figure}[!htb]
+    \Centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \Centering
+        \includegraphics[width=1in]{fig02a-circle}
+        \caption{\ Circle}
+        \label{fig:shapes-circle2}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \Centering
+        \includegraphics[width=1in]{fig02b-rectangle}
+        \caption{\ Rectangle}
+        \label{fig:shapes-rect2}
+    \end{subfigure}
+    \caption[Geometric shapes]{Geometric shapes, each presented as a subfigure.
+        (a) is a circle and
+        (b) is a rectangle}
+    \label{fig:shapes2}
+\end{figure}
+
+For multipart figures (e.g., \autoref{fig:shapes2}),
+you need to use the package ``subcaption''.
+

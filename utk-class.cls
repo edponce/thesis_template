@@ -73,8 +73,8 @@
 % Values: [lefttext, justifytext]
 \providecommand{\@defaultTextAlign}{lefttext}
 
-% Chapter and section title horizontal alignment
-% (Sub)Subsections are always left-aligned
+% Chapter title horizontal alignment
+% ((sub)sub)sections are always left-aligned
 % Values: [lefttitle, centertitle]
 \providecommand{\@defaultTitleAlign}{lefttitle}
 
@@ -137,41 +137,41 @@
 %-----------------------------------------------------------------------------------%
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
-\RequirePackage[USenglish]{babel} % USA hyphenation patterns
-\RequirePackage{geometry}         % page margins/layout
-%\RequirePackage[showframe]{geometry} % (debug) page margins/layout
+\RequirePackage[english]{babel} % USA hyphenation patterns
+%\RequirePackage{geometry}         % page margins/layout
+\RequirePackage[showframe]{geometry} % (debug) page margins/layout
 \RequirePackage{fancyhdr}         % headers/footers
-\RequirePackage{marginnote}       % margin notes
 \RequirePackage{setspace}         % text spacing
-\RequirePackage{array}            % row and column types
-\RequirePackage{multicol}         % multiple columns
-\RequirePackage{multirow}         % multiple rows
+\RequirePackage{ragged2e}         % text alignment
+\RequirePackage{soul}             % text highlight
+\RequirePackage{parskip}          % paragraph formatting
 \RequirePackage[hyphens]{url}     % url links
 \RequirePackage{hyperref}         % hyperlinks
+\RequirePackage{marginnote}       % margin notes
 \RequirePackage[usenames, dvipsnames, table, svgnames]{xcolor} % colors
-\RequirePackage{soul}             % text highlight
-\RequirePackage{ifthen}           % conditional macros
-\RequirePackage{ragged2e}         % text alignment
+\RequirePackage{etoolbox}         % e-TeX programming facilities
 \RequirePackage{graphicx}         % graphics
 \RequirePackage{natbib}           % references
 %\RequirePackage[numbers]{natbib}  % references with numbering
 \RequirePackage{titlesec}         % customize section displays
 \RequirePackage[titles]{tocloft}  % customize LOF, LOT
-\RequirePackage{parskip}          % paragraph formatting
+\RequirePackage[figurename=Figure,tablename=Table]{caption} % figure and table captions
+\RequirePackage{subcaption}       % subfigure and subtable captions
 \RequirePackage{amsmath}          % AMS math
 \RequirePackage{amsthm}           % AMS theorem
 \RequirePackage{amssymb}          % AMS symbols
 \RequirePackage{amsfonts}         % AMS fonts
-\RequirePackage{etoolbox}         % e-TeX programming facilities
+\RequirePackage{array}            % row and column types
+\RequirePackage{multicol}         % multiple columns
+\RequirePackage{multirow}         % multiple rows
+
+% Extra Packages
+\RequirePackage{cleveref}         % improved references
 \RequirePackage{algorithmicx}     % second algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
 \RequirePackage{booktabs}         % professional tables
-\RequirePackage{caption}          % figure captions
 \RequirePackage[flushleft]{threeparttable} % table formatting (caption, table, tablenotes)
 \RequirePackage{listings}         % code listings
-\RequirePackage{nomencl}          % create a nomenclature
-\RequirePackage[countmax]{subfloat} % sub figure floats
-\RequirePackage{subfig}           % sub figures
 \RequirePackage{tikz}             % vector drawings
 \RequirePackage{pgfplots}         % generate plots
 %-----------------------------------------------------------------------------------%
@@ -182,11 +182,11 @@
 %-----------------------------------------------------------------------------------%
 % Page margins/layout
 % MS Word template:
-% (top=1.0in, bottom=1.3in, left=1.25in, right=1.25in, header=0.5in, footer=1.0in)
+% (top=1.0in,bottom=1.3in,left=1.25in,right=1.25in,header=0.5in,footer=1.0in)
 \geometry{
-    top=1in, bottom=1.25in, left=1.25in, right=1.25in,
-    marginparwidth=1.05in, marginparsep=0.1in,
-    heightrounded, headheight=0.25in, headsep=0.25in, footskip=0.75in
+    top=1in,bottom=1.25in,left=1.25in,right=1.25in,
+    marginparwidth=1.05in,marginparsep=0.1in,
+    heightrounded,headheight=0.25in,headsep=0.25in,footskip=0.75in
 }
 
 % Fancy headers/footers
@@ -199,7 +199,7 @@
 %\renewcommand{\thefootnote}{\roman{footnote}}
 
 % Paragraph indentation
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{0em}
 \newcommand{\tab}[1][3em]{\hspace*{#1}}
 
 % Paragraph vertical space (do not use as it conflicts with explicit spacings)
@@ -223,7 +223,7 @@
 \ifthenelse{\equal{\@defaultTextAlign}{lefttext}}{\RaggedRight}{%
 \ifthenelse{\equal{\@defaultTextAlign}{justifytext}}{\justifying}{}}
 
-% Chapter and section title horizontal alignment
+% Chapter title horizontal alignment
 \ifthenelse{\equal{\@defaultTitleAlign}{lefttitle}}{\renewcommand{\@defaultTitleAlign}{\filright}}{%
 \ifthenelse{\equal{\@defaultTitleAlign}{centertitle}}{\renewcommand{\@defaultTitleAlign}{\filcenter}}{}}
 
@@ -257,7 +257,7 @@
     pdfborder=0 0 0,          % PDF border options
     pdfnewwindow=true,        % open PDF links in new window
     pdfpagelayout=SinglePage, % open PDF in single page mode
-    bookmarksnumbered=true, bookmarksopen=true, % PDF bookmarking options
+    bookmarksnumbered=true,bookmarksopen=true, % PDF bookmarking options
     hypertexnames=false,      % extend link names parts and subparts
     plainpages=false,         % name page anchors by correct form of page number
     colorlinks=true,          % enable link colors
@@ -301,10 +301,6 @@
 \newcommand{\department}[1]{\renewcommand{\@department}{#1}}
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
 \newcommand{\committeeMembers}[1]{\renewcommand{\@committeeMembers}{#1}}
-
-% Temporary length variable
-\newlength{\@myTmpLen}
-\setlength{\@myTmpLen}{0pt}
 %-----------------------------------------------------------------------------------%
 
 
@@ -326,7 +322,7 @@
 %-----------------------------------------------------------------------------------%
 % Set to upper-case reference macros that by default are in lower-case (see hyperref.sty)
 \addto\HyLang@english{%
-\renewcommand*{\chapterautorefname}{Chapter}
+    \renewcommand*{\chapterautorefname}{Chapter}
 }
 
 % chapter group - "Chapter #
@@ -384,9 +380,8 @@
 %  COMMITTEE APPROVAL PAGE (PRINT FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPage}{%
-    \setlength{\@myTmpLen}{2.25in}
     \thispagestyle{empty}
-    \begingroup\singlespacing\parindent\z@
+    \begingroup\parindent\z@
         To the Graduate Council:\par
         \vspace*{\baselineskip}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
@@ -395,7 +390,7 @@
         of the requirements for the degree of \@degree, with a major in \@major.\par
         \vspace*{2\baselineskip}
         \hspace*{2.5in}\parbox{3.5in}{%
-            \underline{\hspace*{\@myTmpLen}}\\
+            \underline{\hspace*{2.25in}}\\
             \@majorProfessor, Major Professor
         }\par
         \vspace*{\baselineskip}
@@ -403,14 +398,14 @@
         and recommend its acceptance:\par
         \@for\@committeeMember:=\@committeeMembers\do{%
             \vspace*{1.5\baselineskip}
-            \underline{\hspace*{\@myTmpLen}}\\
+            \underline{\hspace*{2.25in}}\\
             \@committeeMember\par
         }
         \vspace*{\baselineskip}
         \hspace*{2.5in}\parbox{3.5in}{%
             Accepted for the Council:\par
             \vspace*{2\baselineskip}
-            \underline{\hspace*{\@myTmpLen}}\\
+            \underline{\hspace*{2.25in}}\\
             \@dean\\
             Vice Provost and Dean of the Graduate School
         }\par
@@ -424,9 +419,8 @@
 %  COMMITTEE APPROVAL PAGE (ELECTRONIC FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPageE}{%
-    \setlength{\@myTmpLen}{2.25in}
     \thispagestyle{empty}
-    \begingroup\singlespacing\parindent\z@
+    \begingroup\parindent\z@
         To the Graduate Council:\par
         \vspace*{\baselineskip}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
@@ -435,7 +429,7 @@
         of the requirements for the degree of \@degree, with a major in \@major.\par
         \vspace*{2\baselineskip}
         \hspace*{2.5in}\parbox{3.5in}{%
-            \underline{\hspace*{\@myTmpLen}}\\
+            \underline{\hspace*{2.25in}}\\
             \vspace*{-\baselineskip}
             \@majorProfessor\\
             Major Professor
@@ -445,7 +439,7 @@
         and recommend its acceptance:\par
         \@for\@committeeMember:=\@committeeMembers\do{%
             \vspace*{1.5\baselineskip}
-            \underline{\hspace*{\@myTmpLen}}\\
+            \underline{\hspace*{2.25in}}\\
             \vspace*{-\baselineskip}
             \@committeeMember
             \vspace*{\baselineskip}\par
@@ -454,7 +448,7 @@
         \hspace*{2.5in}\parbox{3.5in}{%
             Accepted for the Council:\par
             \vspace*{2\baselineskip}
-            \underline{\hspace*{\@myTmpLen}}\\
+            \underline{\hspace*{2.25in}}\\
             \vspace*{-\baselineskip}
             \@dean\\
             Vice Provost and Dean of the Graduate School
@@ -474,7 +468,7 @@
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
     \thispagestyle{empty}
-    \begingroup\singlespacing\Centering\Large
+    \begingroup\Centering\Large
         \MakeUppercase{\textbf{\@title}}\par
         \vspace*{\fill}
         A \@defaultFCDoctype\ Presented for the\\ \@degree\\ Degree\\ \@university\par
@@ -491,74 +485,109 @@
 %-----------------------------------------------------------------------------------%
 % Change titles to capital letters
 % These commands are found in the 'babel' package
-\addto\captionsUSenglish{%
-\renewcommand{\contentsname}{\MakeUppercase{\Large\bfseries Table of Contents}}
-\renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}}
-\renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}}
+\addto\captionsenglish{%
+    \renewcommand{\contentsname}{\MakeUppercase{\Large\bfseries Table of Contents}}
+    \renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}}
+    \renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}}
 }
 
 % Add 'Page' above page numbers
-\addtocontents{toc}{~\hfill\textbf{Page}\par}
-\addtocontents{lof}{~\hfill\textbf{Page}\par}
-\addtocontents{lot}{~\hfill\textbf{Page}\par}
+\addtocontents{toc}{\hfill\textbf{Page}\par}
+\addtocontents{lof}{\hfill\textbf{Page}\par}
+\addtocontents{lot}{\hfill\textbf{Page}\par}
 
-% Change depth of entries
-%\setcounter{tocdepth}{3}
+% Depth of entries
+\setcounter{tocdepth}{2}
 \setcounter{lofdepth}{1}
 \setcounter{lotdepth}{1}
 
-% Change font of entries
-\renewcommand{\cftchapfont}{\scshape\bfseries}
+% Font of entries
+\renewcommand{\cftchapfont}{\large\scshape\bfseries}
 \renewcommand{\cftsecfont}{}
 \renewcommand{\cftfigfont}{}
 \renewcommand{\cfttabfont}{}
 
-% Figure 1.1  This is the caption of figure........10
-\renewcommand{\cftfigpresnum}{\bfseries\figurename\ }
-\renewcommand{\cftfigaftersnum}{}
-\settowidth{\@myTmpLen}{\cftfigpresnum\cftfigaftersnum}
-\addtolength{\cftfignumwidth}{\@myTmpLen}
+% Symbol from label to page number in TOC/LOT/LOF
+\renewcommand{\cftdot}{.}
 
-% Table 1.1  This is the caption of table........10
-\renewcommand{\cfttabpresnum}{\bfseries\tablename\ }
+\newlength{\@tmpLabelLen}
+\setlength{\@tmpLabelLen}{0pt}
+
+% Table 1.1 This is the caption of table........10
+%\renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries Table\ }
+\renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries\tablename\ }
 \renewcommand{\cfttabaftersnum}{}
-\settowidth{\@myTmpLen}{\cfttabpresnum\cfttabaftersnum}
-\addtolength{\cfttabnumwidth}{\@myTmpLen}
+\settowidth{\@tmpLabelLen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\@tmpLabelLen}
+
+% Figure 1.1 This is the caption of figure........10
+%\renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries Figure\ }
+\renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries\figurename\ }
+\renewcommand{\cftfigaftersnum}{}
+\settowidth{\@tmpLabelLen}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\@tmpLabelLen}
+
+% Caption font and style setup
+% (table/figure)within = {none,chapter,section}
+% labelformat = {empty,simple,parens)
+% labelsep = {none,colon,period,endash,space,quad,newline}
+% (label/text)font = {bf,it}
+% justification = {RaggedRight,Centering}
+% singlelinecheck = {on,off} if 'on', then single line caption will always be centered
+\captionsetup[table]{%
+%    tablewithin=none, % allow continuous numbering across chapters
+    labelformat=simple,labelsep=colon,
+    labelfont=bf,textfont=normal,
+    singlelinecheck=off,justification=Centering
+}
+\captionsetup[figure]{%
+%    figurewithin=none, % allow continuous numbering across chapters
+    labelformat=simple,labelsep=colon,
+    labelfont=bf,textfont=normal,
+    singlelinecheck=off,justification=RaggedRight
+}
+\captionsetup[subtable]{%
+    labelformat=parens,labelsep=none,
+    labelfont=normalfont,textfont=normal,
+    singlelinecheck=off,justification=Centering
+}
+\captionsetup[subfigure]{%
+    labelformat=parens,labelsep=none,
+    labelfont=normalfont,textfont=normal,
+    singlelinecheck=off,justification=Centering
+}
+
+% Table and Figure (sub)captions numbering
+% arabic = 1,2
+% alph = a,b
+% Alph = A,B
+% roman = i,ii
+% Roman = I,II
+\renewcommand{\thetable}{\thechapter.\arabic{table}} % requires chapters
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}} % requires chapters
+\renewcommand{\thesubtable}{\alph{subtable}}
+\renewcommand{\thesubfigure}{\alph{subfigure}}
+%\renewcommand{\thesubtable}{(\alph{subtable})} % for text references use manual parenthesis and labelformat=simple, instead of using labelformat=parens from captionsetup
+%\renewcommand{\thesubfigure}{(\alph{subfigure})} % for text references use manual parenthesis and labelformat=simple, instead of using labelformat=parens from captionsetup
 %----------------------------------------------------------------------------------------
 
 
 %-----------------------------------------------------------------------------------%
 %  MACROS TO SUPPORT ADDING MANUAL ENTRIES TO TABLE OF CONTENTS
 %-----------------------------------------------------------------------------------%
-% chapter without numbering
-\newcommand{\addToTOC}[1]{%
+% chapter or ((sub)sub)section without number
+\newcommand{\addToTOC}[2][chapter]{%
+    \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
     \phantomsection
-    \addtocounter{chapter}{1}
-    \addcontentsline{toc}{chapter}{#1}
+    \addtocounter{#1}{0}
+    \addcontentsline{toc}{#1}{#2}
 }
-% chapter with numbering
-\newcommand{\addToTOCc}[1]{%
+% chapter or ((sub)sub)section with number
+\newcommand{\addToTOCn}[2][chapter]{%
+    \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
     \phantomsection
-    \addtocounter{chapter}{1}
-    \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}
-}
-% section with numbering
-\newcommand{\addToTOCs}[1]{%
-    \phantomsection
-    \addtocounter{section}{1}
-    \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}
-}
-% subsection with numbering
-\newcommand{\addToTOCss}[1]{%
-    \phantomsection
-    \addtocounter{subsection}{1}
-    \addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}
-}
-% subsubsection with numbering
-\newcommand{\addToTOCsss}[1]{%
-    \phantomsection
-    \addtocounter{subsubsection}{1}
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}
+    \addtocounter{#1}{1}
+    \addcontentsline{toc}{#1}{\protect\numberline\expandafter\csname the#1\endcsname #2}
 }
 %-----------------------------------------------------------------------------------%
 
@@ -567,7 +596,7 @@
 %  COPYRIGHT PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
-    \begingroup\singlespacing\Centering
+    \begingroup\Centering
         \vspace*{\fill}
         \vspace*{-0.5in}
         Copyright \copyright\ \@graduationYear\ by \@author\\
@@ -583,14 +612,11 @@
 %  LABEL-ONLY PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeLabelOnlyPage}[1]{%
-    \clearpage
-    \phantomsection
-    \addtocounter{chapter}{1}
-    \addcontentsline{toc}{chapter}{#1}
+    \addToTOC[chapter]{#1}
     \begingroup\Centering
         \vspace*{\fill}
         \vspace*{-0.5in}
-        \MakeUppercase{\Large \bfseries #1}\par
+        \MakeUppercase{\Large\bfseries #1}\par
         \vspace*{\fill}
     \endgroup
     \clearpage

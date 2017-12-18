@@ -100,8 +100,8 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  COMMITTEE APPROVAL FORMS
 %-----------------------------------------------------------------------------------%
-\makeApprovalPage % optional, print form
-\makeApprovalPageE % optional, electronic form
+{\singlespacing \makeApprovalPage} % optional, print form
+{\singlespacing \makeApprovalPageE} % optional, electronic form
 %-----------------------------------------------------------------------------------%
 
 
@@ -109,9 +109,9 @@ Member C. Smith%
 %  FRONT-MATTER
 %-----------------------------------------------------------------------------------%
 \pagenumbering{roman}
-\makeTitlePage
-\makeCopyrightPage % optional
-{\singlespacing \input{front-matter/dedication}} % optional
+{\singlespacing \makeTitlePage}
+{\onehalfspacing \makeCopyrightPage} % optional
+\input{front-matter/dedication} % optional
 \input{front-matter/acknowledgements} % optional
 \input{front-matter/abstract}
 \input{front-matter/preface} % optional
@@ -146,8 +146,8 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 % Set the [bibliography style] and the {bibTeX file} to use
 \makeLabelOnlyPage{List of References}
-{\onehalfspacing \makeBibliography[apalike]{utk-refs}}  % APA bibliography style
-%{\onehalfspacing \makeBibliography[ieeetr]{utk-refs}}  % IEEE Transactions bibliography style
+{\singlespacing \makeBibliography[apalike]{utk-refs}}  % APA bibliography style
+%{\singlespacing \makeBibliography[ieeetr]{utk-refs}}  % IEEE Transactions bibliography style
 %-----------------------------------------------------------------------------------%
 
 
@@ -155,8 +155,12 @@ Member C. Smith%
 %  BACK-MATTER
 %-----------------------------------------------------------------------------------%
 \makeLabelOnlyPage{Appendix} % if applicable
+%\addToTOC[section]{Appendix A}
+%\addToTOC[section]{Appendix B}
 \input{back-matter/appendix-a} % if applicable
 \input{back-matter/appendix-b} % if applicable
+
+\addToTOC[chapter]{Vita}
 \input{back-matter/vita}
 %-----------------------------------------------------------------------------------%
 

@@ -12,19 +12,20 @@ for the University of Tennessee.
 \note[green]{This is a note with custom color.}
 \note{This is a note with default color.}
 
-\begin{figure}[!b]
-  \Centering
-  \includegraphics[width=\textwidth]{fig01-folder-structure}
-  \caption[UT thesis template folder structure]{UT thesis template folder structure. The main LaTeX file and
-           BibTeX file are in the top directory. All other files are placed
-           in any of the four folders
-           (back-matter, chapters, figures, front-matter).}
-  \label{intro-folder-structure}
+\begin{figure}[!htb]
+    \Centering
+    \includegraphics[width=0.9\textwidth]{fig01-folder-structure}
+    \caption[UT thesis template folder structure]{UT thesis template folder structure.
+        The main LaTeX file and BibTeX file are in the top directory.
+        All other files are placed in any of the four folders
+        (back-matter, chapters, figures, front-matter).}
+    \label{fig:folderstructure}
 \end{figure}
 
 \tab The general structure of this template is based on the tree shown in
-\autoref{intro-folder-structure}.
-The titles of the folders are self descriptive and should guide you to proper file placement.
+\autoref{fig:folderstructure}.
+The titles of the folders are self descriptive
+and should guide you to proper file placement.
 Note that this is only a suggested model that could be
 modified to fit your own organizational structure.
 
@@ -33,7 +34,8 @@ This is a paragraph found in a section part.
 
 \subsection{A subsection}
 This is a paragraph found in a subsection part.
-For more information, check: \url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}
+For more information, check:
+\url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}
 
 \subsection{Another subsection}
 This is a paragraph found in another subsection part.
@@ -43,27 +45,40 @@ This is a paragraph found in a subsubsection part.
 
 \section{Multipart figures}
 This is a paragraph found in another section part.
-For multipart figures, you need to use the package ``subfig''. here's an example
+
 \begin{figure}[!htb]
+    \Centering
+    \begin{subfigure}[t]{0.3\textwidth}
         \Centering
-        \subfloat[Circle]{
-            \label{figure-a}
-            \includegraphics[width=1.1in]{fig02a-circle}
-        }
-        \subfloat[Rectangle]{
-            \label{figure-b}
-            \includegraphics[width=1.1in]{fig02b-rectangle}
-        }
-        \subfloat[Cube]{
-            \label{figure-c}
-            \includegraphics[width=1.1in]{fig02c-cube}
-        }
-        \caption{Geometric shapes.}
-        \label{multipart-figure}
+        \includegraphics[width=1in]{fig02a-circle}
+        \caption{\ Circle}
+        \label{fig:shapes-circle}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \Centering
+        \includegraphics[width=1in]{fig02b-rectangle}
+        \caption{\ Rectangle}
+        \label{fig:shapes-rect}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \Centering
+        \includegraphics[width=1in]{fig02c-cube}
+        \caption{\ Cube}
+        \label{fig:shapes-cube}
+    \end{subfigure}
+    \caption[Geometric shapes]{Geometric shapes, each presented as a subfigure.
+        (a) is a circle,
+        (b) is a rectangle, and
+        (c) is a cube.}
+    \label{fig:shapes}
 \end{figure}
+
+For multipart figures (e.g., \autoref{fig:shapes-rect}),
+you need to use the package ``subcaption''.
 
 \begin{table}[!htb]
     \Centering
+    \caption[Table with multiple rows]{A multirow table example.}
     \begin{tabular}{|L{3cm}|C{1cm}|C{1cm}|}
         \hline
         \textbf{col1} & \textbf{col2} & \textbf{col3} \\
@@ -74,10 +89,9 @@ For multipart figures, you need to use the package ``subfig''. here's an example
             & cell8 & cell9 \\
         \hline
     \end{tabular}
-    \caption{A table example.}
-    \label{multirow-table}
+    \label{tab:multirow}
 \end{table}
 
-Discussing some analysis results from \autoref{multirow-table}.
-It all started at \autoref{asection} and never ended~\dots.
+Discussing some analysis results from \autoref{tab:multirow}.
+It all started at \autoref{asection} and never ended~\dots
 
