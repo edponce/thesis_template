@@ -154,7 +154,7 @@
 \RequirePackage{natbib}           % references
 %\RequirePackage[numbers]{natbib}  % references with numbering
 \RequirePackage{titlesec}         % customize section displays
-\RequirePackage[titles]{tocloft}  % customize LOF, LOT
+\RequirePackage[titles]{tocloft}  % customize TOC, LOT, LOF
 \RequirePackage[figurename=Figure,tablename=Table]{caption} % figure and table captions
 \RequirePackage{subcaption}       % subfigure and subtable captions
 \RequirePackage{amsmath}          % AMS math
@@ -263,7 +263,7 @@
     colorlinks=true,          % enable link colors
     allcolors=blue,           % set link colors
     breaklinks=false,         % allow multi-line links
-    linktoc=all               % link entries of TOC/LOF/LOT
+    linktoc=all               % link entries of TOC, LOF, LOT
 }
 \urlstyle{same} % use same style as the text
 
@@ -470,6 +470,7 @@
         }\par
         \Centering
         \vspace*{\fill}
+        \vspace*{-0.25in}
         (Original signatures are on file with official student records.)\par
         \vspace*{\fill}
     \endgroup
@@ -498,54 +499,60 @@
 %-----------------------------------------------------------------------------------%
 %  TABLE OF CONTENTS, LIST OF TABLES, LIST OF FIGURES
 %-----------------------------------------------------------------------------------%
-% Change titles to capital letters
+% Change labels to capital letters
 % These commands are found in the 'babel' package
 \addto\captionsenglish{%
     \renewcommand{\contentsname}{\MakeUppercase{\Large\bfseries Table of Contents}}
-    \renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}}
     \renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}}
+    \renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}}
 }
 
 % Add 'Page' above page numbers
-\addtocontents{toc}{\hfill\textbf{Page}\par}
-\addtocontents{lof}{\hfill\textbf{Page}\par}
-\addtocontents{lot}{\hfill\textbf{Page}\par}
+%\addtocontents{toc}{\hfill\textbf{Page}\par}
+%\addtocontents{lof}{\hfill\textbf{Page}\par}
+%\addtocontents{lot}{\hfill\textbf{Page}\par}
 
 % Depth of entries
 \setcounter{tocdepth}{2}
-\setcounter{lofdepth}{1}
 \setcounter{lotdepth}{1}
+\setcounter{lofdepth}{1}
 
 % Font of entries
 \renewcommand{\cftchapfont}{\large\scshape\bfseries}
 \renewcommand{\cftsecfont}{}
-\renewcommand{\cftfigfont}{}
+\renewcommand{\cftsubsecfont}{}
+\renewcommand{\cftsubsubsecfont}{}
 \renewcommand{\cfttabfont}{}
+\renewcommand{\cftfigfont}{}
 
-% Symbol from label to page number in TOC/LOT/LOF
+% Symbol from label to page number in TOC, LOT, LOF
 \renewcommand{\cftdot}{.}
+%\renewcommand{\cftdot}{\textnormal{.}}
+\renewcommand{\cftdotsep}{1}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
 
-% Remove additional vertical spacing from figures/tables from different chapters
-%\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
-%\addtocontents{lot}{\protect\noaddvspace}
-%\addtocontents{lof}{\protect\noaddvspace}
-
-\newlength{\@tmpLabelLen}
-\setlength{\@tmpLabelLen}{0pt}
+% Remove additional vertical space for entries from different chapters LOT and LOF
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{lot}{\protect\noaddvspace}
+\addtocontents{lof}{\protect\noaddvspace}
 
 % Table 1.1 This is the caption of table........10
+\newlength{\@tabLabelLen}
+\setlength{\@tabLabelLen}{0pt}
 %\renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries Table\ }
 \renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries\tablename\ }
 \renewcommand{\cfttabaftersnum}{}
-\settowidth{\@tmpLabelLen}{\cfttabpresnum\cfttabaftersnum}
-\addtolength{\cfttabnumwidth}{\@tmpLabelLen}
+\settowidth{\@tabLabelLen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\@tabLabelLen}
 
 % Figure 1.1 This is the caption of figure........10
+\newlength{\@figLabelLen}
+\setlength{\@figLabelLen}{0pt}
 %\renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries Figure\ }
 \renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries\figurename\ }
 \renewcommand{\cftfigaftersnum}{}
-\settowidth{\@tmpLabelLen}{\cftfigpresnum\cftfigaftersnum}
-\addtolength{\cftfignumwidth}{\@tmpLabelLen}
+\settowidth{\@figLabelLen}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\@figLabelLen}
 
 % Caption font and style setup
 % (table/figure)within = {none,chapter,section}
