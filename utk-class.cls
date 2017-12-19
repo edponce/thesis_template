@@ -79,8 +79,8 @@
 \providecommand{\@defaultTitleAlign}{lefttitle}
 
 % Page number horizontal alignment
-% Values: [leftpagenum, centerpagenum, rightpagenum]
-\providecommand{\@defaultPageNumAlign}{centerpagenum}
+% Values: [centerpagenum, rightpagenum]
+\providecommand{\@defaultPageNumAlign}{rightpagenum}
 
 % Margin notes (on/off)
 % Values: [noteson, notesoff]
@@ -111,7 +111,6 @@
 \DeclareOption{lefttitle}{\renewcommand{\@defaultTitleAlign}{lefttitle}}
 \DeclareOption{centertitle}{\renewcommand{\@defaultTitleAlign}{centertitle}}
 
-\DeclareOption{leftpagenum}{\renewcommand{\@defaultPageNumAlign}{leftpagenum}}
 \DeclareOption{centerpagenum}{\renewcommand{\@defaultPageNumAlign}{centerpagenum}}
 \DeclareOption{rightpagenum}{\renewcommand{\@defaultPageNumAlign}{rightpagenum}}
 
@@ -151,8 +150,9 @@
 \RequirePackage[usenames, dvipsnames, table, svgnames]{xcolor} % colors
 \RequirePackage{etoolbox}         % e-TeX programming facilities
 \RequirePackage{graphicx}         % graphics
-\RequirePackage{natbib}           % references
-%\RequirePackage[numbers]{natbib}  % references with numbering
+%\RequirePackage{natbib}           % references
+\RequirePackage[numbers]{natbib}  % references with numbering
+%\RequirePackage[square,numbers,comma,sort&compress]{natbib}  % custom references
 \RequirePackage{titlesec}         % customize section displays
 \RequirePackage[titles]{tocloft}  % customize TOC, LOT, LOF
 \RequirePackage[figurename=Figure,tablename=Table]{caption} % figure and table captions
@@ -191,7 +191,8 @@
 
 % Fancy headers/footers
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhead{}
+\fancyfoot{}
 \renewcommand{\headrulewidth}{0in} % remove default rule in headers
 
 % Footnotes numbering style
@@ -228,9 +229,8 @@
 \ifthenelse{\equal{\@defaultTitleAlign}{centertitle}}{\renewcommand{\@defaultTitleAlign}{\filcenter}}{}}
 
 % Page number horizontal alignment
-\ifthenelse{\equal{\@defaultPageNumAlign}{leftpagenum}}{\fancyfoot[L]{\thepage}}{%
 \ifthenelse{\equal{\@defaultPageNumAlign}{centerpagenum}}{\fancyfoot[C]{\thepage}}{%
-\ifthenelse{\equal{\@defaultPageNumAlign}{rightpagenum}}{\fancyfoot[R]{\thepage}}{}}}
+\ifthenelse{\equal{\@defaultPageNumAlign}{rightpagenum}}{\fancyfoot[R]{\thepage}}{}}
 
 % Margin notes font and (on/off)
 \renewcommand{\marginfont}{\singlespacing\scriptsize}
@@ -341,7 +341,7 @@
 %  CHAPTER AND SECTION CONFIGURATIONS
 %-----------------------------------------------------------------------------------%
 % chapter group - "Chapter #
-%                   Title" (centered)
+%                   Title"
 \titleformat{\chapter}[display]
     {\singlespacing\Large\bfseries\@defaultTitleAlign} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
@@ -353,7 +353,7 @@
     {-0.6in} % before space
     {0.3in} % after space
 
-% section group - "Title" (centered)
+% section group - "Title"
 \titleformat{\section}[hang]
     {\singlespacing\large\bfseries\filright} % format for label and title
     {} % label
@@ -365,9 +365,9 @@
     {0.1in} % before space
     {0in} % after space
 
-% subsection group - "Title" (left-align, italic)
+% subsection group - "Title"
 \titleformat{\subsection}[hang]
-    {\singlespacing\normalsize\itshape\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\bfseries\filright} % format for label and title
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsection\ } % pre-title commands
@@ -377,9 +377,9 @@
     {0.1in} % before space
     {0in} % after space
 
-% subsubsection group - "Title" (left-align)
+% subsubsection group - "Title"
 \titleformat{\subsubsection}[hang]
-    {\singlespacing\normalsize\itshape\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\bfseries\filright} % format for label and title
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsubsection\ } % pre-title commands
@@ -395,6 +395,7 @@
 %  COMMITTEE APPROVAL PAGE (PRINT FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPage}{%
+    \clearpage
     \thispagestyle{empty}
     \begingroup\parindent\z@
         To the Graduate Council:\par
@@ -425,7 +426,6 @@
             Vice Provost and Dean of the Graduate School
         }\par
     \endgroup
-    \clearpage
 }
 %-----------------------------------------------------------------------------------%
 
@@ -434,6 +434,7 @@
 %  COMMITTEE APPROVAL PAGE (ELECTRONIC FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPageE}{%
+    \clearpage
     \thispagestyle{empty}
     \begingroup\parindent\z@
         To the Graduate Council:\par
@@ -474,7 +475,6 @@
         (Original signatures are on file with official student records.)\par
         \vspace*{\fill}
     \endgroup
-    \clearpage
 }
 %-----------------------------------------------------------------------------------%
 
@@ -483,6 +483,7 @@
 %  TITLE PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
+    \clearpage
     \thispagestyle{empty}
     \begingroup\Centering\Large
         \MakeUppercase{\textbf{\@title}}\par
@@ -491,7 +492,6 @@
         \vspace*{\fill}
         \@author\\ \@graduationMonth\ \@graduationYear\par
     \endgroup
-    \clearpage
 }
 %-----------------------------------------------------------------------------------%
 
@@ -604,14 +604,12 @@
 %-----------------------------------------------------------------------------------%
 % chapter or ((sub)sub)section without number
 \newcommand{\addToTOC}[2][chapter]{%
-    \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
     \phantomsection
     \addtocounter{#1}{0}
     \addcontentsline{toc}{#1}{#2}
 }
 % chapter or ((sub)sub)section with number
 \newcommand{\addToTOCn}[2][chapter]{%
-    \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
     \phantomsection
     \addtocounter{#1}{1}
     \addcontentsline{toc}{#1}{\protect\numberline\expandafter\csname the#1\endcsname #2}
@@ -623,6 +621,7 @@
 %  COPYRIGHT PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
+    \clearpage
     \begingroup\Centering
         \vspace*{\fill}
         \vspace*{-0.5in}
@@ -630,7 +629,6 @@
         All rights reserved.\par
         \vspace*{\fill}
     \endgroup
-    \clearpage
 }
 %-----------------------------------------------------------------------------------%
 
@@ -639,6 +637,7 @@
 %  LABEL-ONLY PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeLabelOnlyPage}[1]{%
+    \clearpage
     \addToTOC[chapter]{#1}
     \begingroup\Centering
         \vspace*{\fill}
@@ -646,7 +645,6 @@
         \MakeUppercase{\Large\bfseries #1}\par
         \vspace*{\fill}
     \endgroup
-    \clearpage
 }
 %-----------------------------------------------------------------------------------%
 
@@ -654,12 +652,58 @@
 %-----------------------------------------------------------------------------------%
 %  BIBLIOGRAPHY PAGE
 %-----------------------------------------------------------------------------------%
-\newcommand{\makeBibliography}[2][apalike]{%
+\newcommand{\makeBibliography}[1]{%
+    \makeLabelOnlyPage{#1}
     \renewcommand{\bibname}{\vspace*{-0.6in}} % remove bibliography title and shift text up
-    \begingroup
-        \bibliographystyle{#1} % bibliography style
-        \bibliography{#2}
-    \endgroup
+}
+%-----------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------%
+%  APPENDIX PAGE
+%-----------------------------------------------------------------------------------%
+\newcommand{\makeAppendix}[1]{%
+    \makeLabelOnlyPage{#1}
+    \renewcommand{\thesection}{\Alph{section}} % set section counter to letters
+    \setcounter{section}{0}
+    \setcounter{subsection}{1}
+    \renewcommand{\thechapter}{} % remove chapter numbering
+
+    % section group - "Title"
+    \titleformat{\section}[hang]
+        {\singlespacing\Large\bfseries\@defaultTitleAlign} % format for label and title
+        {} % label
+        {0em} % horizontal space between label and title
+        {\MakeUppercase} % pre-title commands
+        {} % post-title commands
+    \titlespacing{\section}
+        {0em} % left space
+        {0in} % before space
+        {0.3in} % after space
+
+    % subsection group - "Title"
+    \titleformat{\subsection}[hang]
+        {\singlespacing\large\bfseries\filright} % format for label and title
+        {} % label
+        {0em} % horizontal space between label and title
+        {\thesubsection\ } % pre-title commands
+        {} % post-title commands
+    \titlespacing{\subsection}
+        {0em} % left space
+        {0.1in} % before space
+        {0in} % after space
+
+    % subsubsection group - "Title"
+    \titleformat{\subsubsection}[hang]
+        {\singlespacing\normalsize\bfseries\filright} % format for label and title
+        {} % label
+        {0em} % horizontal space between label and title
+        {\thesubsubsection\ } % pre-title commands
+        {} % post-title commands
+    \titlespacing{\subsubsection}
+        {0em} % left space
+        {0.1in} % before space
+        {0in} % after space
 }
 %-----------------------------------------------------------------------------------%
 

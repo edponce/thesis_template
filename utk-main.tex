@@ -49,13 +49,13 @@
 %   onehalfspace, singlespace, doublespace
 %   lefttext, justifytext
 %   lefttitle, centertitle
-%   centerpagenum, leftpagenum, rightpagenum
+%   rightpagenum, centerpagenum
 %   noteson, notesoff
 
-%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum, noteson]{utk-class}
-%\documentclass[dissertation, 12pt, roman, singlespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-%\documentclass[dissertation, 12pt, roman, doublespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
+%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, lefttitle, rightpagenum, noteson]{utk-class}
+%\documentclass[dissertation, 12pt, roman, singlespace, lefttext, lefttitle, rightpagenum, noteson]{utk-class}
+%\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, centertitle, rightpagenum, noteson]{utk-class}
+\documentclass[dissertation, 12pt, roman, doublespace, lefttext, centertitle, rightpagenum, noteson]{utk-class}
 %-----------------------------------------------------------------------------------%
 
 
@@ -109,8 +109,8 @@ Member C. Smith%
 %  FRONT-MATTER
 %-----------------------------------------------------------------------------------%
 \pagenumbering{roman}
-{\onehalfspacing \makeTitlePage}
-{\onehalfspacing \makeCopyrightPage} % optional
+{\singlespacing \makeTitlePage}
+{\singlespacing \makeCopyrightPage} % optional
 \input{front-matter/dedication} % optional
 \input{front-matter/acknowledgments} % optional
 \input{front-matter/abstract}
@@ -121,12 +121,11 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  TABLE OF CONTENTS
 %-----------------------------------------------------------------------------------%
-{\onehalfspacing \tableofcontents}
-{\onehalfspacing \listoftables} % if applicable
-{\onehalfspacing \listoffigures} % if applicable
-{\onehalfspacing \input{front-matter/abbreviations}} % if applicable
-{\onehalfspacing \input{front-matter/symbols}} % if applicable
-\clearpage
+{\singlespacing \tableofcontents}
+{\singlespacing \listoftables} % if applicable
+{\singlespacing \listoffigures} % if applicable
+{\singlespacing \input{front-matter/abbreviations}} % if applicable
+{\singlespacing \input{front-matter/symbols}} % if applicable
 %-----------------------------------------------------------------------------------%
 
 
@@ -144,23 +143,19 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------------%
-% Set the [bibliography style] and the {bibTeX file} to use
-\makeLabelOnlyPage{List of References}
-{\singlespacing \makeBibliography[apalike]{utk-refs}}  % APA bibliography style
-%{\singlespacing \makeBibliography[ieeetr]{utk-refs}}  % IEEE Transactions bibliography style
+\makeBibliography{List of References}
+\bibliographystyle{apalike}
+%\bibliographystyle{ieeetr}
+{\singlespacing \bibliography{utk-refs}}
 %-----------------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------------%
 %  BACK-MATTER
 %-----------------------------------------------------------------------------------%
-\makeLabelOnlyPage{Appendix} % if applicable
-%\addToTOC[section]{Appendix A}
-%\addToTOC[section]{Appendix B}
+\makeAppendix{Appendix} % if applicable
 \input{back-matter/appendix-a} % if applicable
 \input{back-matter/appendix-b} % if applicable
-
-\addToTOC[chapter]{Vita}
 \input{back-matter/vita}
 %-----------------------------------------------------------------------------------%
 
