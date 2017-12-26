@@ -79,7 +79,7 @@
 \providecommand{\@defaultTitleAlign}{lefttitle}
 
 % Page number horizontal alignment
-% Values: [leftpagenum, centerpagenum, rightpagenum]
+% Values: [centerpagenum, rightpagenum]
 \providecommand{\@defaultPageNumAlign}{centerpagenum}
 
 % Margin notes (on/off)
@@ -111,7 +111,6 @@
 \DeclareOption{lefttitle}{\renewcommand{\@defaultTitleAlign}{lefttitle}}
 \DeclareOption{centertitle}{\renewcommand{\@defaultTitleAlign}{centertitle}}
 
-\DeclareOption{leftpagenum}{\renewcommand{\@defaultPageNumAlign}{leftpagenum}}
 \DeclareOption{centerpagenum}{\renewcommand{\@defaultPageNumAlign}{centerpagenum}}
 \DeclareOption{rightpagenum}{\renewcommand{\@defaultPageNumAlign}{rightpagenum}}
 
@@ -122,13 +121,13 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 % Set default options
-\ExecuteOptions{\@defaultFontFamily, \@defaultTextSpace}
+\ExecuteOptions{\@defaultFontFamily,\@defaultTextSpace}
 
 % Process given options
 \ProcessOptions*
 
 % Load base class
-\LoadClass[letterpaper, \@defaultFontSize]{report}
+\LoadClass[letterpaper,\@defaultFontSize]{report}
 %-----------------------------------------------------------------------------------%
 
 
@@ -137,7 +136,7 @@
 %-----------------------------------------------------------------------------------%
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
-\RequirePackage[english]{babel} % USA hyphenation patterns
+\RequirePackage[english]{babel}   % USA hyphenation patterns
 %\RequirePackage{geometry}         % page margins/layout
 \RequirePackage[showframe]{geometry} % (debug) page margins/layout
 \RequirePackage{fancyhdr}         % headers/footers
@@ -147,12 +146,11 @@
 \RequirePackage{parskip}          % paragraph formatting
 \RequirePackage[hyphens]{url}     % url links
 \RequirePackage{hyperref}         % hyperlinks
+\RequirePackage{appendix}         % appendix environment
 \RequirePackage{marginnote}       % margin notes
-\RequirePackage[usenames, dvipsnames, table, svgnames]{xcolor} % colors
+\RequirePackage[usenames,dvipsnames,table,svgnames]{xcolor} % colors
 \RequirePackage{etoolbox}         % e-TeX programming facilities
 \RequirePackage{graphicx}         % graphics
-\RequirePackage{natbib}           % references
-%\RequirePackage[numbers]{natbib}  % references with numbering
 \RequirePackage{titlesec}         % customize section displays
 \RequirePackage[titles]{tocloft}  % customize TOC, LOT, LOF
 \RequirePackage[figurename=Figure,tablename=Table]{caption} % figure and table captions
@@ -190,13 +188,16 @@
 }
 
 % Fancy headers/footers
-\pagestyle{fancy}
-\fancyhf{}
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptertitlename\ \thechapter\ \ #1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection\ \ #1}}}
+\fancyhead{}
+\fancyfoot{} % overriden by class option
 \renewcommand{\headrulewidth}{0in} % remove default rule in headers
+\renewcommand{\footrulewidth}{0in} % remove default rule in headers
 
 % Footnotes numbering style
 \renewcommand{\thefootnote}{\arabic{footnote}}
-%\renewcommand{\thefootnote}{\roman{footnote}}
 
 % Paragraph indentation
 \setlength{\parindent}{0em}
@@ -228,9 +229,8 @@
 \ifthenelse{\equal{\@defaultTitleAlign}{centertitle}}{\renewcommand{\@defaultTitleAlign}{\filcenter}}{}}
 
 % Page number horizontal alignment
-\ifthenelse{\equal{\@defaultPageNumAlign}{leftpagenum}}{\fancyfoot[L]{\thepage}}{%
 \ifthenelse{\equal{\@defaultPageNumAlign}{centerpagenum}}{\fancyfoot[C]{\thepage}}{%
-\ifthenelse{\equal{\@defaultPageNumAlign}{rightpagenum}}{\fancyfoot[R]{\thepage}}{}}}
+\ifthenelse{\equal{\@defaultPageNumAlign}{rightpagenum}}{\fancyfoot[R]{\thepage}}{}}
 
 % Margin notes font and (on/off)
 \renewcommand{\marginfont}{\singlespacing\scriptsize}
@@ -281,8 +281,8 @@
     \renewcommand{\equationautorefname}{equation}
     \renewcommand{\footnoteautorefname}{footnote}
     \renewcommand{\itemautorefname}{item}
-    \renewcommand{\figureautorefname}{Figure}
-    \renewcommand{\tableautorefname}{Table}
+    \renewcommand{\figureautorefname}{figure}
+    \renewcommand{\tableautorefname}{table}
     \renewcommand{\partautorefname}{Part}
     \renewcommand{\appendixautorefname}{Appendix}
     \renewcommand{\chapterautorefname}{Chapter}
@@ -367,7 +367,7 @@
 
 % subsection group - "Title" (left-align, italic)
 \titleformat{\subsection}[hang]
-    {\singlespacing\normalsize\itshape\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\bfseries\filright} % format for label and title
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsection\ } % pre-title commands
@@ -379,7 +379,7 @@
 
 % subsubsection group - "Title" (left-align)
 \titleformat{\subsubsection}[hang]
-    {\singlespacing\normalsize\itshape\bfseries\filright} % format for label and title
+    {\singlespacing\normalsize\bfseries\filright} % format for label and title
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsubsection\ } % pre-title commands
@@ -395,6 +395,7 @@
 %  COMMITTEE APPROVAL PAGE (PRINT FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPage}{%
+    \clearpage
     \thispagestyle{empty}
     \begingroup\parindent\z@
         To the Graduate Council:\par
@@ -434,6 +435,7 @@
 %  COMMITTEE APPROVAL PAGE (ELECTRONIC FORM)
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeApprovalPageE}{%
+    \clearpage
     \thispagestyle{empty}
     \begingroup\parindent\z@
         To the Graduate Council:\par
@@ -483,6 +485,7 @@
 %  TITLE PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
+    \clearpage
     \thispagestyle{empty}
     \begingroup\Centering\Large
         \MakeUppercase{\textbf{\@title}}\par
@@ -527,16 +530,23 @@
 
 % Symbol from label to page number in TOC, LOT, LOF
 \renewcommand{\cftdot}{.}
-%\renewcommand{\cftdot}{\textnormal{.}}
 \renewcommand{\cftdotsep}{1}
-\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand{\cftchapdotsep}{2}
 
 % Remove additional vertical space for entries from different chapters LOT and LOF
 \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
 \addtocontents{lot}{\protect\noaddvspace}
 \addtocontents{lof}{\protect\noaddvspace}
 
-% Table 1.1 This is the caption of table........10
+% Chapter 1 Introduction ........  10
+\newlength{\@chapLabelLen}
+\setlength{\@chapLabelLen}{0pt}
+\renewcommand{\cftchappresnum}{\chaptername\ }
+\renewcommand{\cftchapaftersnum}{:}
+\settowidth{\@chapLabelLen}{\cftchappresnum\hspace{2em}\cftchapaftersnum}
+\addtolength{\cftchapnumwidth}{\@chapLabelLen}
+
+% Table 1.1 This is the caption of table ........  10
 \newlength{\@tabLabelLen}
 \setlength{\@tabLabelLen}{0pt}
 %\renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries Table\ }
@@ -545,7 +555,7 @@
 \settowidth{\@tabLabelLen}{\cfttabpresnum\cfttabaftersnum}
 \addtolength{\cfttabnumwidth}{\@tabLabelLen}
 
-% Figure 1.1 This is the caption of figure........10
+% Figure 1.1 This is the caption of figure ........  10
 \newlength{\@figLabelLen}
 \setlength{\@figLabelLen}{0pt}
 %\renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries Figure\ }
@@ -590,8 +600,8 @@
 % Alph = A,B
 % roman = i,ii
 % Roman = I,II
-\renewcommand{\thetable}{\thechapter.\arabic{table}} % requires chapters
-\renewcommand{\thefigure}{\thechapter.\arabic{figure}} % requires chapters
+\renewcommand{\thetable}{\thechapter-\arabic{table}} % requires chapters
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}} % requires chapters
 \renewcommand{\thesubtable}{\alph{subtable}}
 \renewcommand{\thesubfigure}{\alph{subfigure}}
 %\renewcommand{\thesubtable}{(\alph{subtable})} % for text references use manual parenthesis and labelformat=simple, instead of using labelformat=parens from captionsetup
@@ -623,6 +633,7 @@
 %  COPYRIGHT PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
+    \clearpage
     \begingroup\Centering
         \vspace*{\fill}
         \vspace*{-0.5in}
@@ -639,7 +650,9 @@
 %  LABEL-ONLY PAGE
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeLabelOnlyPage}[1]{%
-    \addToTOC[chapter]{#1}
+    \clearpage
+    \addToTOC{#1}
+    \thispagestyle{plain}
     \begingroup\Centering
         \vspace*{\fill}
         \vspace*{-0.5in}
@@ -660,6 +673,42 @@
         \bibliographystyle{#1} % bibliography style
         \bibliography{#2}
     \endgroup
+}
+%-----------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------%
+%  APPENDIX PAGE AND SETTINGS
+%-----------------------------------------------------------------------------------%
+\newcommand{\initializeAppendix}[2][1]{%
+    \newcounter{thelastchapter}
+    \setcounter{thelastchapter}{\thechapter} % save last chapter number
+    \appendix % environment and cross-references, changes settings so need to restore 
+    \makeLabelOnlyPage{#2}
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{#1}}
+    \makeatletter
+    \addtocontents{toc}{%
+        \begingroup
+        \let\protect\l@chapter\protect\l@section
+        \let\protect\l@section\protect\l@subsection
+        \let\protect\l@subsection\protect\l@subsubsection
+    }
+    \makeatother
+}
+
+% restore chapter settings prior to appendix environment
+\newcommand{\finalizeAppendix}{%
+    \addtocontents{toc}{%
+        \endgroup
+    }
+    \setcounter{chapter}{\value{thelastchapter}} % restore chapter numbering
+    \renewcommand{\thechapter}{\arabic{chapter}} % restore chapter numbering format
+    \renewcommand{\chaptertitlename}{Chapter} % restore chapter title name
+    \makeatletter
+    \renewcommand{\@chapapp}{\chaptertitlename} % restores chapter header title
+    \renewcommand{\Hy@chapapp}{chapter} % restores chapter cross-references
+    \renewcommand{\Hy@chapterstring}{chapter}
+    \makeatother
 }
 %-----------------------------------------------------------------------------------%
 

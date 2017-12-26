@@ -49,22 +49,25 @@
 %   onehalfspace, singlespace, doublespace
 %   lefttext, justifytext
 %   lefttitle, centertitle
-%   centerpagenum, leftpagenum, rightpagenum
+%   centerpagenum, rightpagenum
 %   noteson, notesoff
 
 %\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, lefttitle, centerpagenum, noteson]{utk-class}
-%\documentclass[dissertation, 12pt, roman, singlespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-%\documentclass[dissertation, 12pt, roman, doublespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
+\documentclass[dissertation, 12pt, roman, singlespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
+%\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
+%\documentclass[dissertation, 12pt, roman, doublespace, lefttext, centertitle, rightpagenum, noteson]{utk-class}
 %-----------------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------------%
-%  EXTRA CONFIGURATIONS
+%  PACKAGE CONFIGURATIONS
 %-----------------------------------------------------------------------------------%
+\usepackage{natbib}           % references
+%\usepackage[numbers]{natbib}  % references with numbering
+
 % Paths where figures are located and allowed file image extensions
 \graphicspath{{figures/}{figures/pdf/}{figures/eps/}}
-\DeclareGraphicsExtensions{.png, .pdf, .jpg}
+\DeclareGraphicsExtensions{.png,.pdf,.jpg}
 %\DeclareGraphicsExtensions{.eps}
 
 % Manually correct bad hyphenations
@@ -108,7 +111,7 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 %  FRONT-MATTER
 %-----------------------------------------------------------------------------------%
-\pagenumbering{roman}
+\clearpage\pagenumbering{roman}
 {\onehalfspacing \makeTitlePage}
 {\onehalfspacing \makeCopyrightPage} % optional
 \input{front-matter/dedication} % optional
@@ -119,48 +122,43 @@ Member C. Smith%
 
 
 %-----------------------------------------------------------------------------------%
-%  TABLE OF CONTENTS
+%  TABLE OF CONTENTS/TABLE/FIGURES/NOMENCLATURE
 %-----------------------------------------------------------------------------------%
 {\onehalfspacing \tableofcontents}
 {\onehalfspacing \listoftables} % if applicable
 {\onehalfspacing \listoffigures} % if applicable
 {\onehalfspacing \input{front-matter/abbreviations}} % if applicable
 {\onehalfspacing \input{front-matter/symbols}} % if applicable
-\clearpage
 %-----------------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------------%
 %  CHAPTERS
 %-----------------------------------------------------------------------------------%
-\pagenumbering{arabic}
+\clearpage\pagenumbering{arabic}
 \input{chapters/chapter-1}
 \input{chapters/chapter-2}
 \input{chapters/chapter-3}
 \input{chapters/chapter-4}
 %-----------------------------------------------------------------------------------%
 
-
-%-----------------------------------------------------------------------------------%
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------------%
 % Set the [bibliography style] and the {bibTeX file} to use
 \makeLabelOnlyPage{List of References}
-{\singlespacing \makeBibliography[apalike]{utk-refs}}  % APA bibliography style
-%{\singlespacing \makeBibliography[ieeetr]{utk-refs}}  % IEEE Transactions bibliography style
+{\singlespacing \makeBibliography[apalike]{utk-refs}} % APA bibliography style
+%{\singlespacing \makeBibliography[ieeetr]{utk-refs}} % IEEE Transactions bibliography style
 %-----------------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------------%
 %  BACK-MATTER
 %-----------------------------------------------------------------------------------%
-\makeLabelOnlyPage{Appendix} % if applicable
-%\addToTOC[section]{Appendix A}
-%\addToTOC[section]{Appendix B}
+\initializeAppendix[1]{Appendices} % if applicable
 \input{back-matter/appendix-a} % if applicable
 \input{back-matter/appendix-b} % if applicable
+\finalizeAppendix % restores environment settings, required if \makeAppendix is used
 
-\addToTOC[chapter]{Vita}
 \input{back-matter/vita}
 %-----------------------------------------------------------------------------------%
 
