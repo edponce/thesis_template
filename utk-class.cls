@@ -137,8 +137,8 @@
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
 \RequirePackage[english]{babel}   % USA hyphenation patterns
-%\RequirePackage{geometry}         % page margins/layout
-\RequirePackage[showframe]{geometry} % (debug) page margins/layout
+\RequirePackage{geometry}         % page margins/layout
+%\RequirePackage[showframe]{geometry} % (debug) page margins/layout
 \RequirePackage{fancyhdr}         % headers/footers
 \RequirePackage{setspace}         % text spacing
 \RequirePackage{ragged2e}         % text alignment
@@ -153,7 +153,7 @@
 \RequirePackage{graphicx}         % graphics
 \RequirePackage{titlesec}         % customize section displays
 \RequirePackage[titles]{tocloft}  % customize TOC, LOT, LOF
-\RequirePackage[figurename=Figure,tablename=Table]{caption} % figure and table captions
+\RequirePackage{caption}          % figure and table captions
 \RequirePackage{subcaption}       % subfigure and subtable captions
 \RequirePackage{amsmath}          % AMS math
 \RequirePackage{amsthm}           % AMS theorem
@@ -168,7 +168,7 @@
 \RequirePackage{algorithmicx}     % second algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
 \RequirePackage{booktabs}         % professional tables
-\RequirePackage[flushleft]{threeparttable} % table formatting (caption, table, tablenotes)
+\RequirePackage{threeparttable}   % table formatting (caption, table, tablenotes)
 \RequirePackage{listings}         % code listings
 \RequirePackage{tikz}             % vector drawings
 \RequirePackage{pgfplots}         % generate plots
@@ -202,9 +202,6 @@
 % Paragraph indentation
 \setlength{\parindent}{0em}
 \newcommand{\tab}[1][3em]{\hspace*{#1}}
-
-% Paragraph vertical space (do not use as it conflicts with explicit spacings)
-%\setlength{\parskip}{\the\baselineskip}
 
 % Document type
 \ifthenelse{\equal{\@defaultDoctype}{thesis}}{\newcommand{\@defaultFCDoctype}{Thesis}}{%
@@ -281,8 +278,8 @@
     \renewcommand{\equationautorefname}{equation}
     \renewcommand{\footnoteautorefname}{footnote}
     \renewcommand{\itemautorefname}{item}
-    \renewcommand{\figureautorefname}{figure}
-    \renewcommand{\tableautorefname}{table}
+    \renewcommand{\figureautorefname}{Figure}
+    \renewcommand{\tableautorefname}{Table}
     \renewcommand{\partautorefname}{Part}
     \renewcommand{\appendixautorefname}{Appendix}
     \renewcommand{\chapterautorefname}{Chapter}
@@ -350,7 +347,8 @@
     {} % post-title commands
 \titlespacing{\chapter}
     {0em} % left space
-    {-0.6in} % before space
+    %{-0.6in} % before space
+    {0in} % before space
     {0.3in} % after space
 
 % section group - "Title"
@@ -397,7 +395,8 @@
 \newcommand{\makeApprovalPage}{%
     \clearpage
     \thispagestyle{empty}
-    \begingroup\parindent\z@
+    \begingroup
+        \parindent\z@
         To the Graduate Council:\par
         \vspace*{\baselineskip}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
@@ -437,7 +436,8 @@
 \newcommand{\makeApprovalPageE}{%
     \clearpage
     \thispagestyle{empty}
-    \begingroup\parindent\z@
+    \begingroup
+        \parindent\z@
         To the Graduate Council:\par
         \vspace*{\baselineskip}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
@@ -487,7 +487,9 @@
 \newcommand{\makeTitlePage}{%
     \clearpage
     \thispagestyle{empty}
-    \begingroup\Centering\Large
+    \begingroup
+        \Centering\Large
+        \vspace*{0in}
         \MakeUppercase{\textbf{\@title}}\par
         \vspace*{\fill}
         A \@defaultFCDoctype\ Presented for the\\ \@degree\\ Degree\\ \@university\par
@@ -505,14 +507,14 @@
 % These commands are found in the 'babel' package
 \addto\captionsenglish{%
     \renewcommand{\contentsname}{\MakeUppercase{\Large\bfseries Table of Contents}}
-    \renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}}
-    \renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}}
+    \renewcommand{\listtablename}{\MakeUppercase{\Large\bfseries List of Tables}\vspace{0.5em}}
+    \renewcommand{\listfigurename}{\MakeUppercase{\Large\bfseries List of Figures}\vspace{0.5em}}
 }
 
-% Add 'Page' above page numbers
-%\addtocontents{toc}{\hfill\textbf{Page}\par}
-%\addtocontents{lof}{\hfill\textbf{Page}\par}
-%\addtocontents{lot}{\hfill\textbf{Page}\par}
+% Remove additional vertical space for entries from different chapters LOT and LOF
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{lot}{\protect\noaddvspace}
+\addtocontents{lof}{\protect\noaddvspace}
 
 % Depth of entries
 \setcounter{tocdepth}{2}
@@ -532,34 +534,30 @@
 \renewcommand{\cftdotsep}{1}
 \renewcommand{\cftchapdotsep}{2}
 
-% Remove additional vertical space for entries from different chapters LOT and LOF
-\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
-\addtocontents{lot}{\protect\noaddvspace}
-\addtocontents{lof}{\protect\noaddvspace}
-
-% Chapter 1 Introduction ........  10
+% Chapter 1: Introduction ........ 1
 \newlength{\@chapLabelLen}
 \setlength{\@chapLabelLen}{0pt}
-\renewcommand{\cftchappresnum}{\chaptername\ }
+\renewcommand{\cftchapleader}{\hfill} % remove separator symbol for chapters
+\renewcommand{\cftchappresnum}{\scshape\bfseries\chaptername\ } % Chapter 1: Introduction
 \renewcommand{\cftchapaftersnum}{:}
-\settowidth{\@chapLabelLen}{\cftchappresnum\hspace{2em}\cftchapaftersnum}
+%\renewcommand{\cftchappresnum}{} % 1 Introduction
+%\renewcommand{\cftchapaftersnum}{}
+\settowidth{\@chapLabelLen}{\cftchappresnum\cftchapaftersnum}
 \addtolength{\cftchapnumwidth}{\@chapLabelLen}
 
-% Table 1.1 This is the caption of table ........  10
+% Table 1-1. This is the caption of table ........  1
 \newlength{\@tabLabelLen}
 \setlength{\@tabLabelLen}{0pt}
-%\renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries Table\ }
 \renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries\tablename\ }
-\renewcommand{\cfttabaftersnum}{}
+\renewcommand{\cfttabaftersnum}{.}
 \settowidth{\@tabLabelLen}{\cfttabpresnum\cfttabaftersnum}
 \addtolength{\cfttabnumwidth}{\@tabLabelLen}
 
-% Figure 1.1 This is the caption of figure ........  10
+% Figure 1-1. This is the caption of figure ........  1
 \newlength{\@figLabelLen}
 \setlength{\@figLabelLen}{0pt}
-%\renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries Figure\ }
 \renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries\figurename\ }
-\renewcommand{\cftfigaftersnum}{}
+\renewcommand{\cftfigaftersnum}{.}
 \settowidth{\@figLabelLen}{\cftfigpresnum\cftfigaftersnum}
 \addtolength{\cftfignumwidth}{\@figLabelLen}
 
@@ -572,15 +570,15 @@
 % singlelinecheck = {on,off} if 'on', then single line caption will always be centered
 \captionsetup[table]{%
 %    tablewithin=none, % allow continuous numbering across chapters
-    labelformat=simple,labelsep=colon,
+    labelformat=simple,labelsep=period,
     labelfont=bf,textfont=normal,
     singlelinecheck=off,justification=Centering
 }
 \captionsetup[figure]{%
 %    figurewithin=none, % allow continuous numbering across chapters
-    labelformat=simple,labelsep=colon,
+    labelformat=simple,labelsep=period,
     labelfont=bf,textfont=normal,
-    singlelinecheck=off,justification=RaggedRight
+    singlelinecheck=off,justification=Centering
 }
 \captionsetup[subtable]{%
     labelformat=parens,labelsep=none,
@@ -634,7 +632,8 @@
 %-----------------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
     \clearpage
-    \begingroup\Centering
+    \begingroup
+        \Centering
         \vspace*{\fill}
         \vspace*{-0.5in}
         Copyright \copyright\ \@graduationYear\ by \@author\\
@@ -653,7 +652,8 @@
     \clearpage
     \addToTOC{#1}
     \thispagestyle{plain}
-    \begingroup\Centering
+    \begingroup
+        \Centering
         \vspace*{\fill}
         \vspace*{-0.5in}
         \MakeUppercase{\Large\bfseries #1}\par
@@ -667,12 +667,9 @@
 %-----------------------------------------------------------------------------------%
 %  BIBLIOGRAPHY PAGE
 %-----------------------------------------------------------------------------------%
-\newcommand{\makeBibliography}[2][apalike]{%
-    \renewcommand{\bibname}{\vspace*{-0.6in}} % remove bibliography title and shift text up
-    \begingroup
-        \bibliographystyle{#1} % bibliography style
-        \bibliography{#2}
-    \endgroup
+\newcommand{\makeBibliography}[1]{%
+    \makeLabelOnlyPage{#1}
+    \renewcommand{\bibname}{\vspace*{-4\baselineskip}} % remove bibliography title and shift text up
 }
 %-----------------------------------------------------------------------------------%
 
@@ -681,19 +678,21 @@
 %  APPENDIX PAGE AND SETTINGS
 %-----------------------------------------------------------------------------------%
 \newcommand{\initializeAppendix}[2][1]{%
-    \newcounter{thelastchapter}
-    \setcounter{thelastchapter}{\thechapter} % save last chapter number
-    \appendix % environment and cross-references, changes settings so need to restore 
+    \newcounter{theprevchapter}
+    \setcounter{theprevchapter}{\thechapter} % save previous chapter number
+    \edef\prevchaptertitlename{\chaptertitlename} % save chapter title name
+    \edef\prevchapapp{\@chapapp} % save chapter header name
+    \edef\prevHychapapp{\Hy@chapapp} % save chapter cross-reference name
+    \edef\prevHychapterstring{\Hy@chapterstring} % save chapter name
+    \appendix % environment and cross-references, changes settings so need to restore
     \makeLabelOnlyPage{#2}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{#1}}
-    \makeatletter
     \addtocontents{toc}{%
         \begingroup
         \let\protect\l@chapter\protect\l@section
         \let\protect\l@section\protect\l@subsection
         \let\protect\l@subsection\protect\l@subsubsection
     }
-    \makeatother
 }
 
 % restore chapter settings prior to appendix environment
@@ -701,14 +700,12 @@
     \addtocontents{toc}{%
         \endgroup
     }
-    \setcounter{chapter}{\value{thelastchapter}} % restore chapter numbering
+    \setcounter{chapter}{\value{theprevchapter}} % restore chapter numbering
     \renewcommand{\thechapter}{\arabic{chapter}} % restore chapter numbering format
-    \renewcommand{\chaptertitlename}{Chapter} % restore chapter title name
-    \makeatletter
-    \renewcommand{\@chapapp}{\chaptertitlename} % restores chapter header title
-    \renewcommand{\Hy@chapapp}{chapter} % restores chapter cross-references
-    \renewcommand{\Hy@chapterstring}{chapter}
-    \makeatother
+    \edef\chaptertitlename{\prevchaptertitlename} % restore chapter title name
+    \edef\@chapapp{\prevchapapp} % restore chapter header name
+    \edef\Hy@chapapp{\prevHychapapp} % restore chapter cross-reference name
+    \edef\Hy@chapterstring{\prevHychapterstring} % restore chapter name
 }
 %-----------------------------------------------------------------------------------%
 

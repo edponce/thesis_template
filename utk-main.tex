@@ -62,15 +62,29 @@
 %-----------------------------------------------------------------------------------%
 %  PACKAGE CONFIGURATIONS
 %-----------------------------------------------------------------------------------%
-\usepackage{natbib}           % references
-%\usepackage[numbers]{natbib}  % references with numbering
+% Fonts - choose at most one
+%\usepackage{helvet} % Helvetica (sans)
+%\usepackage{avant} % Avant-Garde (sans)
+\usepackage{times} % Times (sans/roman)
+%\usepackage{lmodern} % Latin Modern (sans/roman)
+%\usepackage{tgtermes} % TeX Gyre Termes (roman)
+%\usepackage{tgschola} % TeX Gyre Schola (roman)
+%\usepackage{palatino} % Palatino (sans/roman)
+%\usepackage{courier} % Courier (sans/roman)
+%\usepackage{utopia} % Utopia (sans/roman)
+%\usepackage{bookman} % Bookman (sans/roman)
+%\usepackage{charter} % Charter (roman)
+
+% Bibliography package
+%\usepackage{natbib}           % references
+\usepackage[numbers]{natbib}  % references with numbering
 
 % Paths where figures are located and allowed file image extensions
 \graphicspath{{figures/}{figures/pdf/}{figures/eps/}}
 \DeclareGraphicsExtensions{.png,.pdf,.jpg}
 %\DeclareGraphicsExtensions{.eps}
 
-% Manually correct bad hyphenations
+% Manually correct bad/special hyphenations
 %\hyphenation{op-tical net-works semi-conduc-tor}
 %-----------------------------------------------------------------------------------%
 
@@ -113,7 +127,7 @@ Member C. Smith%
 %-----------------------------------------------------------------------------------%
 \clearpage\pagenumbering{roman}
 {\onehalfspacing \makeTitlePage}
-{\onehalfspacing \makeCopyrightPage} % optional
+{\singlespacing \makeCopyrightPage} % optional
 \input{front-matter/dedication} % optional
 \input{front-matter/acknowledgments} % optional
 \input{front-matter/abstract}
@@ -144,10 +158,10 @@ Member C. Smith%
 
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------------%
-% Set the [bibliography style] and the {bibTeX file} to use
-\makeLabelOnlyPage{List of References}
-{\singlespacing \makeBibliography[apalike]{utk-refs}} % APA bibliography style
-%{\singlespacing \makeBibliography[ieeetr]{utk-refs}} % IEEE Transactions bibliography style
+\makeBibliography{List of References}
+%\bibliographystyle{apalike} % APA
+\bibliographystyle{ieeetr} % IEEE Transactions
+{\onehalfspacing \bibliography{utk-refs}}
 %-----------------------------------------------------------------------------------%
 
 
@@ -157,7 +171,7 @@ Member C. Smith%
 \initializeAppendix[1]{Appendices} % if applicable
 \input{back-matter/appendix-a} % if applicable
 \input{back-matter/appendix-b} % if applicable
-\finalizeAppendix % restores environment settings, required if \makeAppendix is used
+\finalizeAppendix % restores environment settings, required if \initializeAppendix is used
 
 \input{back-matter/vita}
 %-----------------------------------------------------------------------------------%
