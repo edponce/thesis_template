@@ -341,7 +341,7 @@
 %  CHAPTER AND SECTION CONFIGURATIONS
 %-----------------------------------------------------------------------------------%
 % chapter group - "Chapter #
-%                   Title" (centered)
+%                   Title"
 \titleformat{\chapter}[display]
     {\singlespacing\Large\bfseries\@defaultTitleAlign} % format for label and title
     {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
@@ -353,7 +353,7 @@
     {-0.6in} % before space
     {0.3in} % after space
 
-% section group - "Title" (centered)
+% section group - "Title"
 \titleformat{\section}[hang]
     {\singlespacing\large\bfseries\filright} % format for label and title
     {} % label
@@ -365,7 +365,7 @@
     {0.1in} % before space
     {0in} % after space
 
-% subsection group - "Title" (left-align, italic)
+% subsection group - "Title"
 \titleformat{\subsection}[hang]
     {\singlespacing\normalsize\bfseries\filright} % format for label and title
     {} % label
@@ -377,7 +377,7 @@
     {0.1in} % before space
     {0in} % after space
 
-% subsubsection group - "Title" (left-align)
+% subsubsection group - "Title"
 \titleformat{\subsubsection}[hang]
     {\singlespacing\normalsize\bfseries\filright} % format for label and title
     {} % label
@@ -494,7 +494,6 @@
         \vspace*{\fill}
         \@author\\ \@graduationMonth\ \@graduationYear\par
     \endgroup
-    \clearpage
 }
 %-----------------------------------------------------------------------------------%
 
@@ -619,6 +618,7 @@
     \addtocounter{#1}{0}
     \addcontentsline{toc}{#1}{#2}
 }
+
 % chapter or ((sub)sub)section with number
 \newcommand{\addToTOCn}[2][chapter]{%
     \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
