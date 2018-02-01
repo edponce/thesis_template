@@ -1,45 +1,6 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                                	%
-%  UT.UT.UT.UT.UT            UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT""	%
-%  UT.UT.UT.UT.UT          ""UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT  	%
-%  UT.UT.UT.UT.UT      ""UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT.;;    	%
-%  UT.UT.UT.UT.UT      UT.UT.UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT;;      	%
-%  UT.UT.UT.UT.UT    "UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT        	%
-%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.""          	%
-%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.            	%
-%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.              	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.U    UT.UT.UT.UT.                      	%
-%    UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.      UT.UT.UT.UT.                      	%
-%      UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT        UT.UT.UT.UT.                      	%
-%        UT.UT.UT.UT.UT.UT.UT.UT.UT.U          UT.UT.UT.UT.                      	%
-%            UT.UT.UT.UT.UT.UT.UT.U            UT.UT.UT.UT.                      	%
-%-----------------------------------------------------------------------------------%
-%-----------------------------------------------------------------------------------%
-%	      T H E S I S	  &   	D I S S E R T A T I O N    T E M P L A T E			%
-%-----------------------------------------------------------------------------------%
-%-----------------------------------------------------------------------------------%
-% This template is distributed with ABSOLUTELY NO WARRANTY.
-% It serves as a guideline and constitutes a basic structure for a
-% thesis/dissertation. The user assumes full responsibility for formatting
-% and typesetting their document and for verifying that all the thesis
-% requirements set by the University of Tennessee are met. Please refer to the most
-% recent UT thesis guide (http://web.utk.edu/~thesis/thesisresources.shtml)
-% or contact the thesis consultant (http://web.utk.edu/~thesis/).
-% Please report any bugs to the thesis consultant.
-
-
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  DOCUMENT CLASS OPTIONS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % The following is a list of the available document class options.
 % The first option listed is the default, for more details see
 % the "DEFAULT DOCUMENT CLASS OPTIONS" section in utk-class.cls
@@ -52,16 +13,14 @@
 %   centerpagenum, rightpagenum
 %   noteson, notesoff
 
-%\documentclass[thesis, 12pt, roman, onehalfspace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-%\documentclass[dissertation, 12pt, roman, singlespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-\documentclass[dissertation, 12pt, roman, onehalfspace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-%\documentclass[dissertation, 12pt, roman, doublespace, lefttext, centertitle, centerpagenum, noteson]{utk-class}
-%-----------------------------------------------------------------------------------%
+%\documentclass[thesis]{utk-class}
+\documentclass{utk-class}
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  PACKAGE CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % Fonts - choose at most one
 %\usepackage{helvet} % Helvetica (sans)
 %\usepackage{avant} % Avant-Garde (sans)
@@ -86,12 +45,12 @@
 
 % Manually correct bad/special hyphenations
 %\hyphenation{op-tical net-works semi-conduc-tor}
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  GENERAL INFORMATION
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \title{Analysis on some data using some technique}
 \author{Student A. Name} % name as registered in official student records
 %\degree{Master of Science}
@@ -108,23 +67,23 @@ Member A. Davis,%
 Member B. Miller,%
 Member C. Smith%
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
 \begin{document}
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  COMMITTEE APPROVAL FORMS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 {\singlespacing \makeApprovalPage} % optional, print form
 {\singlespacing \makeApprovalPageE} % optional, electronic form
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  FRONT-MATTER
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \clearpage\pagenumbering{roman}
 {\onehalfspacing \makeTitlePage}
 {\singlespacing \makeCopyrightPage} % optional
@@ -132,49 +91,49 @@ Member C. Smith%
 \input{front-matter/acknowledgments} % optional
 \input{front-matter/abstract}
 \input{front-matter/preface} % optional
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  TABLE OF CONTENTS/TABLE/FIGURES/NOMENCLATURE
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 {\onehalfspacing \tableofcontents}
 {\onehalfspacing \listoftables} % if applicable
 {\onehalfspacing \listoffigures} % if applicable
 {\onehalfspacing \input{front-matter/abbreviations}} % if applicable
 {\onehalfspacing \input{front-matter/symbols}} % if applicable
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  CHAPTERS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \clearpage\pagenumbering{arabic}
 \input{chapters/chapter-1}
 \input{chapters/chapter-2}
 \input{chapters/chapter-3}
 \input{chapters/chapter-4}
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 %  BIBLIOGRAPHY
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \makeBibliography{List of References}
 %\bibliographystyle{apalike} % APA
 \bibliographystyle{ieeetr} % IEEE Transactions
 {\onehalfspacing \bibliography{utk-refs}}
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  BACK-MATTER
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \initializeAppendix[1]{Appendices} % if applicable
 \input{back-matter/appendix-a} % if applicable
 \input{back-matter/appendix-b} % if applicable
-\finalizeAppendix % restores environment settings, required if \initializeAppendix is used
+\finalizeAppendix % restores pre-appendix environment, use with \initializeAppendix
 
 \input{back-matter/vita}
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
 \end{document}

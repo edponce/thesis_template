@@ -1,39 +1,39 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                                	%
-%  UT.UT.UT.UT.UT            UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT""	%
-%  UT.UT.UT.UT.UT          ""UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT  	%
-%  UT.UT.UT.UT.UT      ""UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT.;;    	%
-%  UT.UT.UT.UT.UT      UT.UT.UT.UT.UT.UT.UT.U  UT.UT.UT.UT.UT.UT.UT.UT.UT;;      	%
-%  UT.UT.UT.UT.UT    "UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT        	%
-%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.""          	%
-%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.            	%
-%  UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.              	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT                UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT|  UT.UT.UT.UT.                      	%
-%  UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.U    UT.UT.UT.UT.                      	%
-%    UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.      UT.UT.UT.UT.                      	%
-%      UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT        UT.UT.UT.UT.                      	%
-%        UT.UT.UT.UT.UT.UT.UT.UT.UT.U          UT.UT.UT.UT.                      	%
-%            UT.UT.UT.UT.UT.UT.UT.U            UT.UT.UT.UT.                      	%
-%-----------------------------------------------------------------------------------%
-%-----------------------------------------------------------------------------------%
-%	      T H E S I S	  &   	D I S S E R T A T I O N    T E M P L A T E			%
-%-----------------------------------------------------------------------------------%
-%-----------------------------------------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                             %
+%     UT.UT.UT.UT          UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.UT      %
+%     UT.UT.UT.UT          UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT.U       %
+%     UT.UT.UT.UT        T.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.UT         %
+%     UT.UT.UT.UT       UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT.T          %
+%     UT.UT.UT.UT     T.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.UT            %
+%     UT.UT.UT.UT    UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT.U             %
+%     UT.UT.UT.UT  T.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT               %
+%     UT.UT.UT.UT UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT.UT.UT               %
+%     UT.UT.UT.UT                UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT                UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT                UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT                UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT                UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT                UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT                UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT                     %
+%     UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT  UT.UT.UT.UT                     %
+%      UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT    UT.UT.UT.UT                     %
+%       UT.UT.UT.UT.UT.UT.UT.UT.UT.UT.UT      UT.UT.UT.UT                     %
+%        UT.UT.UT.UT.UT.UT.UT.UT.UT.UT        UT.UT.UT.UT                     %
+%         UT.UT.UT.UT.UT.UT.UT.UT.UT          UT.UT.UT.UT                     %
+%                                                                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-----------------------------------------------------------------------------%
+%  THESIS & DISSERTATION TEMPLATE
+%-----------------------------------------------------------------------------%
 % This template is distributed with ABSOLUTELY NO WARRANTY.
-% It serves as a guideline and constitutes a basic structure for a
-% thesis/dissertation. The user assumes full responsibility for formatting
-% and typesetting their document and for verifying that all the thesis
-% requirements set by the University of Tennessee are met. Please refer to the most
-% recent UT thesis guide (http://web.utk.edu/~thesis/thesisresources.shtml)
-% or contact the thesis consultant (http://web.utk.edu/~thesis/).
+% It serves as a guideline and constitutes a basic structure for a thesis or
+% dissertation. The user assumes full responsibility for formatting and
+% typesetting their document and for verifying that all the thesis requirements
+% set by the University of Tennessee are met. Please refer to the most recent
+% UT thesis guide (https://gradschool.utk.edu/thesesdissertations/formatting).
+% or contact the thesis consultant (https://gradschool.utk.edu/thesesdissertations).
 % Please report any bugs to the thesis consultant.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{utk-class}
@@ -46,13 +46,14 @@
 \typeout{\filename}
 \typeout{\fileversion}
 \typeout{\filedate}
-\typeout{This LaTeX class is based on the template provided by David L. Page and updated by \contributors.}
-%-----------------------------------------------------------------------------------%
+\typeout{This LaTeX class is based on the template provided by David L. Page
+and updated by \contributors.}
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  DEFAULT DOCUMENT CLASS OPTIONS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % Document type
 % Values: [thesis, dissertation]
 \providecommand{\@defaultDoctype}{dissertation}
@@ -85,12 +86,12 @@
 % Margin notes (on/off)
 % Values: [noteson, notesoff]
 \providecommand{\@defaultNotes}{noteson}
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  DOCUMENT CLASS CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \DeclareOption{thesis}{\renewcommand{\@defaultDoctype}{thesis}}
 \DeclareOption{dissertation}{\renewcommand{\@defaultDoctype}{dissertation}}
 
@@ -128,12 +129,12 @@
 
 % Load base class
 \LoadClass[letterpaper,\@defaultFontSize]{report}
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  PACKAGES
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
 \RequirePackage[english]{babel}   % USA hyphenation patterns
@@ -172,12 +173,12 @@
 \RequirePackage{listings}         % code listings
 \RequirePackage{tikz}             % vector drawings
 \RequirePackage{pgfplots}         % generate plots
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  GLOBAL AND PACKAGES CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % Page margins/layout
 % MS Word template:
 % (top=1.0in,bottom=1.3in,left=1.25in,right=1.25in,header=0.5in,footer=1.0in)
@@ -292,12 +293,12 @@
     \renewcommand{\theoremautorefname}{Theorem}
     \renewcommand{\pageautorefname}{page}
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  INTERNAL MACROS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % User-related macros
 \providecommand{\@graduationYear}{}
 \providecommand{\@graduationMonth}{}
@@ -318,12 +319,12 @@
 \newcommand{\department}[1]{\renewcommand{\@department}{#1}}
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
 \newcommand{\committeeMembers}[1]{\renewcommand{\@committeeMembers}{#1}}
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  LEMMA, COROLLARY, THEOREM, AND DEFINITION CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \theoremstyle{plain}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -331,12 +332,12 @@
 \newtheorem{lemma}{Lemma}[theorem]
 \newtheorem{proposition}{Proposition}[theorem]
 \newtheorem{definition}{Definition}[theorem]
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  CHAPTER AND SECTION CONFIGURATIONS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % chapter group - "Chapter #
 %                   Title"
 \titleformat{\chapter}[display]
@@ -386,12 +387,12 @@
     {0em} % left space
     {0.1in} % before space
     {0in} % after space
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  COMMITTEE APPROVAL PAGE (PRINT FORM)
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \newcommand{\makeApprovalPage}{%
     \clearpage
     \thispagestyle{empty}
@@ -427,12 +428,12 @@
     \endgroup
     \clearpage
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  COMMITTEE APPROVAL PAGE (ELECTRONIC FORM)
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \newcommand{\makeApprovalPageE}{%
     \clearpage
     \thispagestyle{empty}
@@ -478,12 +479,12 @@
     \endgroup
     \clearpage
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  TITLE PAGE
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
     \clearpage
     \thispagestyle{empty}
@@ -497,12 +498,12 @@
         \@author\\ \@graduationMonth\ \@graduationYear\par
     \endgroup
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  TABLE OF CONTENTS, LIST OF TABLES, LIST OF FIGURES
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % Change labels to capital letters
 % These commands are found in the 'babel' package
 \addto\captionsenglish{%
@@ -603,12 +604,12 @@
 \renewcommand{\thesubfigure}{\alph{subfigure}}
 %\renewcommand{\thesubtable}{(\alph{subtable})} % for text references use manual parenthesis and labelformat=simple, instead of using labelformat=parens from captionsetup
 %\renewcommand{\thesubfigure}{(\alph{subfigure})} % for text references use manual parenthesis and labelformat=simple, instead of using labelformat=parens from captionsetup
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  MACROS TO SUPPORT ADDING MANUAL ENTRIES TO TABLE OF CONTENTS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % chapter or ((sub)sub)section without number
 \newcommand{\addToTOC}[2][chapter]{%
     \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
@@ -624,12 +625,12 @@
     \addtocounter{#1}{1}
     \addcontentsline{toc}{#1}{\protect\numberline\expandafter\csname the#1\endcsname #2}
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  COPYRIGHT PAGE
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \newcommand{\makeCopyrightPage}{%
     \clearpage
     \begingroup
@@ -642,12 +643,12 @@
     \endgroup
     \clearpage
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  LABEL-ONLY PAGE
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \newcommand{\makeLabelOnlyPage}[1]{%
     \clearpage
     \addToTOC{#1}
@@ -661,22 +662,22 @@
     \endgroup
     \clearpage
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  BIBLIOGRAPHY PAGE
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \newcommand{\makeBibliography}[1]{%
     \makeLabelOnlyPage{#1}
     \renewcommand{\bibname}{\vspace*{-4\baselineskip}} % remove bibliography title and shift text up
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 %  APPENDIX PAGE AND SETTINGS
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \newcommand{\initializeAppendix}[2][1]{%
     \newcounter{theprevchapter}
     \setcounter{theprevchapter}{\thechapter} % save previous chapter number
@@ -707,7 +708,7 @@
     \edef\Hy@chapapp{\prevHychapapp} % restore chapter cross-reference name
     \edef\Hy@chapterstring{\prevHychapterstring} % restore chapter name
 }
-%-----------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 
 \endinput % end UTK class
