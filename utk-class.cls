@@ -194,8 +194,8 @@ and updated by \contributors.}
 \renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection\ \ #1}}}
 \fancyhead{}
 \fancyfoot{} % overriden by class option
-\renewcommand{\headrulewidth}{0in} % remove default rule in headers
-\renewcommand{\footrulewidth}{0in} % remove default rule in headers
+\renewcommand{\headrulewidth}{0in} % remove default rule in header
+\renewcommand{\footrulewidth}{0in} % remove default rule in footer 
 
 % Footnotes numbering style
 \renewcommand{\thefootnote}{\arabic{footnote}}
