@@ -39,7 +39,7 @@
 \ProvidesClass{utk-class}
 \def\filename{utk-class.cls}
 \def\fileversion{version 3.0}
-\def\filedate{December 15, 2017}
+\def\filedate{August 14, 2018}
 \def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
 
 \typeout{UTK Thesis and Dissertation Template}
