@@ -235,7 +235,7 @@ and updated by \contributors.}
 \renewcommand{\raggedleftmarginnote}{}
 \renewcommand{\raggedrightmarginnote}{\RaggedRight}
 \ifthenelse{\equal{\@defaultNotes}{noteson}}{\newcommand{\note}[2][yellow]{\sethlcolor{#1}\hl{#2}}\newcommand{\mnote}[2][-\baselineskip]{\marginnote{#2}[#1]}}{%
-\ifthenelse{\equal{\@defaultNotes}{notesoff}}{\newcommand{\note}[2][yellow]{}\newcommand{\mnote}[2][0em]{}}}
+\ifthenelse{\equal{\@defaultNotes}{notesoff}}{\newcommand{\note}[2][yellow]{\unskip}\newcommand{\mnote}[2][0em]{\unskip}}}
 
 % Override LaTeX hyphenation
 \tolerance=1000

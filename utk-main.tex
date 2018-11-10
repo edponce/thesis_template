@@ -14,7 +14,7 @@
 %   noteson, notesoff
 
 %\documentclass[thesis]{utk-class}
-\documentclass{utk-class}
+\documentclass[dissertation]{utk-class}
 %-----------------------------------------------------------------------------%
 
 
@@ -62,10 +62,10 @@
 \graduationMonth{December}
 \majorProfessor{Jane P. Doe}
 \dean{Dixie L. Thompson}
-\committeeMembers{%
-Member A. Davis,%
-Member B. Miller,%
-Member C. Smith%
+\committeeMembers{
+Member A. Davis,
+Member B. Miller,
+Member C. Smith
 }
 %-----------------------------------------------------------------------------%
 
@@ -115,6 +115,8 @@ Member C. Smith%
 \input{chapters/chapter-4}
 %-----------------------------------------------------------------------------%
 
+
+%-----------------------------------------------------------------------------%
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------%
 \makeBibliography{List of References}
@@ -130,7 +132,7 @@ Member C. Smith%
 \initializeAppendix[1]{Appendices} % if applicable
 \input{back-matter/appendix-a} % if applicable
 \input{back-matter/appendix-b} % if applicable
-\finalizeAppendix % restores pre-appendix environment, use with \initializeAppendix
+\finalizeAppendix % restores pre-appendix environment, used with \initializeAppendix
 
 \input{back-matter/vita}
 %-----------------------------------------------------------------------------%
