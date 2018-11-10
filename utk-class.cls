@@ -32,14 +32,14 @@
 % dissertation. The user assumes full responsibility for formatting and
 % typesetting their document and for verifying that all the thesis requirements
 % set by the University of Tennessee are met. Please refer to the most recent
-% UT thesis guide (https://gradschool.utk.edu/thesesdissertations/formatting).
+% UTK thesis guide (https://gradschool.utk.edu/thesesdissertations/formatting)
 % or contact the thesis consultant (https://gradschool.utk.edu/thesesdissertations).
 % Please report any bugs to the thesis consultant.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{utk-class}
 \def\filename{utk-class.cls}
 \def\fileversion{version 3.0}
-\def\filedate{August 14, 2018}
+\def\filedate{November 10, 2018}
 \def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
 
 \typeout{UTK Thesis and Dissertation Template}
@@ -195,7 +195,7 @@ and updated by \contributors.}
 \fancyhead{}
 \fancyfoot{} % overriden by class option
 \renewcommand{\headrulewidth}{0in} % remove default rule in header
-\renewcommand{\footrulewidth}{0in} % remove default rule in footer 
+\renewcommand{\footrulewidth}{0in} % remove default rule in footer
 
 % Footnotes numbering style
 \renewcommand{\thefootnote}{\arabic{footnote}}
@@ -712,4 +712,3 @@ and updated by \contributors.}
 
 
 \endinput % end UTK class
-

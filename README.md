@@ -1,13 +1,26 @@
 # Thesis/dissertation template in LaTeX for UTK
 
+This template is distributed with ABSOLUTELY NO WARRANTY. It serves as a
+guideline and constitutes a basic structure for a thesis or dissertation. The
+user assumes full responsibility for formatting and typesetting their document
+and for verifying that all the thesis requirements set by the University of
+Tennessee are met. Please refer to the most recent UTK thesis guide
+https://gradschool.utk.edu/thesesdissertations/formatting
+or contact the thesis consultant
+https://gradschool.utk.edu/thesesdissertations.
+
+
 ## Project files and directories descriptions
 
-1. **utk-class.cls** - contains the formatting based on UTK guidelines.
-   For general use, you should not need to change this file.
-1. **utk-main.tex** - main file that gets compiled. It invokes all the
-   other files (chapters, appendix, bibliography) in the correct order.
+1. **utk-class.cls** - contains TeX macros and provides functionalities for
+   adhering to UTK guidelines. You should not need to modify this file.
+1. **utk-main.tex** - main compilation file. Users need to modify parts of this
+   file to customize the final manuscript. It contains document options,
+   general information, and invokes all TeX files for the manuscript. This file
+   contains important comments that users should read while customizing it.
 1. **utk-refs.bib** - sample TeX bibliography file.
-1. **utk-main.pdf** - sample PDF generated with the default configurations.
+1. **sample-dissertation.pdf** - sample PDF generated with the default
+   configurations.
 1. **utk-guide-to-thesisdissertation.pdf** - official UTK guide to
    theses/dissertations at the time of this writing 11/2018.
 1. **utk-forms/** - directory containing UTK Master and PhD graduate school
@@ -16,10 +29,13 @@
    thesis/dissertation.
 1. **figures/**, **front-matter/**, **chapters/**, **back-matter/** -
    directories that should be self-explanatory once you take a quick look
-   at them and the sample PDF (utk-main.pdf)
+   at them and the sample PDF (sample-dissertation.pdf). It is recommended to
+   use the provided *.tex* files as templates because they contain common
+   commands such as `\tab`, `\autoref`, `\cite`, `\url`, etc. and contain
+   examples of tables and figures.
 
 
-## PhD dissertation-specific instructions
+## PhD dissertation instructions
 
 In **utk-main.tex** make the following changes:
 1. Add `dissertation` to the document class options,
@@ -28,7 +44,7 @@ In **utk-main.tex** make the following changes:
    `\degree{Doctor of Philosophy}`.
 
 
-## Master thesis-specific instructions
+## Master thesis instructions
 
 In **utk-main.tex** make the following changes:
 1. Add `thesis` to the document class options,
@@ -48,22 +64,22 @@ In **utk-main.tex** make the following changes:
    sections will be tagged as either `optional` or `if applicable`.
    The following is a listing of each section and corresponding items:
     1. **Front-matter section**
-        - `\makeTitlePage` - mandatory, creates title page
-        - `\makeCopyrightPage` - optional, creates copyright page
-        - `dedication` - optional, include dedication page
-        - `acknowledgments` - optional, include acknowledgments page
-        - `abstract` - mandatory, include abstract page
-        - `preface` - optional, include preface page
+        - `\makeTitlePage` - mandatory, creates title page.
+        - `\makeCopyrightPage` - optional, creates copyright page.
+        - `dedication` - optional, includes dedication page.
+        - `acknowledgments` - optional, includes acknowledgments page.
+        - `abstract` - mandatory, includes abstract page.
+        - `preface` - optional, includes preface page.
     1. **Tables section**
         - `\tableofcontents` - mandatory, creates a table of contents for
-          manuscript sections
+          manuscript sections.
         - `\listoftables` - if applicable, creates a table of contents for
           tables.
         - `\listoffigures` - if applicable, creates a table of contents for
           figures.
-        - `abbreviations` - if applicable, include if manuscript requires a
+        - `abbreviations` - if applicable, includes if manuscript requires a
           list describing abbreviations. Use example provided as template.
-        - `symbols` - if applicable, include if manuscript requires a
+        - `symbols` - if applicable, includes if manuscript requires a
           list describing symbols/nomenclature. Use example provided as
           template.
     1. **Chapters section**
@@ -74,7 +90,7 @@ In **utk-main.tex** make the following changes:
           **chapters/** named **chapter-#.tex** and add the corresponding
           `\input` commands to include those files.
     1. **Bibliography` section**
-        - `\makeBibliography` - mandatory, create bibliography page
+        - `\makeBibliography` - mandatory, create bibliography page.
         - `\bibliographystyle{...}` - sets the bibliography style. For example,
           *APA* and *IEEE Transactions*.
         - `\bibliography{utk-refs}` - mandatory, uses the references found in
@@ -84,17 +100,17 @@ In **utk-main.tex** make the following changes:
           appendix page and controls appendix formatting environment.
         - `appendix-x` - if applicable, files with appendix content located in
           **back-matter/** and named as **appendix-x.tex**.
-        - `vita` - mandatory, includes the vita page
+        - `\addToTOC{vita}` - mandatory, adds the vita section to the table of
+          contents.
+        - `vita` - mandatory, includes the vita page.
 
 
-## Usage
-
-### Document class options
+## Document class options
 
 This template allows a user to control several aspects of the manuscript via
 document class options in **utk-main.tex**. Document class options are
 placed between square brackets as a comma-separated list in the
-`documentclass` command.
+`\documentclass` command.
 For example, `\documentclass[option1, option2, ...]{utk-class}`
 
 The following is a list of the available document class options. **Use a
@@ -110,7 +126,7 @@ default option will be used.**
 1. `roman`, `sans`, `typewriter` - (Default is `roman`) controls the font
    family used for the entire manuscript.
    For specific font control, you need to enable/uncomment the
-   respective TeX package in the *Package Configurations* section in
+   respective TeX package in the **Package Configurations** section in
    **utk-main.tex**. These are common font packages supported:
     1. `\usepackage{times}` - (Default) Times
     1. `\usepackage{helvet}` - Helvetica
@@ -129,7 +145,26 @@ default option will be used.**
    generated by `\note` and `\mnote` commands.
 
 
-### Using notes to annotate manuscript
+## Advanced options
+
+The file **utk-class.cls** controls several formatting functionalities which
+can be modified (use caution and make sure you know general TeX concepts).
+This section describes how to enable/use some of these functionalities.
+
+### Manage packages
+
+The **Packages** section contains a list of all packages included by default.
+Here a user can change an option of an existing package or add a new package.
+New packages can also be added in **utk-main.tex**.
+
+### Show header at top of page with the section and chapter information
+
+In **Global and Packages Configurations** section, comment the command
+`fancyhead{}`. This will show a header line at the top of pages that are
+consider as intermediate pages for a particular chapter or major section.
+
+
+## Using notes to annotate manuscript
 
 When writing long/complex manuscripts it is convenient to be able to include
 temporary annotations. These annotations can be embedded in-text or placed
