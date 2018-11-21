@@ -11,10 +11,10 @@
 %   lefttext, justifytext
 %   lefttitle, centertitle
 %   centerpagenum, rightpagenum
-%   noteson, notesoff
+%   notes, (no option)
 
-%\documentclass[thesis]{utk-class}
-\documentclass[dissertation]{utk-class}
+%\documentclass[notes, thesis]{utk-class}
+\documentclass[notes, dissertation]{utk-class}
 %-----------------------------------------------------------------------------%
 
 
@@ -35,12 +35,12 @@
 %\usepackage{charter} % Charter (roman)
 
 % Bibliography package
-%\usepackage{natbib}           % references
-\usepackage[numbers]{natbib}  % references with numbering
+%\usepackage{natbib} % references without numbering
+\usepackage[numbers]{natbib} % references with numbering
 
 % Paths where figures are located and allowed file image extensions
 \graphicspath{{figures/}{figures/pdf/}{figures/eps/}}
-\DeclareGraphicsExtensions{.png,.pdf,.jpg}
+\DeclareGraphicsExtensions{.png,.pdf,.jpg,.jpeg}
 %\DeclareGraphicsExtensions{.eps}
 
 % Manually correct bad/special hyphenations
@@ -97,9 +97,9 @@ Member C. Smith
 %-----------------------------------------------------------------------------%
 %  TABLE OF CONTENTS/TABLE/FIGURES/NOMENCLATURE
 %-----------------------------------------------------------------------------%
-{\onehalfspacing \tableofcontents}
-{\onehalfspacing \listoftables} % if applicable
-{\onehalfspacing \listoffigures} % if applicable
+{\clearpage\onehalfspacing \tableofcontents}
+{\clearpage\onehalfspacing \listoftables} % if applicable
+{\clearpage\onehalfspacing \listoffigures} % if applicable
 {\onehalfspacing \input{front-matter/abbreviations}} % if applicable
 {\onehalfspacing \input{front-matter/symbols}} % if applicable
 %-----------------------------------------------------------------------------%

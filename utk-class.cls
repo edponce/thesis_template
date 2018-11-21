@@ -83,9 +83,9 @@ and updated by \contributors.}
 % Values: [centerpagenum, rightpagenum]
 \providecommand{\@defaultPageNumAlign}{centerpagenum}
 
-% Margin notes (on/off)
-% Values: [noteson, notesoff]
-\providecommand{\@defaultNotes}{noteson}
+% Margin notes
+% Values: [notes]
+\providecommand{\@defaultNotes}{}
 %-----------------------------------------------------------------------------%
 
 
@@ -115,8 +115,7 @@ and updated by \contributors.}
 \DeclareOption{centerpagenum}{\renewcommand{\@defaultPageNumAlign}{centerpagenum}}
 \DeclareOption{rightpagenum}{\renewcommand{\@defaultPageNumAlign}{rightpagenum}}
 
-\DeclareOption{noteson}{\renewcommand{\@defaultNotes}{noteson}}
-\DeclareOption{notesoff}{\renewcommand{\@defaultNotes}{notesoff}}
+\DeclareOption{notes}{\renewcommand{\@defaultNotes}{notes}}
 
 % Pass non-implemented options to base class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
@@ -234,8 +233,8 @@ and updated by \contributors.}
 \renewcommand{\marginfont}{\singlespacing\scriptsize}
 \renewcommand{\raggedleftmarginnote}{}
 \renewcommand{\raggedrightmarginnote}{\RaggedRight}
-\ifthenelse{\equal{\@defaultNotes}{noteson}}{\newcommand{\note}[2][yellow]{\sethlcolor{#1}\hl{#2}}\newcommand{\mnote}[2][-\baselineskip]{\marginnote{#2}[#1]}}{%
-\ifthenelse{\equal{\@defaultNotes}{notesoff}}{\newcommand{\note}[2][yellow]{\unskip}\newcommand{\mnote}[2][0em]{\unskip}}}
+\ifthenelse{\equal{\@defaultNotes}{notes}}{\newcommand{\note}[2][yellow]{\sethlcolor{#1}\hl{#2}}\newcommand{\mnote}[2][-\baselineskip]{\marginnote{#2}[#1]}}{%
+\newcommand{\note}[2][yellow]{\unskip}\newcommand{\mnote}[2][0em]{\unskip}}
 
 % Override LaTeX hyphenation
 \tolerance=1000
@@ -276,6 +275,24 @@ and updated by \contributors.}
 
 % Set custom names for \autoref macros (defaults are in hyperref.sty)
 \addto\HyLang@english{%
+    \renewcommand{\equationautorefname}{equation}
+    \renewcommand{\footnoteautorefname}{footnote}
+    \renewcommand{\itemautorefname}{item}
+    \renewcommand{\figureautorefname}{Figure}
+    \renewcommand{\tableautorefname}{Table}
+    \renewcommand{\partautorefname}{Part}
+    \renewcommand{\appendixautorefname}{Appendix}
+    \renewcommand{\chapterautorefname}{Chapter}
+    \renewcommand{\sectionautorefname}{section}
+    \renewcommand{\subsectionautorefname}{subsection}
+    \renewcommand{\subsubsectionautorefname}{subsubsection}
+    \renewcommand{\paragraphautorefname}{paragraph}
+    \renewcommand{\subparagraphautorefname}{subparagraph}
+    \renewcommand{\FancyVerbLineautorefname}{line}
+    \renewcommand{\theoremautorefname}{Theorem}
+    \renewcommand{\pageautorefname}{page}
+}
+\addto\captionsenglish{%
     \renewcommand{\equationautorefname}{equation}
     \renewcommand{\footnoteautorefname}{footnote}
     \renewcommand{\itemautorefname}{item}
@@ -342,7 +359,7 @@ and updated by \contributors.}
 %                   Title"
 \titleformat{\chapter}[display]
     {\singlespacing\Large\bfseries\@defaultTitleAlign} % format for label and title
-    {\MakeUppercase{\chaptertitlename\ \thechapter}} % label
+    {\MakeUppercase{\chaptertitlename\ \thechapter\ }} % label
     {0in} % vertical space (display) between label and title
     {\MakeUppercase} % pre-title commands
     {} % post-title commands
@@ -549,7 +566,7 @@ and updated by \contributors.}
 % Table 1-1. This is the caption of table ........  1
 \newlength{\@tabLabelLen}
 \setlength{\@tabLabelLen}{0pt}
-\renewcommand{\cfttabpresnum}{\hspace*{-1.5em}\bfseries\tablename\ }
+\renewcommand{\cfttabpresnum}{\bfseries\tablename\ }
 \renewcommand{\cfttabaftersnum}{.}
 \settowidth{\@tabLabelLen}{\cfttabpresnum\cfttabaftersnum}
 \addtolength{\cfttabnumwidth}{\@tabLabelLen}
@@ -557,7 +574,7 @@ and updated by \contributors.}
 % Figure 1-1. This is the caption of figure ........  1
 \newlength{\@figLabelLen}
 \setlength{\@figLabelLen}{0pt}
-\renewcommand{\cftfigpresnum}{\hspace*{-1.5em}\bfseries\figurename\ }
+\renewcommand{\cftfigpresnum}{\bfseries\figurename\ }
 \renewcommand{\cftfigaftersnum}{.}
 \settowidth{\@figLabelLen}{\cftfigpresnum\cftfigaftersnum}
 \addtolength{\cftfignumwidth}{\@figLabelLen}
