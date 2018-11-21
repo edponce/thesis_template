@@ -36,13 +36,13 @@
 % or contact the thesis consultant (https://gradschool.utk.edu/thesesdissertations).
 % Please report any bugs to the thesis consultant.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{utk-class}
-\def\filename{utk-class.cls}
-\def\fileversion{version 3.5}
-\def\filedate{November 10, 2018}
-\def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
+\ProvidesClass{utk-proposal-class}
+\def\filename{utk-proposal-class.cls}
+\def\fileversion{version 1.0}
+\def\filedate{November 21, 2018}
+\def\contributors{Eduardo Ponce}
 
-\typeout{UTK Thesis and Dissertation Template}
+\typeout{UTK Thesis and Dissertation Proposal Template}
 \typeout{\filename}
 \typeout{\fileversion}
 \typeout{\filedate}
@@ -74,7 +74,7 @@ and updated by \contributors.}
 % Values: [lefttext, justifytext]
 \providecommand{\@defaultTextAlign}{lefttext}
 
-% Chapter title horizontal alignment
+% Section title horizontal alignment
 % ((sub)sub)sections are always left-aligned
 % Values: [lefttitle, centertitle]
 \providecommand{\@defaultTitleAlign}{lefttitle}
@@ -118,7 +118,7 @@ and updated by \contributors.}
 \DeclareOption{notes}{\renewcommand{\@defaultNotes}{notes}}
 
 % Pass non-implemented options to base class
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
 % Set default options
 \ExecuteOptions{\@defaultFontFamily,\@defaultTextSpace}
@@ -127,7 +127,7 @@ and updated by \contributors.}
 \ProcessOptions*
 
 % Load base class
-\LoadClass[letterpaper,\@defaultFontSize]{report}
+\LoadClass[letterpaper,\@defaultFontSize]{article}
 %-----------------------------------------------------------------------------%
 
 
@@ -189,7 +189,6 @@ and updated by \contributors.}
 
 % Fancy headers/footers
 \pagestyle{fancyplain}
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptertitlename\ \thechapter\ \ #1}}{}}
 \renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection\ \ #1}}}
 \fancyhead{}
 \fancyfoot{} % overriden by class option
@@ -221,7 +220,7 @@ and updated by \contributors.}
 \ifthenelse{\equal{\@defaultTextAlign}{lefttext}}{\RaggedRight}{%
 \ifthenelse{\equal{\@defaultTextAlign}{justifytext}}{\justifying}{}}
 
-% Chapter title horizontal alignment
+% Section title horizontal alignment
 \ifthenelse{\equal{\@defaultTitleAlign}{lefttitle}}{\renewcommand{\@defaultTitleAlign}{\filright}}{%
 \ifthenelse{\equal{\@defaultTitleAlign}{centertitle}}{\renewcommand{\@defaultTitleAlign}{\filcenter}}{}}
 
@@ -250,7 +249,7 @@ and updated by \contributors.}
 \hypersetup{
     pdftitle={\@title},       % PDF title option
     pdfauthor={\@author},     % PDF author option
-    pdfsubject={\@defaultDoctype on \@title}, % PDF subject option
+    pdfsubject={\@defaultDoctype Proposal on \@title}, % PDF subject option
     pdfborder=0 0 0,          % PDF border options
     pdfnewwindow=true,        % open PDF links in new window
     pdfpagelayout=SinglePage, % open PDF in single page mode
@@ -344,7 +343,7 @@ and updated by \contributors.}
 %-----------------------------------------------------------------------------%
 \theoremstyle{plain}
 \newtheorem*{theorem*}{Theorem}
-\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}{Lemma}[theorem]
 \newtheorem{proposition}{Proposition}[theorem]
@@ -353,25 +352,11 @@ and updated by \contributors.}
 
 
 %-----------------------------------------------------------------------------%
-%  CHAPTER AND SECTION CONFIGURATIONS
+%  SECTION CONFIGURATIONS
 %-----------------------------------------------------------------------------%
-% chapter group - "Chapter #
-%                   Title"
-\titleformat{\chapter}[display]
-    {\singlespacing\Large\bfseries\@defaultTitleAlign} % format for label and title
-    {\MakeUppercase{\chaptertitlename\ \thechapter\ }} % label
-    {0in} % vertical space (display) between label and title
-    {\MakeUppercase} % pre-title commands
-    {} % post-title commands
-\titlespacing{\chapter}
-    {0em} % left space
-    %{-0.6in} % before space
-    {0in} % before space
-    {0.3in} % after space
-
 % section group - "Title"
 \titleformat{\section}[hang]
-    {\singlespacing\large\bfseries\filright} % format for label and title
+    {\singlespacing\large\bfseries\@defaultTitleAlign} % format for label and title
     {} % label
     {0em} % horizontal space between label and title
     {\thesection\ } % pre-title commands
@@ -379,7 +364,7 @@ and updated by \contributors.}
 \titlespacing{\section}
     {0em} % left space
     {0.1in} % before space
-    {0in} % after space
+    {0.1in} % after space
 
 % subsection group - "Title"
 \titleformat{\subsection}[hang]
@@ -408,98 +393,6 @@ and updated by \contributors.}
 
 
 %-----------------------------------------------------------------------------%
-%  COMMITTEE APPROVAL PAGE (PRINT FORM)
-%-----------------------------------------------------------------------------%
-\newcommand{\makeApprovalPage}{%
-    \clearpage
-    \thispagestyle{empty}
-    \begingroup
-        \parindent\z@
-        To the Graduate Council:\par
-        \vspace*{\baselineskip}
-        I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
-        ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
-        for form and content and recommend that it be accepted in partial fulfillment
-        of the requirements for the degree of \@degree, with a major in \@major.\par
-        \vspace*{2\baselineskip}
-        \hspace*{2.5in}\parbox{3.5in}{%
-            \underline{\hspace*{2.25in}}\\
-            \@majorProfessor, Major Professor
-        }\par
-        \vspace*{\baselineskip}
-        We have read this \@defaultDoctype\\
-        and recommend its acceptance:\par
-        \@for\@committeeMember:=\@committeeMembers\do{%
-            \vspace*{1.5\baselineskip}
-            \underline{\hspace*{2.25in}}\\
-            \@committeeMember\par
-        }
-        \vspace*{\baselineskip}
-        \hspace*{2.5in}\parbox{3.5in}{%
-            Accepted for the Council:\par
-            \vspace*{2\baselineskip}
-            \underline{\hspace*{2.25in}}\\
-            \@dean\\
-            Vice Provost and Dean of the Graduate School
-        }\par
-    \endgroup
-    \clearpage
-}
-%-----------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------%
-%  COMMITTEE APPROVAL PAGE (ELECTRONIC FORM)
-%-----------------------------------------------------------------------------%
-\newcommand{\makeApprovalPageE}{%
-    \clearpage
-    \thispagestyle{empty}
-    \begingroup
-        \parindent\z@
-        To the Graduate Council:\par
-        \vspace*{\baselineskip}
-        I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
-        ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
-        for form and content and recommend that it be accepted in partial fulfillment
-        of the requirements for the degree of \@degree, with a major in \@major.\par
-        \vspace*{2\baselineskip}
-        \hspace*{2.5in}\parbox{3.5in}{%
-            \underline{\hspace*{2.25in}}\\
-            \vspace*{-\baselineskip}
-            \@majorProfessor\\
-            Major Professor
-        }\par
-        \vspace*{\baselineskip}
-        We have read this \@defaultDoctype\\
-        and recommend its acceptance:\par
-        \@for\@committeeMember:=\@committeeMembers\do{%
-            \vspace*{1.5\baselineskip}
-            \underline{\hspace*{2.25in}}\\
-            \vspace*{-\baselineskip}
-            \@committeeMember
-            \vspace*{\baselineskip}\par
-        }
-        \vspace*{\baselineskip}
-        \hspace*{2.5in}\parbox{3.5in}{%
-            Accepted for the Council:\par
-            \vspace*{2\baselineskip}
-            \underline{\hspace*{2.25in}}\\
-            \vspace*{-\baselineskip}
-            \@dean\\
-            Vice Provost and Dean of the Graduate School
-        }\par
-        \Centering
-        \vspace*{\fill}
-        \vspace*{-0.25in}
-        (Original signatures are on file with official student records.)\par
-        \vspace*{\fill}
-    \endgroup
-    \clearpage
-}
-%-----------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------%
 %  TITLE PAGE
 %-----------------------------------------------------------------------------%
 \newcommand{\makeTitlePage}{%
@@ -510,7 +403,7 @@ and updated by \contributors.}
         \vspace*{0in}
         \MakeUppercase{\textbf{\@title}}\par
         \vspace*{\fill}
-        A \@defaultFCDoctype\ Presented for the\\ \@degree\\ Degree\\ \@university\par
+        A \@defaultFCDoctype\ Proposal\ Presented for the\\ \@degree\\ Degree\\ \@university\par
         \vspace*{\fill}
         \@author\\ \@graduationMonth\ \@graduationYear\par
     \endgroup
@@ -535,12 +428,11 @@ and updated by \contributors.}
 \addtocontents{lof}{\protect\noaddvspace}
 
 % Depth of entries
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 \setcounter{lotdepth}{1}
 \setcounter{lofdepth}{1}
 
 % Font of entries
-\renewcommand{\cftchapfont}{\large\scshape\bfseries}
 \renewcommand{\cftsecfont}{}
 \renewcommand{\cftsubsecfont}{}
 \renewcommand{\cftsubsubsecfont}{}
@@ -550,18 +442,6 @@ and updated by \contributors.}
 % Symbol from label to page number in TOC, LOT, LOF
 \renewcommand{\cftdot}{.}
 \renewcommand{\cftdotsep}{1}
-\renewcommand{\cftchapdotsep}{2}
-
-% Chapter 1: Introduction ........ 1
-\newlength{\@chapLabelLen}
-\setlength{\@chapLabelLen}{0pt}
-\renewcommand{\cftchapleader}{\hfill} % remove separator symbol for chapters
-\renewcommand{\cftchappresnum}{\scshape\bfseries\chaptername\ } % Chapter 1: Introduction
-\renewcommand{\cftchapaftersnum}{:}
-%\renewcommand{\cftchappresnum}{} % 1 Introduction
-%\renewcommand{\cftchapaftersnum}{}
-\settowidth{\@chapLabelLen}{\cftchappresnum\cftchapaftersnum}
-\addtolength{\cftchapnumwidth}{\@chapLabelLen}
 
 % Table 1-1. This is the caption of table ........  1
 \newlength{\@tabLabelLen}
@@ -580,20 +460,18 @@ and updated by \contributors.}
 \addtolength{\cftfignumwidth}{\@figLabelLen}
 
 % Caption font and style setup
-% (table/figure)within = {none,chapter,section}
+% (table/figure)within = {none,section}
 % labelformat = {empty,simple,parens)
 % labelsep = {none,colon,period,endash,space,quad,newline}
 % (label/text)font = {bf,it}
 % justification = {RaggedRight,Centering}
 % singlelinecheck = {on,off} if 'on', then single line caption will always be centered
 \captionsetup[table]{%
-%    tablewithin=none, % allow continuous numbering across chapters
     labelformat=simple,labelsep=period,
     labelfont=bf,textfont=normal,
     singlelinecheck=off,justification=Centering
 }
 \captionsetup[figure]{%
-%    figurewithin=none, % allow continuous numbering across chapters
     labelformat=simple,labelsep=period,
     labelfont=bf,textfont=normal,
     singlelinecheck=off,justification=Centering
@@ -615,8 +493,8 @@ and updated by \contributors.}
 % Alph = A,B
 % roman = i,ii
 % Roman = I,II
-\renewcommand{\thetable}{\thechapter-\arabic{table}} % requires chapters
-\renewcommand{\thefigure}{\thechapter-\arabic{figure}} % requires chapters
+\renewcommand{\thetable}{\thesection-\arabic{table}}
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
 \renewcommand{\thesubtable}{\alph{subtable}}
 \renewcommand{\thesubfigure}{\alph{subfigure}}
 %\renewcommand{\thesubtable}{(\alph{subtable})} % for text references use manual parenthesis and labelformat=simple, instead of using labelformat=parens from captionsetup
@@ -627,103 +505,46 @@ and updated by \contributors.}
 %-----------------------------------------------------------------------------%
 %  MACROS TO SUPPORT ADDING MANUAL ENTRIES TO TABLE OF CONTENTS
 %-----------------------------------------------------------------------------%
-% chapter or ((sub)sub)section without number
-\newcommand{\addToTOC}[2][chapter]{%
-    \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
+% ((sub)sub)section without number
+\newcommand{\addToTOC}[2][section]{%
     \phantomsection
-    \addtocounter{#1}{0}
+    \addtocounter{#1}{1}
     \addcontentsline{toc}{#1}{#2}
 }
 
-% chapter or ((sub)sub)section with number
-\newcommand{\addToTOCn}[2][chapter]{%
-    \ifthenelse{\equal{#1}{chapter}}{\clearpage}{}
+% ((sub)sub)section with number
+\newcommand{\addToTOCn}[2][section]{%
     \phantomsection
     \addtocounter{#1}{1}
     \addcontentsline{toc}{#1}{\protect\numberline\expandafter\csname the#1\endcsname #2}
 }
-%-----------------------------------------------------------------------------%
 
-
-%-----------------------------------------------------------------------------%
-%  COPYRIGHT PAGE
-%-----------------------------------------------------------------------------%
-\newcommand{\makeCopyrightPage}{%
-    \clearpage
-    \begingroup
-        \Centering
-        \vspace*{\fill}
-        \vspace*{-0.5in}
-        Copyright \copyright\ \@graduationYear\ by \@author\\
-        All rights reserved.\par
-        \vspace*{\fill}
-    \endgroup
-    \clearpage
-}
-%-----------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------%
-%  LABEL-ONLY PAGE
-%-----------------------------------------------------------------------------%
-\newcommand{\makeLabelOnlyPage}[1]{%
-    \clearpage
-    \addToTOC{#1}
-    \thispagestyle{plain}
-    \begingroup
-        \Centering
-        \vspace*{\fill}
-        \vspace*{-0.5in}
-        \MakeUppercase{\Large\bfseries #1}\par
-        \vspace*{\fill}
-    \endgroup
-    \clearpage
-}
-%-----------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------%
-%  BIBLIOGRAPHY PAGE
-%-----------------------------------------------------------------------------%
-\newcommand{\makeBibliography}[1]{%
-    \makeLabelOnlyPage{#1}
-    \renewcommand{\bibname}{\vspace*{-4\baselineskip}} % remove bibliography title and shift text up
-}
-%-----------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------%
-%  APPENDIX PAGE AND SETTINGS
-%-----------------------------------------------------------------------------%
-\newcommand{\initializeAppendix}[2][1]{%
-    \newcounter{theprevchapter}
-    \setcounter{theprevchapter}{\thechapter} % save previous chapter number
-    \edef\prevchaptertitlename{\chaptertitlename} % save chapter title name
-    \edef\prevchapapp{\@chapapp} % save chapter header name
-    \edef\prevHychapapp{\Hy@chapapp} % save chapter cross-reference name
-    \edef\prevHychapterstring{\Hy@chapterstring} % save chapter name
-    \appendix % environment and cross-references, changes settings so need to restore
-    \makeLabelOnlyPage{#2}
-    \addtocontents{toc}{\protect\setcounter{tocdepth}{#1}}
-    \addtocontents{toc}{%
-        \begingroup
-        \let\protect\l@chapter\protect\l@section
-        \let\protect\l@section\protect\l@subsection
-        \let\protect\l@subsection\protect\l@subsubsection
-    }
+% Set environment for TOC, LOT, LOF commands (e.g., remove section number)
+\newcommand{\initializeTocLotLof}{%
+    \titleformat{\section}[hang]
+        {\singlespacing\large\bfseries\@defaultTitleAlign} % format for label and title
+        {} % label
+        {0em} % horizontal space between label and title
+        {\MakeUppercase} % pre-title commands
+        {} % post-title commands
+    \titlespacing{\section}
+        {0em} % left space
+        {0in} % before space
+        {0.3in} % after space
 }
 
-% restore chapter settings prior to appendix environment
-\newcommand{\finalizeAppendix}{%
-    \addtocontents{toc}{%
-        \endgroup
-    }
-    \setcounter{chapter}{\value{theprevchapter}} % restore chapter numbering
-    \renewcommand{\thechapter}{\arabic{chapter}} % restore chapter numbering format
-    \edef\chaptertitlename{\prevchaptertitlename} % restore chapter title name
-    \edef\@chapapp{\prevchapapp} % restore chapter header name
-    \edef\Hy@chapapp{\prevHychapapp} % restore chapter cross-reference name
-    \edef\Hy@chapterstring{\prevHychapterstring} % restore chapter name
+% Restore environment to state before TOC, LOT, LOF commands
+\newcommand{\finalizeTocLotLof}{%
+    \titleformat{\section}[hang]
+        {\singlespacing\large\bfseries\@defaultTitleAlign} % format for label and title
+        {} % label
+        {0em} % horizontal space between label and title
+        {\thesection\ } % pre-title commands
+        {} % post-title commands
+    \titlespacing{\section}
+        {0em} % left space
+        {0.1in} % before space
+        {0.1in} % after space
 }
 %-----------------------------------------------------------------------------%
 

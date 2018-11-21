@@ -1,5 +1,6 @@
 # Thesis/dissertation template in LaTeX for UTK
 
+Templates for thesis/dissertation proposal and research manuscript.
 This template is distributed with ABSOLUTELY NO WARRANTY. It serves as a
 guideline and constitutes a basic structure for a thesis or dissertation. The
 user assumes full responsibility for formatting and typesetting their document
@@ -10,29 +11,43 @@ or contact the thesis consultant
 https://gradschool.utk.edu/thesesdissertations.
 
 
-## Project files and directories descriptions
+## Project files and directories
 
-1. **utk-class.cls** - contains TeX macros and provides functionalities for
-   adhering to UTK guidelines. You should not need to modify this file.
-1. **utk-main.tex** - main compilation file. Users need to modify parts of this
-   file to customize the final manuscript. It contains document options,
-   general information, and invokes all TeX files for the manuscript. This file
-   contains important comments that users should read while customizing it.
-1. **utk-refs.bib** - sample TeX bibliography file.
-1. **sample-dissertation.pdf** - sample PDF generated with the default
-   configurations.
+1. **utk-class.cls** - TeX class file for research manuscript. Contains
+   configuration, macros, and functionalities for adhering to UTK guidelines.
+   Users should not need to modify this file (see *Advanced options*
+   documentation).
+1. **utk-main.tex** - main compilation file for research manuscript. Users need
+   to modify parts of this file as desired. It contains document options,
+   general information, and invokes all TeX files required for compilation.
+   This file contains comments and notes that users should read prior to
+   customizing it.
+1. **utk-refs.bib** - sample bibliography file. It is recommended not to change
+   the name of this file as it is invoked by **utk-main.tex** and
+   **utk-proposal-main.tex**.
+1. **sample-dissertation.pdf** - PDF example of a research generated with the
+   default configurations.
 1. **utk-guide-to-thesisdissertation.pdf** - official UTK guide to
    theses/dissertations at the time of this writing 11/2018.
 1. **utk-forms/** - directory containing UTK Master and PhD graduate school
    forms such as admission to candidacy, committee, and thesis/dissertation
    approval to be completed and signed by committee members for
-   thesis/dissertation.
+   thesis/dissertation. It is recommended to check the official website for the
+   most recent versions.
 1. **figures/**, **front-matter/**, **chapters/**, **back-matter/** -
    directories that should be self-explanatory once you take a quick look
    at them and the sample PDF (sample-dissertation.pdf). It is recommended to
    use the provided *.tex* files as templates because they contain common
    commands such as `\tab`, `\autoref`, `\cite`, `\url`, etc. and contain
    examples of tables and figures.
+1. **utk-proposal-class.cls** - TeX class file for proposal document. Users
+   should not need to modify this file (see *Advanced options* documentation).
+1. **utk-proposal-main.tex** - main compilation file for proposal document.
+   Users need to modify parts of this file as desired. It contains
+   document options, general information, and invokes all TeX files for
+   compilation. This file contains comments and notes that users should read
+   prior to customizing it.
+1. **proposal/** - directory containing the sections for the proposal document.
 
 
 ## PhD dissertation instructions
@@ -53,7 +68,14 @@ In **utk-main.tex** make the following changes:
    `\degree{Master of Science}`.
 
 
-## General instructions
+## PhD/Master proposal instructions
+
+1. Customize **utk-proposal-main.tex** following instructions similar to the
+   *PhD dissertation instructions* or the *Master thesis instructions*.
+1. Files with sections for the proposal document section are in **proposal/**.
+
+
+## General instructions for PhD dissertation and Master thesis
 
 In **utk-main.tex** make the following changes:
 1. Set remaining **General Information** fields accordingly: `title`,
@@ -89,7 +111,7 @@ In **utk-main.tex** make the following changes:
         - If your manuscript requires more chapters, then create files in
           **chapters/** named **chapter-#.tex** and add the corresponding
           `\input` commands to include those files.
-    1. **Bibliography` section**
+    1. **Bibliography section**
         - `\makeBibliography` - mandatory, create bibliography page.
         - `\bibliographystyle{...}` - sets the bibliography style. For example,
           *APA* and *IEEE Transactions*.
@@ -174,8 +196,8 @@ during draft versions.
 This template supports both in-text and on-margin annotations via the `\note`
 and `\mnote` commands. The `\note` command uses colored highlight (default is
 yellow) and `\mnote` command does not highlights (because text is in margin).
-Notes are shown when the `noteson` option is set in document class options,
-and notes are hidden/removed with the `notesoff` option.
+Notes are shown when the `notes` option is used in the document class options,
+and notes are hidden/removed when the option is not used.
 
 Examples:
 - `\note{This is an in-text note with a yellow highlight.}`

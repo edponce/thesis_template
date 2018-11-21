@@ -1,0 +1,118 @@
+%-----------------------------------------------------------------------------%
+%  DOCUMENT CLASS OPTIONS
+%-----------------------------------------------------------------------------%
+% The following is a list of the available document class options.
+% The first option listed is the default, for more details see
+% the "DEFAULT DOCUMENT CLASS OPTIONS" section in utk-proposal-class.cls
+%   dissertation, thesis
+%   12pt, 11pt
+%   roman, sans, typewriter
+%   onehalfspace, singlespace, doublespace
+%   lefttext, justifytext
+%   lefttitle, centertitle
+%   centerpagenum, rightpagenum
+%   notes, (no option)
+
+%\documentclass[notes, thesis]{utk-proposal-class}
+\documentclass[notes, dissertation]{utk-proposal-class}
+%-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+%  PACKAGE CONFIGURATIONS
+%-----------------------------------------------------------------------------%
+% Fonts - choose at most one
+%\usepackage{helvet} % Helvetica (sans)
+%\usepackage{avant} % Avant-Garde (sans)
+\usepackage{times} % Times (sans/roman)
+%\usepackage{lmodern} % Latin Modern (sans/roman)
+%\usepackage{tgtermes} % TeX Gyre Termes (roman)
+%\usepackage{tgschola} % TeX Gyre Schola (roman)
+%\usepackage{palatino} % Palatino (sans/roman)
+%\usepackage{courier} % Courier (sans/roman)
+%\usepackage{utopia} % Utopia (sans/roman)
+%\usepackage{bookman} % Bookman (sans/roman)
+%\usepackage{charter} % Charter (roman)
+
+% Bibliography package
+%\usepackage{natbib} % references without numbering
+\usepackage[numbers]{natbib} % references with numbering
+
+% Paths where figures are located and allowed file image extensions
+\graphicspath{{figures/}{figures/pdf/}{figures/eps/}}
+\DeclareGraphicsExtensions{.png,.pdf,.jpg,.jpeg}
+%\DeclareGraphicsExtensions{.eps}
+
+% Manually correct bad/special hyphenations
+%\hyphenation{op-tical net-works semi-conduc-tor}
+%-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+%  GENERAL INFORMATION
+%-----------------------------------------------------------------------------%
+\title{Analysis on some data using some technique}
+\author{Student A. Name} % name as registered in official student records
+%\degree{Master of Science}
+\degree{Doctor of Philosophy}
+\major{Computer Science}
+\department{Electrical Engineering and Computer Science}
+\university{The University of Tennessee, Knoxville}
+\graduationYear{2019}
+\graduationMonth{December}
+\majorProfessor{Jane P. Doe}
+\dean{Dixie L. Thompson}
+\committeeMembers{
+Member A. Davis,
+Member B. Miller,
+Member C. Smith
+}
+%-----------------------------------------------------------------------------%
+
+
+\begin{document}
+
+
+%-----------------------------------------------------------------------------%
+%  FRONT-MATTER
+%-----------------------------------------------------------------------------%
+\clearpage\pagenumbering{roman}
+{\onehalfspacing \makeTitlePage}
+%-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+%  TABLE OF CONTENTS/TABLE/FIGURES
+%-----------------------------------------------------------------------------%
+\initializeTocLotLof
+{\clearpage\onehalfspacing \tableofcontents}
+{\clearpage\onehalfspacing \listoftables} % if applicable
+{\clearpage\onehalfspacing \listoffigures} % if applicable
+\finalizeTocLotLof % restores pre-tables environment, used with \initializeTocLotLof
+%-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+%  SECTIONS
+%-----------------------------------------------------------------------------%
+\clearpage\pagenumbering{arabic}
+\input{proposal/section-1} % problem-statement
+\input{proposal/section-2} % background
+\input{proposal/section-3} % problem-justification
+\input{proposal/section-4} % literature-review
+\input{proposal/section-5} % methodology
+\input{proposal/section-6} % research-schedule
+%-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+%  BIBLIOGRAPHY
+%-----------------------------------------------------------------------------%
+\addToTOCn{References}
+\bibliographystyle{apalike} % APA
+%\bibliographystyle{ieeetr} % IEEE Transactions
+{\onehalfspacing \bibliography{utk-refs}}
+%-----------------------------------------------------------------------------%
+
+
+\end{document}
