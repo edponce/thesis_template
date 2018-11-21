@@ -38,8 +38,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{utk-class}
 \def\filename{utk-class.cls}
-\def\fileversion{version 3.5}
-\def\filedate{November 10, 2018}
+\def\fileversion{version 3.6}
+\def\filedate{November 21, 2018}
 \def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
 
 \typeout{UTK Thesis and Dissertation Template}

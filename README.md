@@ -1,14 +1,13 @@
 # Thesis/dissertation template in LaTeX for UTK
 
-Templates for thesis/dissertation proposal and research manuscript.
-This template is distributed with ABSOLUTELY NO WARRANTY. It serves as a
-guideline and constitutes a basic structure for a thesis or dissertation. The
-user assumes full responsibility for formatting and typesetting their document
-and for verifying that all the thesis requirements set by the University of
+Templates for thesis/dissertation proposal and research manuscript. This
+template is distributed with ABSOLUTELY NO WARRANTY. It serves as a guideline
+and constitutes a basic structure for a thesis or dissertation. The user
+assumes full responsibility for formatting and typesetting their document and
+for verifying that all the thesis requirements set by the University of
 Tennessee are met. Please refer to the most recent UTK thesis guide
-https://gradschool.utk.edu/thesesdissertations/formatting
-or contact the thesis consultant
-https://gradschool.utk.edu/thesesdissertations.
+https://gradschool.utk.edu/thesesdissertations/formatting or contact the thesis
+consultant https://gradschool.utk.edu/thesesdissertations.
 
 
 ## Project files and directories
@@ -25,8 +24,8 @@ https://gradschool.utk.edu/thesesdissertations.
 1. **utk-refs.bib** - sample bibliography file. It is recommended not to change
    the name of this file as it is invoked by **utk-main.tex** and
    **utk-proposal-main.tex**.
-1. **sample-dissertation.pdf** - PDF example of a research generated with the
-   default configurations.
+1. **sample-dissertation.pdf** - PDF example of a research manuscript generated
+   with the default configurations.
 1. **utk-guide-to-thesisdissertation.pdf** - official UTK guide to
    theses/dissertations at the time of this writing 11/2018.
 1. **utk-forms/** - directory containing UTK Master and PhD graduate school
@@ -35,18 +34,20 @@ https://gradschool.utk.edu/thesesdissertations.
    thesis/dissertation. It is recommended to check the official website for the
    most recent versions.
 1. **figures/**, **front-matter/**, **chapters/**, **back-matter/** -
-   directories that should be self-explanatory once you take a quick look
-   at them and the sample PDF (sample-dissertation.pdf). It is recommended to
-   use the provided *.tex* files as templates because they contain common
-   commands such as `\tab`, `\autoref`, `\cite`, `\url`, etc. and contain
-   examples of tables and figures.
+   directories that should be self-explanatory once you take a quick look at
+   them and the sample PDF (sample-dissertation.pdf). It is recommended to use
+   the provided *.tex* files as templates because they contain common commands
+   such as `\tab`, `\autoref`, `\cite`, `\url`, etc. and contain examples of
+   tables and figures.
 1. **utk-proposal-class.cls** - TeX class file for proposal document. Users
    should not need to modify this file (see *Advanced options* documentation).
 1. **utk-proposal-main.tex** - main compilation file for proposal document.
-   Users need to modify parts of this file as desired. It contains
-   document options, general information, and invokes all TeX files for
-   compilation. This file contains comments and notes that users should read
-   prior to customizing it.
+   Users need to modify parts of this file as desired. It contains document
+   options, general information, and invokes all TeX files for compilation.
+   This file contains comments and notes that users should read prior to
+   customizing it.
+1. **sample-proposal.pdf** - PDF example of a proposal generated with the
+   default configurations.
 1. **proposal/** - directory containing the sections for the proposal document.
 
 
