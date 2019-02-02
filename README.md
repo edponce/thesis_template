@@ -1,3 +1,7 @@
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+   :target: https://github.com/edponce/thesis_template/blob/master/LICENSE
+
+
 # Thesis/dissertation template in LaTeX for UTK
 
 Templates for thesis/dissertation proposal and research manuscript. This
