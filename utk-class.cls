@@ -362,7 +362,7 @@ and updated by \contributors.}
     {\MakeUppercase{\chaptertitlename\ \thechapter\ }} % label
     {0in} % vertical space (display) between label and title
     {\MakeUppercase} % pre-title commands
-    {} % post-title commands
+    [] % post-title commands
 \titlespacing{\chapter}
     {0em} % left space
     %{-0.6in} % before space
@@ -375,7 +375,7 @@ and updated by \contributors.}
     {} % label
     {0em} % horizontal space between label and title
     {\thesection\ } % pre-title commands
-    {} % post-title commands
+    [] % post-title commands
 \titlespacing{\section}
     {0em} % left space
     {0.1in} % before space
@@ -387,7 +387,7 @@ and updated by \contributors.}
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsection\ } % pre-title commands
-    {} % post-title commands
+    [] % post-title commands
 \titlespacing{\subsection}
     {0em} % left space
     {0.1in} % before space
@@ -399,7 +399,7 @@ and updated by \contributors.}
     {} % label
     {0em} % horizontal space between label and title
     {\thesubsubsection\ } % pre-title commands
-    {} % post-title commands
+    [] % post-title commands
 \titlespacing{\subsubsection}
     {0em} % left space
     {0.1in} % before space
