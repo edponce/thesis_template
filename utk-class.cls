@@ -159,6 +159,7 @@ and updated by \contributors.}
 \RequirePackage{amsthm}           % AMS theorem
 \RequirePackage{amssymb}          % AMS symbols
 \RequirePackage{amsfonts}         % AMS fonts
+\RequirePackage{siunitx}          % SI units
 \RequirePackage{array}            % row and column types
 \RequirePackage{multicol}         % multiple columns
 \RequirePackage{multirow}         % multiple rows
