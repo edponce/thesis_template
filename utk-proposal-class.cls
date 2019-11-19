@@ -38,8 +38,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{utk-proposal-class}
 \def\filename{utk-proposal-class.cls}
-\def\fileversion{version 1.0}
-\def\filedate{November 21, 2018}
+\def\fileversion{version 1.2}
+\def\filedate{November 19, 2019}
 \def\contributors{Eduardo Ponce}
 
 \typeout{UTK Thesis and Dissertation Proposal Template}
@@ -71,8 +71,8 @@ and updated by \contributors.}
 \providecommand{\@defaultTextSpace}{onehalfspace}
 
 % Text horizontal alignment
-% Values: [lefttext, justifytext]
-\providecommand{\@defaultTextAlign}{lefttext}
+% Values: [justifytext, lefttext]
+\providecommand{\@defaultTextAlign}{justifytext}
 
 % Section title horizontal alignment
 % ((sub)sub)sections are always left-aligned
@@ -148,7 +148,7 @@ and updated by \contributors.}
 \RequirePackage{hyperref}         % hyperlinks
 \RequirePackage{appendix}         % appendix environment
 \RequirePackage{marginnote}       % margin notes
-\RequirePackage[usenames,dvipsnames,table,svgnames]{xcolor} % colors
+\RequirePackage[usenames,dvipsnames,table,svgnames]{xcolor}  % colors
 \RequirePackage{etoolbox}         % e-TeX programming facilities
 \RequirePackage{graphicx}         % graphics
 \RequirePackage{titlesec}         % customize section displays
@@ -165,7 +165,7 @@ and updated by \contributors.}
 \RequirePackage{multirow}         % multiple rows
 
 % Extra Packages
-\RequirePackage{cleveref}         % improved references
+\RequirePackage[nameinlink,noabbrev,capitalise]{cleveref}  % improved references
 \RequirePackage{algorithmicx}     % second algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
 \RequirePackage{booktabs}         % professional tables
@@ -310,6 +310,20 @@ and updated by \contributors.}
     \renewcommand{\theoremautorefname}{Theorem}
     \renewcommand{\pageautorefname}{page}
 }
+
+% Set custom names for \cref macros (similar to \autoref ones)
+% Note that formatting may differ from \autoref, so user should be consistent
+% throughout document.
+\crefname{equation}{equation}{equations}
+\crefname{footnote}{footnote}{footnotes}
+\crefname{item}{item}{items}
+\crefname{section}{section}{sections}
+\crefname{subsection}{subsection}{subsections}
+\crefname{subsubsection}{subsubsection}{subsubsections}
+\crefname{paragraph}{paragraph}{paragraphs}
+\crefname{subparagraph}{subparagraph}{subparagraphs}
+\crefname{line}{line}{lines}
+\crefname{page}{page}{pages}
 %-----------------------------------------------------------------------------%
 
 
@@ -447,6 +461,7 @@ and updated by \contributors.}
 % Table 1-1. This is the caption of table ........  1
 \newlength{\@tabLabelLen}
 \setlength{\@tabLabelLen}{0pt}
+\setlength{\cfttabindent}{0pt}
 \renewcommand{\cfttabpresnum}{\bfseries\tablename\ }
 \renewcommand{\cfttabaftersnum}{.}
 \settowidth{\@tabLabelLen}{\cfttabpresnum\cfttabaftersnum}
@@ -455,6 +470,7 @@ and updated by \contributors.}
 % Figure 1-1. This is the caption of figure ........  1
 \newlength{\@figLabelLen}
 \setlength{\@figLabelLen}{0pt}
+\setlength{\cftfigindent}{0pt}
 \renewcommand{\cftfigpresnum}{\bfseries\figurename\ }
 \renewcommand{\cftfigaftersnum}{.}
 \settowidth{\@figLabelLen}{\cftfigpresnum\cftfigaftersnum}
