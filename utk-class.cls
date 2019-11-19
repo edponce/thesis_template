@@ -337,7 +337,7 @@ and updated by \contributors.}
 \providecommand{\@majorProfessor}{}
 \providecommand{\@dean}{}
 \providecommand{\@major}{}
-\providecommand{\@degree}{}
+\providecommand{\@academicdegree}{}
 \providecommand{\@department}{}
 \providecommand{\@university}{}
 \providecommand{\@committeeMembers}{}
@@ -346,7 +346,7 @@ and updated by \contributors.}
 \newcommand{\majorProfessor}[1]{\renewcommand{\@majorProfessor}{#1}}
 \newcommand{\dean}[1]{\renewcommand{\@dean}{#1}}
 \newcommand{\major}[1]{\renewcommand{\@major}{#1}}
-\newcommand{\degree}[1]{\renewcommand{\@degree}{#1}}
+\newcommand{\academicdegree}[1]{\renewcommand{\@academicdegree}{#1}}
 \newcommand{\college}[1]{\renewcommand{\@college}{#1}}
 \newcommand{\department}[1]{\renewcommand{\@department}{#1}}
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
@@ -435,7 +435,7 @@ and updated by \contributors.}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
         for form and content and recommend that it be accepted in partial fulfillment
-        of the requirements for the degree of \@degree, with a major in \@major.\par
+        of the requirements for the degree of \@academicdegree, with a major in \@major.\par
         \vspace*{2\baselineskip}
         \hspace*{2.5in}\parbox{3.5in}{%
             \underline{\hspace*{2.25in}}\\
@@ -476,7 +476,7 @@ and updated by \contributors.}
         I am submitting herewith a \@defaultDoctype\ written by \@author\ entitled
         ``\@title.'' I have examined the final paper copy of this \@defaultDoctype\
         for form and content and recommend that it be accepted in partial fulfillment
-        of the requirements for the degree of \@degree, with a major in \@major.\par
+        of the requirements for the degree of \@academicdegree, with a major in \@major.\par
         \vspace*{2\baselineskip}
         \hspace*{2.5in}\parbox{3.5in}{%
             \underline{\hspace*{2.25in}}\\
@@ -525,7 +525,7 @@ and updated by \contributors.}
         \vspace*{0in}
         \MakeUppercase{\textbf{\@title}}\par
         \vspace*{\fill}
-        A \@defaultFCDoctype\ Presented for the\\ \@degree\\ Degree\\ \@university\par
+        A \@defaultFCDoctype\ Presented for the\\ \@academicdegree\\ Degree\\ \@university\par
         \vspace*{\fill}
         \@author\\ \@graduationMonth\ \@graduationYear\par
     \endgroup

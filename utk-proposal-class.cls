@@ -336,7 +336,7 @@ and updated by \contributors.}
 \providecommand{\@majorProfessor}{}
 \providecommand{\@dean}{}
 \providecommand{\@major}{}
-\providecommand{\@degree}{}
+\providecommand{\@academicdegree}{}
 \providecommand{\@department}{}
 \providecommand{\@university}{}
 \providecommand{\@committeeMembers}{}
@@ -345,7 +345,7 @@ and updated by \contributors.}
 \newcommand{\majorProfessor}[1]{\renewcommand{\@majorProfessor}{#1}}
 \newcommand{\dean}[1]{\renewcommand{\@dean}{#1}}
 \newcommand{\major}[1]{\renewcommand{\@major}{#1}}
-\newcommand{\degree}[1]{\renewcommand{\@degree}{#1}}
+\newcommand{\academicdegree}[1]{\renewcommand{\@academicdegree}{#1}}
 \newcommand{\college}[1]{\renewcommand{\@college}{#1}}
 \newcommand{\department}[1]{\renewcommand{\@department}{#1}}
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
@@ -418,7 +418,7 @@ and updated by \contributors.}
         \vspace*{0in}
         \MakeUppercase{\textbf{\@title}}\par
         \vspace*{\fill}
-        A \@defaultFCDoctype\ Proposal\ Presented for the\\ \@degree\\ Degree\\ \@university\par
+        A \@defaultFCDoctype\ Proposal\ Presented for the\\ \@academicdegree\\ Degree\\ \@university\par
         \vspace*{\fill}
         \@author\\ \@graduationMonth\ \@graduationYear\par
     \endgroup
