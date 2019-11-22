@@ -146,6 +146,7 @@ and updated by \contributors.}
 \RequirePackage{parskip}          % paragraph formatting
 \RequirePackage[hyphens]{url}     % url links
 \RequirePackage{hyperref}         % hyperlinks
+\RequirePackage[nameinlink,noabbrev,capitalise]{cleveref}  % improved references
 \RequirePackage{appendix}         % appendix environment
 \RequirePackage{marginnote}       % margin notes
 \RequirePackage[usenames,dvipsnames,table,svgnames]{xcolor}  % colors
@@ -159,13 +160,13 @@ and updated by \contributors.}
 \RequirePackage{amsthm}           % AMS theorem
 \RequirePackage{amssymb}          % AMS symbols
 \RequirePackage{amsfonts}         % AMS fonts
-\RequirePackage{siunitx}          % SI units
 \RequirePackage{array}            % row and column types
 \RequirePackage{multicol}         % multiple columns
 \RequirePackage{multirow}         % multiple rows
+\RequirePackage{pdflscape}        % landscape support
 
 % Extra Packages
-\RequirePackage[nameinlink,noabbrev,capitalise]{cleveref}  % improved references
+\RequirePackage{siunitx}          % SI units
 \RequirePackage{algorithmicx}     % second algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
 \RequirePackage{booktabs}         % professional tables

@@ -189,6 +189,12 @@ In **Global and Packages Configurations** section, comment the command
 `fancyhead{}`. This will show a header line at the top of pages that are
 consider as intermediate pages for a particular chapter or major section.
 
+## Change page layout to landscape
+
+To change a page to landscape layout, use the `landscape` environment:  
+`\begin{landscape}`  
+...  
+`\end{landscape}`
 
 ## Using notes to annotate manuscript
 
