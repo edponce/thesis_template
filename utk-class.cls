@@ -554,6 +554,7 @@ and updated by \contributors.}
 \setcounter{tocdepth}{2}
 \setcounter{lotdepth}{1}
 \setcounter{lofdepth}{1}
+\setcounter{secnumdepth}{3}
 
 % Font of entries
 \renewcommand{\cftchapfont}{\large\scshape\bfseries}
