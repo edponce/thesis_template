@@ -3,7 +3,7 @@
 %-----------------------------------------------------------------------------%
 % The following is a list of the available document class options.
 % The first option listed is the default, for more details see
-% the "DEFAULT DOCUMENT CLASS OPTIONS" section in utk-class.cls
+% the "DEFAULT DOCUMENT CLASS OPTIONS" section in utk-proposal.cls
 %   dissertation, thesis
 %   12pt, 11pt
 %   roman, sans, typewriter
@@ -13,8 +13,8 @@
 %   centerpagenum, rightpagenum
 %   notes, (no option)
 
-%\documentclass[notes, thesis]{utk-class}
-\documentclass[notes, dissertation]{utk-class}
+%\documentclass[notes, thesis]{utk-proposal}
+\documentclass[notes, dissertation]{utk-proposal}
 %-----------------------------------------------------------------------------%
 
 
@@ -58,7 +58,7 @@
 \major{Computer Science}
 \department{Electrical Engineering and Computer Science}
 \university{The University of Tennessee, Knoxville}
-\graduationYear{2019}
+\graduationYear{2020}
 \graduationMonth{December}
 \majorProfessor{Jane P. Doe}
 \dean{Dixie L. Thompson}
@@ -74,69 +74,44 @@ Member C. Smith
 
 
 %-----------------------------------------------------------------------------%
-%  COMMITTEE APPROVAL FORMS
-%-----------------------------------------------------------------------------%
-%{\singlespacing \makeApprovalPage} % optional, print form
-%{\singlespacing \makeApprovalPageE} % optional, electronic form
-%-----------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------%
 %  FRONT-MATTER
 %-----------------------------------------------------------------------------%
 \clearpage\pagenumbering{roman}
 {\onehalfspacing \makeTitlePage}
-{\singlespacing \makeCopyrightPage} % optional
-\input{front-matter/dedication} % optional
-\input{front-matter/acknowledgments} % optional
-\input{front-matter/abstract}
-\input{front-matter/preface} % optional
 %-----------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------%
-%  TABLE OF CONTENTS/TABLE/FIGURES/NOMENCLATURE
+%  TABLE OF CONTENTS/TABLE/FIGURES
 %-----------------------------------------------------------------------------%
+\initializeTocLotLof
 {\clearpage\onehalfspacing \tableofcontents}
 {\clearpage\onehalfspacing \listoftables} % if applicable
 {\clearpage\onehalfspacing \listoffigures} % if applicable
-{\onehalfspacing \input{front-matter/abbreviations}} % if applicable
-{\onehalfspacing \input{front-matter/symbols}} % if applicable
+\finalizeTocLotLof % restores pre-tables environment, used with \initializeTocLotLof
 %-----------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------%
-%  CHAPTERS
+%  SECTIONS
 %-----------------------------------------------------------------------------%
 \clearpage\pagenumbering{arabic}
-\input{chapters/chapter-1}
-\input{chapters/chapter-2}
-\input{chapters/chapter-3}
-\input{chapters/chapter-4}
+\input{proposal/section-1} % problem-statement
+\input{proposal/section-2} % background
+\input{proposal/section-3} % problem-justification
+\input{proposal/section-4} % literature-review
+\input{proposal/section-5} % methodology
+\input{proposal/section-6} % research-schedule
 %-----------------------------------------------------------------------------%
 
 
 %-----------------------------------------------------------------------------%
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------%
-\makeBibliography{List of References}
-%\bibliographystyle{apalike} % APA
-\bibliographystyle{ieeetr} % IEEE Transactions
-{\onehalfspacing \bibliography{utk-refs}}
-%-----------------------------------------------------------------------------%
-
-
-%-----------------------------------------------------------------------------%
-%  BACK-MATTER
-%-----------------------------------------------------------------------------%
-\initializeAppendix[1]{Appendices} % if applicable
-\input{back-matter/appendix-a} % if applicable
-\input{back-matter/appendix-b} % if applicable
-\finalizeAppendix % restores pre-appendix environment, used with \initializeAppendix
-
-\fancyhead{} % always disable page header for vita
-\addToTOC{Vita} % include in table of contents
-\input{back-matter/vita}
+\addToTOCn{References}
+\bibliographystyle{apalike} % APA
+%\bibliographystyle{ieeetr} % IEEE Transactions
+{\onehalfspacing \bibliography{utk}}
 %-----------------------------------------------------------------------------%
 
 

@@ -15,18 +15,18 @@ consultant https://gradschool.utk.edu/thesesdissertations.
 
 ## Project files and directories
 
-1. **utk-class.cls** - TeX class file for research manuscript. Contains
+1. **utk.cls** - TeX class file for research manuscript. Contains
    configuration, macros, and functionalities for adhering to UTK guidelines.
    Users should not need to modify this file (see *Advanced options*
    documentation).
-1. **utk-main.tex** - main compilation file for research manuscript. Users need
+1. **utk.tex** - main compilation file for research manuscript. Users need
    to modify parts of this file as desired. It contains document options,
    general information, and invokes all TeX files required for compilation.
    This file contains comments and notes that users should read prior to
    customizing it.
-1. **utk-refs.bib** - sample bibliography file. It is recommended not to change
-   the name of this file as it is invoked by **utk-main.tex** and
-   **utk-proposal-main.tex**.
+1. **utk.bib** - sample bibliography file. It is recommended not to change
+   the name of this file as it is invoked by **utk.tex** and
+   **utk-proposal.tex**.
 1. **sample-dissertation.pdf** - PDF example of a research manuscript generated
    with the default configurations.
 1. **utk-guide-to-thesisdissertation.pdf** - official UTK guide to
@@ -42,9 +42,9 @@ consultant https://gradschool.utk.edu/thesesdissertations.
    the provided *.tex* files as templates because they contain common commands
    such as `\tab`, `\autoref`, `\cref`, `\cite`, `\url`, `footnote`, etc.
    and contain examples of tables and figures.
-1. **utk-proposal-class.cls** - TeX class file for proposal document. Users
+1. **utk-proposal.cls** - TeX class file for proposal document. Users
    should not need to modify this file (see *Advanced options* documentation).
-1. **utk-proposal-main.tex** - main compilation file for proposal document.
+1. **utk-proposal.tex** - main compilation file for proposal document.
    Users need to modify parts of this file as desired. It contains document
    options, general information, and invokes all TeX files for compilation.
    This file contains comments and notes that users should read prior to
@@ -56,32 +56,32 @@ consultant https://gradschool.utk.edu/thesesdissertations.
 
 ## PhD dissertation instructions
 
-In **utk-main.tex** make the following changes:
+In **utk.tex** make the following changes:
 1. Add `dissertation` to the document class options,
-   `\documentclass[dissertation]{utk-class}`.
+   `\documentclass[dissertation]{utk}`.
 1. In the **General Information** section change the degree text,
    `\degree{Doctor of Philosophy}`.
 
 
 ## Master thesis instructions
 
-In **utk-main.tex** make the following changes:
+In **utk.tex** make the following changes:
 1. Add `thesis` to the document class options,
-   `\documentclass[thesis]{utk-class}`.
+   `\documentclass[thesis]{utk}`.
 1. In the **General Information** section change the degree text,
    `\degree{Master of Science}`.
 
 
 ## PhD/Master proposal instructions
 
-1. Customize **utk-proposal-main.tex** following instructions similar to the
+1. Customize **utk-proposal.tex** following instructions similar to the
    *PhD dissertation instructions* or the *Master thesis instructions*.
 1. Files with sections for the proposal document section are in **proposal/**.
 
 
 ## General instructions for PhD dissertation and Master thesis
 
-In **utk-main.tex** make the following changes:
+In **utk.tex** make the following changes:
 1. Set remaining **General Information** fields accordingly: `title`,
    `author`, `major`, `department`, `university`, `graduationYear`,
    `graduationMonth`, `majorProfessor`, `dean`, and `committeeMembers`.
@@ -119,8 +119,8 @@ In **utk-main.tex** make the following changes:
         - `\makeBibliography` - mandatory, create bibliography page.
         - `\bibliographystyle{...}` - sets the bibliography style. For example,
           *APA* and *IEEE Transactions*.
-        - `\bibliography{utk-refs}` - mandatory, uses the references found in
-          file **utk-refs.bib**.
+        - `\bibliography{utk}` - mandatory, uses the references found in
+          file **utk.bib**.
     1. **Back-matter section**
         - `\initializeAppendix`, `\finalizeAppendix` - if applicable, creates
           appendix page and controls appendix formatting environment.
@@ -134,10 +134,10 @@ In **utk-main.tex** make the following changes:
 ## Document class options
 
 This template allows a user to control several aspects of the manuscript via
-document class options in **utk-main.tex**. Document class options are
+document class options in **utk.tex**. Document class options are
 placed between square brackets as a comma-separated list in the
 `\documentclass` command.
-For example, `\documentclass[option1, option2, ...]{utk-class}`
+For example, `\documentclass[option1, option2, ...]{utk}`
 
 The following is a list of the available document class options. **Use a
 single option per category. If an option is not set explicitly then the
@@ -153,7 +153,7 @@ default option will be used.**
    family used for the entire manuscript.
    For specific font control, you need to enable/uncomment the
    respective TeX package in the **Package Configurations** section in
-   **utk-main.tex**. These are common font packages supported:
+   **utk.tex**. These are common font packages supported:
     1. `\usepackage{times}` - (Default) Times
     1. `\usepackage{helvet}` - Helvetica
     1. `\usepackage{avant}` - Avant-Garde
@@ -173,7 +173,7 @@ default option will be used.**
 
 ## Advanced options
 
-The file **utk-class.cls** controls several formatting functionalities which
+The file **utk.cls** controls several formatting functionalities which
 can be modified (use caution and make sure you know general TeX concepts).
 This section describes how to enable/use some of these functionalities.
 
@@ -181,7 +181,7 @@ This section describes how to enable/use some of these functionalities.
 
 The **Packages** section contains a list of all packages included by default.
 Here a user can change an option of an existing package or add a new package.
-New packages can also be added in **utk-main.tex**.
+New packages can also be added in **utk.tex**.
 
 ### Show header at top of page with the section and chapter information
 

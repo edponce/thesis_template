@@ -36,10 +36,10 @@
 % or contact the thesis consultant (https://gradschool.utk.edu/thesesdissertations).
 % Please report any bugs to the thesis consultant.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{utk-proposal-class}
-\def\filename{utk-proposal-class.cls}
-\def\fileversion{version 1.2}
-\def\filedate{November 19, 2019}
+\ProvidesClass{utk-proposal}
+\def\filename{utk-proposal.cls}
+\def\fileversion{version 1.3}
+\def\filedate{October 4, 2020}
 \def\contributors{Eduardo Ponce}
 
 \typeout{UTK Thesis and Dissertation Proposal Template}
