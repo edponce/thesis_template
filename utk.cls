@@ -266,6 +266,9 @@ and updated by \contributors.}
 }
 \urlstyle{same} % use same style as the text
 
+% Keep environment font for SI units
+\sisetup{detect-weight=true,detect-family=true}
+
 % Custom column types, 'array' package
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash\hspace{0pt}}m{#1}}
