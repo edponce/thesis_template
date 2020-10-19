@@ -156,6 +156,7 @@ and updated by \contributors.}
 \RequirePackage[titles]{tocloft}  % customize TOC, LOT, LOF
 \RequirePackage{caption}          % figure and table captions
 \RequirePackage{subcaption}       % subfigure and subtable captions
+\RequirePackage{float}            % improve environment for floats
 \RequirePackage{amsmath}          % AMS math
 \RequirePackage{amsthm}           % AMS theorem
 \RequirePackage{amssymb}          % AMS symbols

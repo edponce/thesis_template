@@ -14,7 +14,7 @@ for the University of Tennessee.
 Figures should have at least 1.5in between text.
 
 \begin{pagefloat}
-\begin{figure}[!htb]
+\begin{figure}[H]
     \Centering
     \includegraphics[width=0.8\textwidth]{fig01-folder-structure}
     \caption[UT thesis template folder structure]{UT thesis template folder structure.
@@ -52,23 +52,23 @@ Refer to~\autoref{appAsect} in~\autoref{appendixA} for further information.
 \section{Multipart figures}
 This is a paragraph found in another section part.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
     \Centering
     \begin{subfigure}[t]{0.3\textwidth}
         \Centering
-        \includegraphics[width=\linewidth]{fig02a-circle}
+        \includegraphics[width=0.8\linewidth]{fig02a-circle}
         \caption{\ Circle}
         \label{fig:shapes-circle}
     \end{subfigure}
     \begin{subfigure}[t]{0.3\textwidth}
         \Centering
-        \includegraphics[width=\linewidth]{fig02b-rectangle}
+        \includegraphics[width=0.8\linewidth]{fig02b-rectangle}
         \caption{\ Rectangle}
         \label{fig:shapes-rect}
     \end{subfigure}
     \begin{subfigure}[t]{0.3\textwidth}
         \Centering
-        \includegraphics[width=\linewidth]{fig02c-cube}
+        \includegraphics[width=0.8\linewidth]{fig02c-cube}
         \caption{\ Cube}
         \label{fig:shapes-cube}
     \end{subfigure}
@@ -82,7 +82,7 @@ This is a paragraph found in another section part.
 For multipart figures (e.g.,~\autoref{fig:shapes-rect}),
 you need to use the package ``subcaption''.
 
-\begin{table}[!htb]
+\begin{table}[H]
     \renewcommand*\arraystretch{1.2}
     \Centering
     \caption[Table with multiple rows]{A multirow table example.}
