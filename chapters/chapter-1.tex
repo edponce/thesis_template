@@ -15,7 +15,7 @@ Figures should have at least 1.5in between text.
 
 \begin{figure}[!htb]
     \Centering
-    \includegraphics[width=0.9\textwidth]{fig01-folder-structure}
+    \includegraphics[width=0.8\textwidth]{fig01-folder-structure}
     \caption[UT thesis template folder structure]{UT thesis template folder structure.
         The main LaTeX file and BibTeX file are in the top directory.
         All other files are placed in any of the four folders
@@ -81,6 +81,7 @@ For multipart figures (e.g.,~\autoref{fig:shapes-rect}),
 you need to use the package ``subcaption''.
 
 \begin{table}[!htb]
+    \renewcommand*\arraystretch{1.2}
     \Centering
     \caption[Table with multiple rows]{A multirow table example.}
     \begin{tabular}{|L{3cm}|C{1cm}|C{1cm}|}
@@ -97,5 +98,5 @@ you need to use the package ``subcaption''.
 \end{table}
 
 Discussing some analysis results from~\autoref{tab:multirow}.
-Use cref for multiple references~\cref{fig:shapes-cube,fig:shapes-rect,fig:shapes-circle}.
+Use cref/Cref for multiple references~\Cref{fig:shapes-cube,fig:shapes-rect,fig:shapes-circle}.
 It all started at~\autoref{asection} and never ended~\dots

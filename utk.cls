@@ -146,7 +146,7 @@ and updated by \contributors.}
 \RequirePackage{parskip}          % paragraph formatting
 \RequirePackage[hyphens]{url}     % url links
 \RequirePackage{hyperref}         % hyperlinks
-\RequirePackage[nameinlink,noabbrev,capitalise]{cleveref}  % improved references
+\RequirePackage[nameinlink,noabbrev]{cleveref}  % improved references
 \RequirePackage{appendix}         % appendix environment
 \RequirePackage{marginnote}       % margin notes
 \RequirePackage[usenames,dvipsnames,table,svgnames]{xcolor}  % colors

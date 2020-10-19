@@ -36,7 +36,7 @@
 
 % Bibliography package
 %\usepackage{natbib} % references without numbering
-\usepackage[numbers]{natbib} % references with numbering
+\usepackage[numbers,sort&compress]{natbib} % references with numbering
 
 % Paths where figures are located and allowed file image extensions
 \graphicspath{{figures/}{figures/pdf/}{figures/eps/}}
@@ -120,6 +120,7 @@ Member C. Smith
 %  BIBLIOGRAPHY
 %-----------------------------------------------------------------------------%
 \makeBibliography{List of References}
+%\bibliographystyle{plainnat} % Plain style
 %\bibliographystyle{apalike} % APA
 \bibliographystyle{ieeetr} % IEEE Transactions
 {\onehalfspacing \bibliography{utk}}
