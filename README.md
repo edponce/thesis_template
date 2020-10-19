@@ -40,8 +40,8 @@ consultant https://gradschool.utk.edu/thesesdissertations.
    directories that should be self-explanatory once you take a quick look at
    them and the sample PDF (sample-dissertation.pdf). It is recommended to use
    the provided *.tex* files as templates because they contain common commands
-   such as `\tab`, `\autoref`, `\cref`, `\cite`, `\url`, `footnote`, etc.
-   and contain examples of tables and figures.
+   such as `\autoref`, `\cref`, `\cite`, `\url`, `\footnote`, etc. and contain
+   examples of tables and figures (`begin/end{pagefloat}`).
 1. **utk-proposal.cls** - TeX class file for proposal document. Users
    should not need to modify this file (see *Advanced options* documentation).
 1. **utk-proposal.tex** - main compilation file for proposal document.
@@ -188,6 +188,16 @@ New packages can also be added in **utk.tex**.
 In **Global and Packages Configurations** section, comment the command
 `fancyhead{}`. This will show a header line at the top of pages that are
 consider as intermediate pages for a particular chapter or major section.
+
+## Place a float in center in single page
+
+To place a float (e.g., figure or table) vertically centered in a single page,
+use the `pagefloat` environment:  
+`\begin{pagefloat}`  
+`\begin{figure}`  
+...  
+`\end{figure}`  
+`\end{pagefloat}`
 
 ## Change page layout to landscape
 

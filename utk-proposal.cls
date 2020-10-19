@@ -38,8 +38,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{utk-proposal}
 \def\filename{utk-proposal.cls}
-\def\fileversion{version 1.3}
-\def\filedate{October 4, 2020}
+\def\fileversion{version 1.5}
+\def\filedate{October 19, 2020}
 \def\contributors{Eduardo Ponce}
 
 \typeout{UTK Thesis and Dissertation Proposal Template}
@@ -265,6 +265,9 @@ and updated by \contributors.}
 }
 \urlstyle{same} % use same style as the text
 
+% Keep environment font for SI units
+\sisetup{detect-weight=true,detect-family=true}
+
 % Custom column types, 'array' package
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash\hspace{0pt}}m{#1}}
@@ -406,6 +409,14 @@ and updated by \contributors.}
     {0.1in} % before space
     {0in} % after space
 %-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+%  HELPER COMMANDS, ENVIRONMENT, ETC.
+%-----------------------------------------------------------------------------%
+\newenvironment{pagefloat}[1][0em]
+    {\newpage\null\vfill\vspace{#1}}
+    {\vfill\null\clearpage}
 
 
 %-----------------------------------------------------------------------------%

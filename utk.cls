@@ -38,8 +38,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{utk}
 \def\filename{utk.cls}
-\def\fileversion{version 3.9}
-\def\filedate{October 4, 2020}
+\def\fileversion{version 4.0}
+\def\filedate{October 19, 2020}
 \def\contributors{Eduardo Ponce, Darrin Weber, and Tony Saad}
 
 \typeout{UTK Thesis and Dissertation Template}
@@ -138,7 +138,7 @@ and updated by \contributors.}
 \RequirePackage[utf8]{inputenc}   % accented characters for input
 \RequirePackage[english]{babel}   % USA hyphenation patterns
 \RequirePackage{geometry}         % page margins/layout
-%\RequirePackage[showframe]{geometry} % (debug) page margins/layout
+% \RequirePackage[showframe]{geometry} % (debug) page margins/layout
 \RequirePackage{fancyhdr}         % headers/footers
 \RequirePackage{setspace}         % text spacing
 \RequirePackage{ragged2e}         % text alignment
@@ -424,6 +424,14 @@ and updated by \contributors.}
     {0.1in} % before space
     {0in} % after space
 %-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+%  HELPER COMMANDS, ENVIRONMENT, ETC.
+%-----------------------------------------------------------------------------%
+\newenvironment{pagefloat}[1][0em]
+    {\newpage\null\vfill\vspace{#1}}
+    {\vfill\null\clearpage}
 
 
 %-----------------------------------------------------------------------------%

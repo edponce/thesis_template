@@ -13,6 +13,7 @@ for the University of Tennessee.
 \note{This is a note with default color.}
 Figures should have at least 1.5in between text.
 
+\begin{pagefloat}
 \begin{figure}[!htb]
     \Centering
     \includegraphics[width=0.8\textwidth]{fig01-folder-structure}
@@ -22,8 +23,9 @@ Figures should have at least 1.5in between text.
         (back-matter, chapters, figures, front-matter).}
     \label{fig:folderstructure}
 \end{figure}
+\end{pagefloat}
 
-\tab The general structure of this template is based on the tree shown in~\autoref{fig:folderstructure}.
+The general structure of this template is based on the tree shown in~\autoref{fig:folderstructure}.
 The titles of the folders are self descriptive
 and should guide you to proper file placement.
 Note that this is only a suggested model that could be
@@ -54,19 +56,19 @@ This is a paragraph found in another section part.
     \Centering
     \begin{subfigure}[t]{0.3\textwidth}
         \Centering
-        \includegraphics[width=1in]{fig02a-circle}
+        \includegraphics[width=\linewidth]{fig02a-circle}
         \caption{\ Circle}
         \label{fig:shapes-circle}
     \end{subfigure}
     \begin{subfigure}[t]{0.3\textwidth}
         \Centering
-        \includegraphics[width=1in]{fig02b-rectangle}
+        \includegraphics[width=\linewidth]{fig02b-rectangle}
         \caption{\ Rectangle}
         \label{fig:shapes-rect}
     \end{subfigure}
     \begin{subfigure}[t]{0.3\textwidth}
         \Centering
-        \includegraphics[width=1in]{fig02c-cube}
+        \includegraphics[width=\linewidth]{fig02c-cube}
         \caption{\ Cube}
         \label{fig:shapes-cube}
     \end{subfigure}
