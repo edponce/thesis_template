@@ -146,7 +146,6 @@ and updated by \contributors.}
 \RequirePackage{parskip}          % paragraph formatting
 \RequirePackage[hyphens]{url}     % url links
 \RequirePackage{hyperref}         % hyperlinks
-\RequirePackage[nameinlink,noabbrev]{cleveref}  % improved references
 \RequirePackage{appendix}         % appendix environment
 \RequirePackage{marginnote}       % margin notes
 \RequirePackage[usenames,dvipsnames,table,svgnames]{xcolor}  % colors
@@ -164,14 +163,14 @@ and updated by \contributors.}
 \RequirePackage{array}            % row and column types
 \RequirePackage{multicol}         % multiple columns
 \RequirePackage{multirow}         % multiple rows
-\RequirePackage{pdflscape}        % landscape support
-
-% Extra Packages
 \RequirePackage{siunitx}          % SI units
-\RequirePackage{algorithmicx}     % second algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
 \RequirePackage{booktabs}         % professional tables
 \RequirePackage{threeparttable}   % table formatting (caption, table, tablenotes)
+\RequirePackage{pdflscape}        % landscape support
+\RequirePackage[nameinlink,noabbrev]{cleveref}  % improved references
+
+% Extra Packages
 \RequirePackage{listings}         % code listings
 \RequirePackage{tikz}             % vector drawings
 \RequirePackage{pgfplots}         % generate plots

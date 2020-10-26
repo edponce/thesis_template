@@ -86,19 +86,20 @@ you need to use the package ``subcaption''.
     \renewcommand*\arraystretch{1.2}
     \Centering
     \caption[Table with multiple rows]{A multirow table example.}
-    \begin{tabular}{|L{3cm}|C{1cm}|C{1cm}|}
-        \hline
-        \textbf{col1} & \textbf{col2} & \textbf{col3} \\
-        \hline
-        \multirow{3}{3cm}{Multiple rows}
-            & cell2 & cell3 \\
-            & cell5 & cell6 \\
-            & cell8 & cell9 \\
-        \hline
+    \begin{tabular}{C{3cm} *{2}{C{1cm}}}
+        \toprule
+        \textbf{Col 1} & \textbf{Col 2} & \textbf{Col 3} \\
+        \midrule
+        \multirow{3}{*}{Multiple rows}
+            & cell2 & cell3\\
+            & cell5 & cell6\\
+            & cell8 & cell9\\
+        \bottomrule
     \end{tabular}
     \label{tab:multirow}
 \end{table}
 
 Discussing some analysis results from~\autoref{tab:multirow}.
 Use cref/Cref for multiple references~\Cref{fig:shapes-cube,fig:shapes-rect,fig:shapes-circle}.
+Also use for equations use cref exclusively.
 It all started at~\autoref{asection} and never ended~\dots
