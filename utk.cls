@@ -164,6 +164,7 @@ and updated by \contributors.}
 \RequirePackage{multicol}         % multiple columns
 \RequirePackage{multirow}         % multiple rows
 \RequirePackage{siunitx}          % SI units
+\RequirePackage{algorithm}        % algorithm environment
 \RequirePackage{algpseudocode}    % layout for algorithm environment
 \RequirePackage{booktabs}         % professional tables
 \RequirePackage{threeparttable}   % table formatting (caption, table, tablenotes)
