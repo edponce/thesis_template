@@ -136,7 +136,7 @@ and updated by \contributors.}
 %-----------------------------------------------------------------------------%
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
-\RequirePackage[english]{babel}   % USA hyphenation patterns
+\RequirePackage[english]{babel}   % USA captions and hyphenation patterns
 \RequirePackage{geometry}         % page margins/layout
 % \RequirePackage[showframe]{geometry} % (debug) page margins/layout
 \RequirePackage{fancyhdr}         % headers/footers
@@ -281,45 +281,48 @@ and updated by \contributors.}
 
 % Set custom names for \autoref macros (defaults are in hyperref.sty)
 \addto\HyLang@english{%
-    \renewcommand{\equationautorefname}{equation}
-    \renewcommand{\footnoteautorefname}{footnote}
-    \renewcommand{\itemautorefname}{item}
-    \renewcommand{\figureautorefname}{Figure}
-    \renewcommand{\tableautorefname}{Table}
-    \renewcommand{\partautorefname}{Part}
-    \renewcommand{\appendixautorefname}{Appendix}
-    \renewcommand{\chapterautorefname}{Chapter}
-    \renewcommand{\sectionautorefname}{section}
-    \renewcommand{\subsectionautorefname}{subsection}
-    \renewcommand{\subsubsectionautorefname}{subsubsection}
-    \renewcommand{\paragraphautorefname}{paragraph}
-    \renewcommand{\subparagraphautorefname}{subparagraph}
-    \renewcommand{\FancyVerbLineautorefname}{line}
-    \renewcommand{\theoremautorefname}{Theorem}
-    \renewcommand{\pageautorefname}{page}
+    \providecommand*{\algorithmautorefname}{Algorithm}
+    \renewcommand*{\equationautorefname}{equation}
+    \renewcommand*{\footnoteautorefname}{footnote}
+    \renewcommand*{\itemautorefname}{item}
+    \renewcommand*{\figureautorefname}{Figure}
+    \renewcommand*{\tableautorefname}{Table}
+    \renewcommand*{\partautorefname}{Part}
+    \renewcommand*{\appendixautorefname}{Appendix}
+    \renewcommand*{\chapterautorefname}{Chapter}
+    \renewcommand*{\sectionautorefname}{section}
+    \renewcommand*{\subsectionautorefname}{subsection}
+    \renewcommand*{\subsubsectionautorefname}{subsubsection}
+    \renewcommand*{\paragraphautorefname}{paragraph}
+    \renewcommand*{\subparagraphautorefname}{subparagraph}
+    \renewcommand*{\FancyVerbLineautorefname}{line}
+    \renewcommand*{\theoremautorefname}{Theorem}
+    \renewcommand*{\pageautorefname}{page}
 }
 \addto\captionsenglish{%
-    \renewcommand{\equationautorefname}{equation}
-    \renewcommand{\footnoteautorefname}{footnote}
-    \renewcommand{\itemautorefname}{item}
-    \renewcommand{\figureautorefname}{Figure}
-    \renewcommand{\tableautorefname}{Table}
-    \renewcommand{\partautorefname}{Part}
-    \renewcommand{\appendixautorefname}{Appendix}
-    \renewcommand{\chapterautorefname}{Chapter}
-    \renewcommand{\sectionautorefname}{section}
-    \renewcommand{\subsectionautorefname}{subsection}
-    \renewcommand{\subsubsectionautorefname}{subsubsection}
-    \renewcommand{\paragraphautorefname}{paragraph}
-    \renewcommand{\subparagraphautorefname}{subparagraph}
-    \renewcommand{\FancyVerbLineautorefname}{line}
-    \renewcommand{\theoremautorefname}{Theorem}
-    \renewcommand{\pageautorefname}{page}
+    \providecommand*{\algorithmautorefname}{Algorithm}
+    \renewcommand*{\equationautorefname}{equation}
+    \renewcommand*{\footnoteautorefname}{footnote}
+    \renewcommand*{\itemautorefname}{item}
+    \renewcommand*{\figureautorefname}{Figure}
+    \renewcommand*{\tableautorefname}{Table}
+    \renewcommand*{\partautorefname}{Part}
+    \renewcommand*{\appendixautorefname}{Appendix}
+    \renewcommand*{\chapterautorefname}{Chapter}
+    \renewcommand*{\sectionautorefname}{section}
+    \renewcommand*{\subsectionautorefname}{subsection}
+    \renewcommand*{\subsubsectionautorefname}{subsubsection}
+    \renewcommand*{\paragraphautorefname}{paragraph}
+    \renewcommand*{\subparagraphautorefname}{subparagraph}
+    \renewcommand*{\FancyVerbLineautorefname}{line}
+    \renewcommand*{\theoremautorefname}{Theorem}
+    \renewcommand*{\pageautorefname}{page}
 }
 
 % Set custom names for \cref macros (similar to \autoref ones)
 % Note that formatting may differ from \autoref, so user should be consistent
 % throughout document.
+\crefname{algorithm}{Algorithm}{Algorithms}
 \crefname{equation}{equation}{equations}
 \crefname{footnote}{footnote}{footnotes}
 \crefname{item}{item}{items}
