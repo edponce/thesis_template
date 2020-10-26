@@ -183,13 +183,28 @@ The **Packages** section contains a list of all packages included by default.
 Here a user can change an option of an existing package or add a new package.
 New packages can also be added in **utk.tex**.
 
+### Referencing figures, tables, etc. and Citations
+
+Most of the references can be handled gracefully by `\autoref`, `\cref`, and
+`\Cref` commands.
+* For all single item references use `\autoref` except for equations where we
+  recommend `\cref`. Basically, `\cref` by default encloses the equation number
+  in parenthesis. To force capitalization, use `\Cref`.
+* For multi-item references use `\cref`. Do not leave spaces after the commas.
+
+For custom control of the reference labels, see the `autoref` and `cleveref`
+configuration in the class files.
+
+Citations are always handled by the `\cite` command, irrespective of single and
+multi-item citations.
+
 ### Show header at top of page with the section and chapter information
 
 In **Global and Packages Configurations** section, comment the command
 `fancyhead{}`. This will show a header line at the top of pages that are
 consider as intermediate pages for a particular chapter or major section.
 
-## Place a float in center in single page
+### Place a float in center in single page
 
 To place a float (e.g., figure or table) vertically centered in a single page,
 use the `pagefloat` environment:  
@@ -199,14 +214,14 @@ use the `pagefloat` environment:
 `\end{figure}`  
 `\end{pagefloat}`
 
-## Change page layout to landscape
+### Change page layout to landscape
 
 To change a page to landscape layout, use the `landscape` environment:  
 `\begin{landscape}`  
 ...  
 `\end{landscape}`
 
-## Using notes to annotate manuscript
+### Using notes to annotate manuscript
 
 When writing long/complex manuscripts it is convenient to be able to include
 temporary annotations. These annotations can be embedded in-text or placed
