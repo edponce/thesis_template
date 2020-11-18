@@ -134,6 +134,10 @@ and updated by \contributors.}
 %-----------------------------------------------------------------------------%
 %  PACKAGES
 %-----------------------------------------------------------------------------%
+% Resolve clashes by passing global options to packages
+% enumitem vs xcolor
+\PassOptionsToPackage{usenames,dvipsnames,table,svgnames}{xcolor}
+
 \RequirePackage[T1]{fontenc}      % accented characters for output
 \RequirePackage[utf8]{inputenc}   % accented characters for input
 \RequirePackage[english]{babel}   % USA captions and hyphenation patterns
@@ -148,7 +152,7 @@ and updated by \contributors.}
 \RequirePackage{hyperref}         % hyperlinks
 \RequirePackage{appendix}         % appendix environment
 \RequirePackage{marginnote}       % margin notes
-\RequirePackage[usenames,dvipsnames,table,svgnames]{xcolor}  % colors
+\RequirePackage{xcolor}           % colors
 \RequirePackage{etoolbox}         % e-TeX programming facilities
 \RequirePackage{graphicx}         % graphics
 \RequirePackage{titlesec}         % customize section displays
