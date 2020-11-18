@@ -170,6 +170,7 @@ and updated by \contributors.}
 \RequirePackage{threeparttable}   % table formatting (caption, table, tablenotes)
 \RequirePackage{pdflscape}        % landscape support
 \RequirePackage[nameinlink,noabbrev]{cleveref}  % improved references
+\RequirePackage{enumitem}         % improved enumerate environment
 
 % Extra Packages
 \RequirePackage{listings}         % code listings
