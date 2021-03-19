@@ -39,7 +39,7 @@
 \ProvidesClass{utk-proposal}
 \def\filename{utk-proposal.cls}
 \def\fileversion{version 1.5}
-\def\filedate{October 19, 2020}
+\def\filedate{March 19, 2021}
 \def\contributors{Eduardo Ponce}
 
 \typeout{UTK Thesis and Dissertation Proposal Template}
